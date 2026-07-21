@@ -1,0 +1,18 @@
+
+* {
+	--max-screen-size: unset;
+}
+
+body {
+	display: block;
+	flex-direction: unset;
+	justify-content: unset;
+	color: unset;
+	font-size: unset;
+	font-family: 'unset';
+	font-style: unset;
+	font-weight: unset;
+	line-height: unset;
+	letter-spacing: unset;
+	background-color: unset;
+}

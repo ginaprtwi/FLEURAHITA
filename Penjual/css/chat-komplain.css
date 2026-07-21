@@ -1,0 +1,516 @@
+body {
+	flex-direction: column;
+}
+
+
+
+/* group-a */
+
+.group-a {
+	position: relative;
+	width: 50px;
+	flex-shrink: 0;
+}
+
+.group-circle {
+	position: absolute; top: 0; left: 0; 
+	height: 50px;
+	background-color: #ebebeb;
+}
+
+.group-3d-avatars {
+	position: relative; z-index: 1;
+}
+/* end group-a*/
+
+
+.card-message {
+	flex-shrink: 0;
+	text-align: left;
+	background-color: #e9b4b4;
+	padding-left: 16px;
+	border-radius: 12px;
+}
+
+.card-_3d-avatars {
+	width: 50px;
+	flex-shrink: 0;
+	border-radius: 50%;
+}
+
+.group4 {
+	container: group4 / inline-size;
+	position: relative;
+	margin-right: -7px;
+	min-height: 965px;
+	flex-shrink: 0;
+}
+
+.row5 {
+	top: 13px; left: 444px; 
+	width: calc(100% - 444px);
+	max-width: 1003px;
+}
+
+.row5 .row-row-right2 {
+	width: 492px;
+	padding-right: 20px;
+}
+
+.line1 {
+	position: absolute; z-index: 4; top: 72px; left: 325px; 
+	width: calc(100% - 325px);
+	max-width: 1115px;
+}
+
+.circle-light1 {
+	top: 7px; left: 369px; 
+}
+
+.img1 {
+	position: absolute; top: 5px; left: 365px; 
+	width: 65px;
+}
+
+.row6 {
+	position: absolute; z-index: 5; top: 0; left: 0; 
+	display: flex;
+	align-items: flex-start;
+	font-family: 'Poppins';
+}
+
+.sidebar-menu {
+	gap: 24px;
+	color: #25282c;
+	font-size: 17px;
+	font-weight: 500;
+}
+
+.sidebar-menu-menu {
+	width: 248px;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.row7 .row-vuesax-outline1 {
+	aspect-ratio: 1 / 1;
+}
+
+.btn-light6 .icon-ly-light5 .icon-ly-light-outline-document-fill1 {
+	z-index: 2;
+	width: 4px;
+	align-self: start;
+}
+
+.btn-light6 .icon-ly-light5 .icon-ly-light-outline-document-fill2 {
+	z-index: 1;
+}
+
+.btn-light6 .icon-ly-light5 .icon-ly-light-outline-document-fill3 {
+	position: static;
+}
+
+.row8 .row-vuesax-outline1 {
+	aspect-ratio: 1 / 1;
+}
+
+.btn-bottom {
+	box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.06);
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	color: #fff;
+	font-style: normal;
+	letter-spacing: 0px;
+	text-align: unset;
+	background: linear-gradient(180deg, #820805 0%, #ff5f5b 100%) top left / auto auto no-repeat;
+	padding: 16px 12px 16px 13px;
+	border-radius: 8px;
+}
+
+.col-bottom .row1 .row-vuesax-outline1 {
+	width: 20px; height: 20px;
+}
+
+.col-bottom .row-bottom1 .row-vuesax-outline1 {
+	height: 24px;
+}
+
+.col2 {
+	margin-left: 1px; margin-top: 98px;
+	width: 422px;
+	display: flex;
+	flex-direction: column;
+	gap: 13px;
+	flex-shrink: 0;
+	text-align: left;
+}
+
+.subtitle-chat-komplain {
+	margin-left: 17px; margin-top: -9px;
+	align-self: start;
+}
+
+.card1 {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	background-color: #fff;
+	padding: 16px 12px 519px 9px;
+	border: 1px solid #ddd;
+}
+
+
+
+/* column-e */
+
+.column-e {
+	position: relative;
+	margin-top: 2px;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	padding: 5px 18px 0 18px;
+}
+
+.column-3d-avatars {
+	position: absolute; top: 0; left: 0; 
+}
+/* end column-e*/
+
+
+.card-row-top {
+	margin-left: 1px; margin-right: 17px;
+	display: flex;
+	align-items: flex-start;
+	gap: 11px;
+}
+
+.card-group-left {
+	position: relative;
+	width: 50px;
+	flex-shrink: 0;
+}
+
+.card-circle {
+	top: 0; left: 0; 
+	width: 50px; height: 50px;
+	background-color: #ebebeb;
+}
+
+.card-3d-avatars1 {
+	position: relative; z-index: 1;
+}
+
+.card-col1 {
+	margin-top: 5px;
+	width: 182px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	flex-shrink: 0;
+	text-align: left;
+}
+
+.card-text-pembeli {
+	margin-top: -4px;
+	align-self: start;
+	color: var(--main-color);
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.card-text-apakah-produk {
+	margin-left: -1px; margin-right: -1px; margin-bottom: -2px;
+	align-self: unset;
+}
+
+.card-text-right {
+	margin-left: auto; margin-top: 5px; margin-bottom: unset;
+	color: var(--main-color);
+}
+
+.col3 {
+	margin-top: 0;
+}
+
+.col3 .row-top2 {
+	width: 319px;
+	color: var(--main-color);
+}
+
+.col3 .column-text-bottom {
+	margin-left: 42px;
+}
+
+.col4 .row-top2 {
+	width: 319px;
+	color: var(--main-color);
+}
+
+.col4 .column-text-bottom {
+	margin-left: 42px;
+}
+
+.col5 .row-top2 {
+	width: 319px;
+	color: var(--main-color);
+}
+
+.col5 .column-text-bottom {
+	margin-left: 42px;
+}
+
+.col-right {
+	margin-left: -1px; margin-top: 144px;
+	width: 693px;
+	display: flex;
+	flex-direction: column;
+	flex-shrink: 0;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 1.333;
+	text-align: left;
+	background-color: #fff;
+	padding-top: 10px;
+	padding-bottom: 52px;
+	border: 1px solid #ddd;
+}
+
+.card2 {
+	margin-right: -1px;
+	display: flex;
+	flex-direction: column;
+	gap: 39px;
+	background-color: #fff;
+	padding-left: 9px;
+	padding-right: 24px;
+	border-bottom-right-radius: 4.97px;
+	border-bottom-left-radius: 4.97px;
+}
+
+.card-col2 {
+	position: relative;
+	margin-top: -11px;
+	display: flex;
+	flex-direction: column;
+}
+
+.card-message1 {
+	position: absolute; top: 171px; right: 0; 
+	color: var(--blue-grey-blue-grey-900);
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+
+.card-message2 {
+	position: relative;
+	margin-right: 20px;
+	min-height: 56px;
+	flex-shrink: 0;
+	color: var(--main-color);
+	font-weight: 500;
+	text-align: center;
+}
+
+.card-text-hari-ini {
+	position: absolute; top: 28px; left: 27px; 
+	width: calc(100% - 27px);
+	max-width: 612px;
+}
+
+.card-group {
+	position: absolute; top: 0; left: 0; 
+	width: calc(100% - 0px); height: 56px;
+	max-width: 399px;
+}
+
+.card-row1 {
+	margin-left: 5px; margin-top: 43px;
+	display: flex;
+	align-items: flex-start;
+	gap: 8px;
+	align-self: start;
+	color: var(--gray-1);
+}
+
+.card-message3 {
+	width: 225px;
+	padding-top: 10px;
+	padding-bottom: 13px;
+}
+
+.card-message4 {
+	margin-top: 113px;
+	align-self: end;
+	color: var(--blue-grey-blue-grey-900);
+	padding-top: 16px;
+	padding-bottom: 16px;
+}
+
+.card-row2 {
+	margin-left: 7px; margin-top: 27px;
+	display: flex;
+	align-items: flex-start;
+	gap: 6px;
+	align-self: start;
+	color: var(--gray-1);
+}
+
+.card-btn-message1 {
+	margin-top: 5px;
+	width: 113px;
+	min-height: 40px;
+	display: flex;
+	justify-content: center;
+	flex-shrink: 0;
+	text-align: center;
+	background-color: #e9b4b4;
+	padding: 12px 8px;
+	border-radius: 12px;
+}
+
+.card-row3 {
+	margin-left: 7px; margin-top: 22px;
+	display: flex;
+	align-items: flex-start;
+	gap: 6px;
+	align-self: start;
+	color: var(--gray-1);
+}
+
+.card-message5 {
+	margin-top: 5px;
+	width: 222px;
+	display: flex;
+	flex-direction: column;
+	flex-shrink: 0;
+	text-align: left;
+	background-color: #e9b4b4;
+	padding: 9px 0 9px 16px;
+	border-radius: 12px;
+}
+
+.card-text-apakah-ada {
+	margin-right: -29px;
+}
+
+.card-row4 {
+	margin-left: 7px; margin-top: 31px;
+	display: flex;
+	align-items: flex-start;
+	gap: 6px;
+	align-self: start;
+	color: var(--gray-1);
+}
+
+.card-3d-avatars3 {
+	margin-top: 7px;
+}
+
+.card-message6 {
+	width: 253px;
+	flex-shrink: 0;
+	text-align: left;
+	background-color: #e9b4b4;
+	padding: 12px 15px 8px 16px;
+	border-radius: 12px;
+}
+
+.card-btn-message2 {
+	margin-top: 19px;
+	width: 214px;
+	display: flex;
+	justify-content: center;
+	align-self: end;
+	color: var(--blue-grey-blue-grey-900);
+	text-align: center;
+	background-color: #ffe8e8;
+	padding: 11px 9px 13px 9px;
+	border-radius: 12px;
+}
+
+.card-row-bottom1 {
+	margin-left: 8px; margin-top: -2px;
+	display: flex;
+	align-items: flex-start;
+	gap: 5px;
+	align-self: start;
+	color: var(--gray-1);
+}
+
+.card-3d-avatars4 {
+	margin-top: 5px;
+}
+
+.card-message7 {
+	width: 261px;
+	padding-top: 8px;
+	padding-bottom: 15px;
+}
+
+.card-row-bottom2 {
+	margin: 0 3px -39px 15px;
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-end;
+	gap: 8px;
+	color: var(--main-color);
+}
+
+.card-plus {
+	margin-top: 8px;
+	height: 24px;
+	justify-content: center;
+	flex-shrink: 0;
+}
+
+.card-plus1 {
+	width: 24px;
+}
+
+.card-input-message {
+	width: 580px;
+	flex-shrink: 0;
+	text-align: left;
+	background-color: var(--gray-6);
+	padding-top: 12px;
+	padding-bottom: 12px;
+}
+
+.card-plus2 {
+	margin-left: 3px;
+	width: 18px;
+}
+
+
+
+/* container queries (flex rows) */
+
+@container group4 (width < 1429px) {
+	.row6 {
+		flex-direction: column;
+		align-items: center;
+		gap: 100px;
+	}
+	.row6 > * {
+		margin-left: unset !important; margin-top: unset !important;
+		text-align: center;
+	}
+	.row6 > .sidebar-menu {
+		align-items: center;
+	}
+	.row6 .subtitle-chat-komplain {
+		align-self: center;
+	}
+	.row6 > .col2 {
+		width: 100%;
+		max-width: 422px;
+		align-items: center;
+	}
+	.row6 > .col-right {
+		width: 100%;
+		max-width: 693px;
+	}
+}

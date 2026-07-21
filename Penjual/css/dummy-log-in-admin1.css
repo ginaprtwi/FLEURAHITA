@@ -1,0 +1,12 @@
+body {
+	container: body / inline-size;
+	flex-direction: column;
+}
+
+.sign-in-form-desktop1 .sign-in-form-desktop-circle {
+	top: 0; left: 1px; 
+}
+
+.sign-in-form-desktop1 .sign-in-form-desktop-text {
+	color: var(--main-color);
+}

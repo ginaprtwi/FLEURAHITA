@@ -1,0 +1,22 @@
+
+* {
+	--max-screen-size: unset;
+}
+
+body {
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	color: #25282c;
+	font-size: 10px;
+	font-family: 'Poppins';
+	font-weight: 500;
+	text-align: center;
+	background-color: #fcecec;
+	padding: 8px;
+	border-radius: 1234.72px;
+}
+
+.text-belum-lunas {
+	width: 60px;
+}

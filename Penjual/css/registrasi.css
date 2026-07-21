@@ -1,0 +1,398 @@
+body {
+	position: relative;
+	display: block;
+	justify-content: unset;
+}
+
+.img-b {
+	min-width: 0;
+	flex-grow: 1;
+}
+
+
+
+/* input-group-configurator-a */
+
+.input-group-configurator-a {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	text-align: left;
+}
+
+.input-group-configurator-text2 {
+	margin: 0 16px;
+}
+/* end input-group-configurator-a*/
+
+
+.input-login {
+	color: var(--black-500-808080);
+	font-size: 15px;
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1.333;
+	letter-spacing: 0px;
+	text-align: left;
+	background-color: var(--black-50-f2f2f2);
+	padding: 14px 8px 14px 16px;
+	border: 0.5px solid var(--black-100-e5e5e5);
+	border-radius: 6px;
+}
+
+
+
+/* input-group-configurator-b */
+
+.input-group-configurator-b {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	text-align: left;
+}
+/* end input-group-configurator-b*/
+
+
+
+
+/* input-a */
+
+.input-a {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: var(--black-50-f2f2f2);
+	padding: 8px 8px 8px 16px;
+	border: 0.5px solid var(--black-100-e5e5e5);
+	border-radius: 6px;
+}
+
+.input-text {
+	text-align: left;
+}
+
+.input-icons {
+	width: 32px; height: 32px;
+	flex-shrink: 0;
+}
+/* end input-a*/
+
+
+
+
+/* group-b */
+
+.group-b {
+	position: absolute; top: 40px; left: 1029px; 
+	width: 125px; height: 26px;
+}
+/* end group-b*/
+
+
+
+
+/* circle-a */
+
+.circle-a {
+	position: absolute; top: 37px; left: 830px; 
+	width: 58px; height: 58px;
+	background-color: var(--main-color);
+	border-radius: 50%;
+}
+
+.circle-_01-images-avatar {
+	position: absolute; top: 4px; left: 50%; 
+	translate: -50% 0;
+	width: 49px; height: 49px;
+}
+/* end circle-a*/
+
+
+.sign-in-form-desktop1 {
+	container: sign-in-form-desktop1 / inline-size;
+	position: absolute; top: 59px; left: 0; right: 39px; 
+	margin: 0 auto;
+	max-width: 1401px;
+	min-height: 857px;
+	background-color: var(--white-ffffff);
+	border-radius: 24px;
+	overflow: hidden;
+}
+
+.sign-in-form-desktop-sign-in-form1 {
+	position: absolute; top: 0; left: 0; right: 30px; 
+	display: flex;
+	align-items: flex-start;
+	color: #000;
+	font-size: 10px;
+	font-family: 'Poppins';
+	font-weight: 400;
+	line-height: 2;
+}
+
+.card-sign-in-forms {
+	container: card-sign-in-forms / inline-size;
+	min-height: 858px;
+	align-items: center;
+	gap: 24px;
+	flex-shrink: 0;
+	padding-top: 145px;
+	padding-bottom: 64px;
+}
+
+.card-sign-in-forms-web {
+	display: flex;
+	flex-direction: column;
+	gap: 27px;
+	align-self: stretch;
+}
+
+.card-sign-in-forms-col {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.input-group-configurator3 {
+	gap: 4px;
+}
+
+.card-sign-in-forms-input1 {
+	margin-top: 20px;
+}
+
+.card-sign-in-forms-input2 {
+	container: card-sign-in-forms-input2 / inline-size;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.card-sign-in-forms-text-satellite1 {
+	margin: 0 16px;
+	text-align: left;
+}
+
+.card-sign-in-forms-input3 {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.card-sign-in-forms-text-satellite2 {
+	margin: 0 16px;
+	text-align: left;
+}
+
+.card-sign-in-forms-password {
+	position: relative;
+	height: 48px;
+	flex-shrink: 0;
+	background-color: var(--black-50-f2f2f2);
+	border: 0.5px solid var(--black-100-e5e5e5);
+	border-radius: 6px;
+}
+
+.card-sign-in-forms-regular-input {
+	position: absolute; top: 8px; left: 16px; right: 8px; 
+	height: 32px;
+	justify-content: space-between;
+	border-radius: 6px;
+}
+
+.card-sign-in-forms-btn-primary {
+	margin-top: 27px;
+}
+
+.card-sign-in-forms-line {
+	height: 0;
+	flex-shrink: 0;
+	border-top: 0.5px solid var(--black-100-e5e5e5);
+}
+
+.btn-google-big {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	text-align: unset;
+	background-color: var(--black-800-333333);
+	padding: 10px 11px;
+	border-radius: 6px;
+}
+
+.btn-google-big-icon {
+	width: 20px; height: 20px;
+	flex-shrink: 0;
+}
+
+.btn-google-big-label {
+	color: var(--white-ffffff);
+	text-align: center;
+}
+
+.card-sign-in-forms-up-offer {
+	display: flex;
+	align-items: flex-start;
+	gap: 8px;
+}
+
+.card-sign-in-forms-text1 {
+	color: var(--black-900-1a1a1a);
+	text-align: left;
+}
+
+.card-sign-in-forms-text2 {
+	color: #004396;
+	text-align: right;
+}
+
+.sign-in-form-desktop-row {
+	position: absolute; top: 46px; left: 969px; 
+	display: flex;
+	align-items: flex-start;
+	gap: 20px;
+	color: var(--main-color);
+	font-size: 20px;
+	font-family: 'Playfair Display';
+	font-weight: 600;
+	line-height: normal;
+}
+
+.sign-in-form-desktop-circle-gray-left {
+	position: static;
+	flex-shrink: 0;
+}
+
+.sign-in-form-desktop-text2 {
+	margin-top: 7px;
+	text-align: left;
+}
+
+.sign-in-form-desktop2 {
+	position: absolute; top: 0; left: -6px; right: 0; 
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: var(--white-ffffff);
+	padding-right: 30px;
+	border-radius: 24px;
+	overflow: hidden;
+}
+
+.sign-in-form-desktop-group2 {
+	container: sign-in-form-desktop-group2 / inline-size;
+	position: relative;
+	width: 100%;
+	max-width: 1416px;
+	min-height: 916px;
+	flex-shrink: 0;
+}
+
+.sign-in-form-desktop-sign-in-form2 {
+	position: absolute; top: 0; left: 0; right: 0; 
+	display: flex;
+	align-items: flex-start;
+	color: #000;
+	font-size: 10px;
+	font-family: 'Poppins';
+	font-weight: 400;
+	line-height: 2;
+}
+
+.sign-in-form-desktop-col-right {
+	min-height: 917px;
+	align-items: flex-start;
+	gap: 94px;
+	flex-shrink: 0;
+	text-align: left;
+	padding-top: 48px;
+	padding-bottom: 48px;
+}
+
+.sign-in-form-desktop-img-top {
+	width: 50px;
+	flex-shrink: 0;
+}
+
+.sign-in-form-desktop-forms2 {
+	gap: 14px;
+	align-self: stretch;
+	padding-bottom: 7px;
+}
+
+.sign-in-form-desktop-col4 {
+	container: card-sign-in-forms-input2 / inline-size;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.sign-in-form-desktop-text-fleurahita2 {
+	position: absolute; top: 56px; left: 1076px; 
+}
+
+
+
+/* container queries (flex rows) */
+
+@container card-sign-in-forms-input2 (width < 186px) {
+	.input-a {
+		flex-direction: column;
+		align-items: center;
+		gap: 13px;
+		padding: 8px;
+	}
+	.card-sign-in-forms-input2 > * {
+		margin-left: 0; margin-right: 0;
+	}
+	.input-a > * {
+		text-align: center;
+	}
+}
+
+@container sign-in-form-desktop1 (width < 1049px) {
+	.sign-in-form-desktop-sign-in-form1 {
+		flex-direction: column;
+		align-items: center;
+		gap: 100px;
+	}
+	.sign-in-form-desktop-sign-in-form1 > .sign-in-form-desktop-img3 {
+		width: 100%;
+	}
+	.sign-in-form-desktop-sign-in-form1 > .card-sign-in-forms {
+		width: 100%;
+		max-width: 456px;
+	}
+}
+
+@container card-sign-in-forms (width < 194px) {
+	.card-sign-in-forms-up-offer {
+		flex-direction: column;
+		align-items: center;
+		gap: 13px;
+	}
+	.card-sign-in-forms-up-offer > * {
+		text-align: center;
+	}
+}
+
+@container sign-in-form-desktop-group2 (width < 1079px) {
+	.sign-in-form-desktop-sign-in-form2 {
+		flex-direction: column;
+		align-items: center;
+		gap: 100px;
+	}
+	.sign-in-form-desktop-sign-in-form2 > * {
+		text-align: center;
+	}
+	.sign-in-form-desktop-sign-in-form2 > .sign-in-form-desktop-img4 {
+		width: 100%;
+	}
+	.sign-in-form-desktop-sign-in-form2 > .sign-in-form-desktop-col-right {
+		width: 100%;
+		max-width: 456px;
+		align-items: center;
+	}
+}
