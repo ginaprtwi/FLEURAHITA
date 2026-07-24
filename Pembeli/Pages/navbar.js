@@ -3,20 +3,52 @@
 // - Klik -> pindah ke halaman tujuan (navigasi beneran, bisa bolak-balik pakai tombol back browser)
 // - Otomatis kasih warna merah (var(--main-color)) ke menu yang sesuai dengan halaman yang lagi dibuka
 //
-// PENTING: sesuaikan value "href" di bawah dengan nama file halaman kamu yang sebenarnya.
-// Tempel <script src="navbar.js"></script> sebelum </body> di SEMUA halaman
-// (Beranda, Produk, Pesanan Saya, Akun Saya, dst) supaya statusnya konsisten di mana-mana.
+// CATATAN: elemen navbar dicari berdasarkan TEKSNYA ("Beranda", "Produk", "Pesanan Saya"),
+// bukan berdasarkan nama class. Ini sengaja, karena tools export (Anima/Figma-to-code) sering
+// kasih nama class yang beda-beda di tiap halaman walau tampilannya sama persis.
+//
+// Tempel <script src="navbar.js"></script> sebelum </body> di SEMUA halaman.
 
 document.addEventListener('DOMContentLoaded', () => {
   // TODO: ganti 'beranda.html', 'produk.html', 'pesanan-saya.html'
   // sesuai nama file asli di project kamu
-  const NAV_ITEMS = [
-    { el: document.querySelector('.auto-layout-horizontal-text-left'), href: 'beranda.html' },
-    { el: document.querySelector('.auto-layout-horizontal-text'), href: 'produk.html' },
-    { el: document.querySelector('.auto-layout-horizontal-text-pesanan-saya'), href: 'pesanan-saya4.html' },
-  ];
+  const PAGES = {
+    'Beranda': 'beranda.html',
+    'Produk': 'produk.html',
+    'Pesanan Saya': 'pesanan-saya4.html',
+  };
 
   const ACTIVE_COLOR = 'var(--main-color)';
+
+  // Cari kandidat elemen navbar: prioritas di dalam <header>, kalau gak ada baru cari di seluruh dokumen
+  function getCandidates() {
+    const scope = document.querySelector('header') || document.body;
+    return Array.from(scope.querySelectorAll('p, a, span, div'));
+  }
+
+  // Cari elemen yang teksnya PERSIS sama dengan label (bukan elemen pembungkus yang isinya banyak anak)
+  function findByExactText(label) {
+    const candidates = getCandidates();
+    return candidates.find((el) => {
+      // hindari elemen yang isinya banyak child element (misal wrapper besar)
+      const hasElementChildren = el.children.length > 0;
+      const text = el.textContent.trim();
+      return !hasElementChildren && text === label;
+    }) || null;
+  }
+
+  const NAV_ITEMS = Object.entries(PAGES).map(([label, href]) => ({
+    label,
+    href,
+    el: findByExactText(label),
+  }));
+
+  // Kasih tau di console kalau ada menu yang gak ketemu, biar gampang di-debug
+  NAV_ITEMS.forEach((item) => {
+    if (!item.el) {
+      console.warn(`[navbar.js] Menu "${item.label}" tidak ditemukan di halaman ini.`);
+    }
+  });
 
   function currentFileName() {
     const path = window.location.pathname;
