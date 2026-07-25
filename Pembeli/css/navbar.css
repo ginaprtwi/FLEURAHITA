@@ -1,0 +1,194 @@
+/* Base Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Navbar Container */
+.fleurahita-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 4%;
+    height: 80px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #eaeaea; /* Subtle bottom border */
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* 1. Left: Brand Section */
+.fleurahita-navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Logo Circle Placeholder */
+.fleurahita-navbar-logo {
+    width: 48px;
+    height: 48px;
+    background-color: #79161a; /* Dark red/maroon matching the image */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Small stylistic touch inside logo to mimic the real logo */
+.fleurahita-navbar-logo::after {
+    content: 'F';
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-style: italic;
+}
+
+.fleurahita-navbar-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #79161a;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* 2. Middle: Navigation Links */
+.fleurahita-navbar-nav {
+    display: flex;
+    align-items: center;
+    gap: 40px; /* Space between links */
+    margin-left: -5%; /* Slight adjustment to center it visually */
+}
+
+.fleurahita-nav-link {
+    text-decoration: none;
+    color: #222; /* Dark color for links */
+    font-weight: 500;
+    font-size: 15px;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.fleurahita-nav-link:hover, .fleurahita-nav-link.active {
+    color: #79161a; /* Highlight color on hover/active */
+}
+
+/* Optional: Active underline indicator */
+.fleurahita-nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #79161a;
+    border-radius: 2px;
+}
+
+/* 3. Right: Action Buttons (Cart, Chat, Profile) */
+.fleurahita-navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+/* Cart Section */
+.fleurahita-cart-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+}
+
+.fleurahita-cart-wrapper:hover {
+    background-color: #f9f9f9;
+}
+
+.fleurahita-icon {
+    width: 24px;
+    height: 24px;
+    color: #222;
+}
+
+.fleurahita-cart-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1.1;
+}
+
+.fleurahita-cart-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: #666;
+    margin-bottom: 2px;
+}
+
+.fleurahita-cart-price {
+    font-size: 13px;
+    font-weight: 600;
+    color: #111;
+}
+
+/* Chat Icon */
+.fleurahita-chat-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+.fleurahita-chat-btn:hover {
+    background-color: #f9f9f9;
+}
+
+/* Profile Avatar */
+.fleurahita-profile-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.fleurahita-profile-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.fleurahita-profile-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Mobile Responsiveness tweaks */
+@media (max-width: 900px) {
+    .fleurahita-navbar-nav {
+        display: none;
+    }
+    .fleurahita-cart-info {
+        display: none;
+    }
+}
