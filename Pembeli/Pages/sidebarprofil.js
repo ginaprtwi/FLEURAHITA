@@ -4,37 +4,46 @@
 // - Otomatis kasih warna merah + garis bawah ke menu yang sesuai halaman aktif
 // - "Keluar" khusus: bukan pindah halaman biasa, tapi proses logout
 //
-// Sama seperti navbar.js, elemen dicari berdasarkan TEKSNYA, bukan nama class,
-// biar tetap jalan walau nama class beda-beda tiap halaman (khas hasil export Anima/Figma).
+// Elemen dicari berdasarkan TEKSNYA, bukan nama class, biar tetap jalan walau
+// nama class beda-beda tiap halaman (khas hasil export Anima/Figma).
+//
+// PERBAIKAN dari versi sebelumnya:
+// Beberapa label sidebar ("Keranjang", "Pesanan Saya") juga muncul di tempat lain
+// di halaman yang sama (ikon keranjang di header, link di footer). Kalau scope
+// pencarian gagal ketemu wrapper sidebar (misal class-nya beda tiap halaman) dan
+// jatuh ke fallback document.body, klik malah ke-bind ke elemen yang SALAH
+// (header/footer), bukan item sidebar -> makanya "Keranjang" & "Pesanan Saya"
+// kelihatan gak jalan padahal yang lain jalan.
+//
+// Sekarang scope ditentukan lewat elemen "Akun Saya", yang dipastikan cuma
+// ada SATU di seluruh halaman (di dalam sidebar), lalu dipakai parent-nya
+// sebagai area pencarian menu lain. Jadi gak bergantung sama nama class sama sekali.
 //
 // Tempel <script src="sidebar.js"></script> sebelum </body> di halaman yang PUNYA sidebar ini
 // (Akun Saya, Alamat, Keranjang, Pesanan Saya, Chat & Ulasan).
 
 document.addEventListener('DOMContentLoaded', () => {
   // TODO: sesuaikan nama file kalau beda dari punya kamu
-  const SIDEBAR_PAGES = {
-    'Akun Saya': 'detail_akun.html',
-    'Alamat': 'alamat_profil.html',
-    'Keranjang': 'keranjang_di_profil.html',
-    'Pesanan Saya': 'pesanan-saya4.html',
-    'Chat & Ulasan': 'chat&ulasan.html',
+  //
+  // CATATAN: setiap menu boleh punya beberapa "alias" teks, karena ternyata
+  // beberapa halaman pakai istilah yang beda buat menu yang sama
+  // (contoh: halaman Akun Saya pakai "Pesanan Saya", halaman Alamat Saya
+  // pakai "Histori Pesanan"). Kalau nemu variasi teks lain di halaman lain,
+  // tinggal tambahin ke array alias-nya.
+  const SIDEBAR_PAGES = [
+    { aliases: ['Akun Saya'], href: 'detail_akun.html' },
+    { aliases: ['Alamat'], href: 'alamat_profil.html' },
+    { aliases: ['Keranjang'], href: 'keranjang_di_profil.html' },
+    { aliases: ['Histori Pesanan'], href: 'histori_pesanan.html' },
+    { aliases: ['Chat & Ulasan'], href: 'chat&ulasan.html' },
     // 'Keluar' sengaja tidak dikasih href, karena logout beda proses (lihat di bawah)
-  };
+    { aliases: ['Keluar'], href: null },
+  ];
 
   // TODO: ganti ini kalau halaman setelah logout bukan 'beranda.html'
   const LOGOUT_REDIRECT = 'beranda.html';
 
   const ACTIVE_COLOR = 'var(--main-color)';
-
-  // Cari kandidat elemen menu di dalam sidebar saja (bukan di seluruh halaman),
-  // supaya gak ketuker sama teks yang sama persis di footer (misal "Pesanan Saya" juga ada di footer)
-  function getSidebarScope() {
-    return (
-      document.querySelector('.card-menu-col') ||
-      document.querySelector('.card-menu') ||
-      document.body
-    );
-  }
 
   function findByExactText(scope, label) {
     const candidates = Array.from(scope.querySelectorAll('p, a, span, div'));
@@ -45,18 +54,47 @@ document.addEventListener('DOMContentLoaded', () => {
     }) || null;
   }
 
+  // Cari scope sidebar lewat "Akun Saya" (teksnya dijamin unik di seluruh halaman,
+  // beda sama "Keranjang"/"Pesanan Saya" yang bisa dobel di header/footer).
+  function getSidebarScope() {
+    const anchor = findByExactText(document.body, 'Akun Saya');
+    if (anchor && anchor.parentElement) {
+      return anchor.parentElement;
+    }
+    // fallback terakhir kalau "Akun Saya" beneran gak ketemu
+    console.warn('[sidebar.js] Elemen "Akun Saya" tidak ditemukan, fallback ke class selector.');
+    return (
+      document.querySelector('.card-menu-col') ||
+      document.querySelector('.card-menu') ||
+      document.body
+    );
+  }
+
   const scope = getSidebarScope();
 
-  const menuLabels = [...Object.keys(SIDEBAR_PAGES), 'Keluar'];
-  const MENU_ITEMS = menuLabels.map((label) => ({
-    label,
-    href: SIDEBAR_PAGES[label] || null,
-    el: findByExactText(scope, label),
-  }));
+  console.info('[sidebar.js] Scope sidebar yang dipakai:', scope);
+
+  function findByAnyAlias(scope, aliases) {
+    for (const alias of aliases) {
+      const found = findByExactText(scope, alias);
+      if (found) return { el: found, matchedAlias: alias };
+    }
+    return { el: null, matchedAlias: null };
+  }
+
+  const MENU_ITEMS = SIDEBAR_PAGES.map(({ aliases, href }) => {
+    const { el, matchedAlias } = findByAnyAlias(scope, aliases);
+    return { label: aliases[0], aliases, href, el, matchedAlias };
+  });
 
   MENU_ITEMS.forEach((item) => {
     if (!item.el) {
-      console.warn(`[sidebar.js] Menu "${item.label}" tidak ditemukan di halaman ini.`);
+      console.warn(
+        `[sidebar.js] Menu "${item.label}" TIDAK ditemukan. Sudah dicoba alias: [${item.aliases.join(', ')}]. ` +
+        `Cek apakah teksnya persis sama (termasuk spasi/kapital) atau ada elemen anak (icon/span) di dalamnya.`
+      );
+    } else {
+      console.info(`[sidebar.js] Menu "${item.label}" ditemukan via teks "${item.matchedAlias}" ->`, item.el);
     }
   });
 
@@ -97,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!item.el) return;
     item.el.style.cursor = 'pointer';
 
-    if (item.label === 'Keluar') {
+    if (item.aliases.includes('Keluar')) {
       item.el.addEventListener('click', handleLogout);
     } else if (item.href) {
       item.el.addEventListener('click', () => {

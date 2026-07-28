@@ -280,7 +280,28 @@ body {
 	gap: 10px;
 }
 
+/* Stepper status */
+button.step-completed,
+button.step-active {
+	background-color: var(--main-color) !important;
+	color: var(--neutrals-8) !important;
+}
 
+button.step-upcoming {
+	background-color: var(--grey) !important;
+	color: var(--neutrals-8) !important;
+}
+
+p.step-completed,
+p.step-active {
+	color: var(--main-color) !important;
+	background-color: transparent !important;
+}
+
+p.step-upcoming {
+	color: var(--grey) !important;
+	background-color: transparent !important;
+}
 
 /** breakpoints (margin / paddings) **/
 
