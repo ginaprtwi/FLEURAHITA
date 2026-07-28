@@ -56,19 +56,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Cari scope sidebar lewat "Akun Saya" (teksnya dijamin unik di seluruh halaman,
   // beda sama "Keranjang"/"Pesanan Saya" yang bisa dobel di header/footer).
-  function getSidebarScope() {
-    const anchor = findByExactText(document.body, 'Akun Saya');
-    if (anchor && anchor.parentElement) {
-      return anchor.parentElement;
-    }
-    // fallback terakhir kalau "Akun Saya" beneran gak ketemu
-    console.warn('[sidebar.js] Elemen "Akun Saya" tidak ditemukan, fallback ke class selector.');
-    return (
-      document.querySelector('.card-menu-col') ||
-      document.querySelector('.card-menu') ||
-      document.body
-    );
+
+    
+function getSidebarScope() {
+  const scope = document.querySelector('.card-menu-col');
+  if (scope) return scope;
+  console.warn('[sidebar.js] .card-menu-col tidak ditemukan, fallback ke pencarian teks.');
+
+  const anchor = findByExactText(document.body, 'Akun Saya');
+  if (anchor && anchor.parentElement) {
+    return anchor.parentElement;
   }
+
+  // fallback terakhir kalau "Akun Saya" beneran gak ketemu
+  console.warn('[sidebar.js] Elemen "Akun Saya" tidak ditemukan, fallback ke class selector.');
+  return (
+    document.querySelector('.card-menu-col') ||
+    document.querySelector('.card-menu') ||
+    document.body
+  );
+}
 
   const scope = getSidebarScope();
 
