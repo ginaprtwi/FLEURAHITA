@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Keuangan - FLEURAHITA</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Playfair+Display:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/keuangan.css" />
+</head>
+
+<body style="display: flex;">
+
+    <!-- 1. Container Sidebar (Diisi otomatis via components.js) -->
+    <div id="sidebar-container"></div>
+
+    <!-- Area Kanan (Navbar + Content) -->
+    <div style="flex-grow: 1; display: flex; flex-direction: column; width: 100%;">
+
+        <!-- 2. Container Navbar (Diisi otomatis via components.js) -->
+        <div id="navbar-container"></div>
+        <div class="line-c line1" style="width: 100%; height: 1px; background-color: #eee; display: block;"></div>
+
+        <!-- 3. Konten Utama Keuangan -->
+        <main class="col2">
+            <h2 class="subtitle-keuangan subtitle-main-color">Keuangan</h2>
+            
+            <!-- Cards Informasi Keuangan -->
+            <div class="informations">
+                <!-- Total Saldo -->
+                <div class="card-left">
+                    <div class="card-left-circle circle">
+                        <div class="card-left-group">
+                            <object data="../assets/keuangan/card-left-fill1.svg" class="card-left-fill1" type="image/svg+xml"></object>
+                            <object data="../assets/keuangan/card-left-fill2.svg" class="card-left-fill2" type="image/svg+xml"></object>
+                        </div>
+                        <img src="../assets/keuangan/card-left-img.png" class="card-left-img" />
+                        <object data="../assets/keuangan/card-left-fill3.svg" class="card-left-fill3" type="image/svg+xml"></object>
+                    </div>
+                    <div class="column-f col-bottom1">
+                        <p class="column-text3">Total Saldo</p>
+                        <h2 class="column-subtitle" id="nilai-total-saldo">Rp. 1.000.000</h2>
+                    </div>
+                </div>
+                
+                <!-- Jumlah Transaksi -->
+                <div class="card">
+                    <div class="card-circle">
+                        <img src="../assets/keuangan/card-img.png" class="card-img" />
+                        <object data="../assets/keuangan/card-fill1.svg" class="card-fill card-fill1" type="image/svg+xml"></object>
+                        <object data="../assets/keuangan/card-fill2.svg" class="card-fill card-fill2" type="image/svg+xml"></object>
+                        <object data="../assets/keuangan/card-fill2.svg" class="card-fill card-fill3" type="image/svg+xml"></object>
+                    </div>
+                    <div class="column-f col-bottom2">
+                        <p class="column-text3">Jumlah Transaksi</p>
+                        <h2 class="column-subtitle"><span id="nilai-jumlah-transaksi">10 Transaksi</span></h2>
+                    </div>
+                </div>
+                
+                <!-- Pendapatan Bulan Ini -->
+                <div class="card-right">
+                    <div class="circle-light-c circle-light-top">
+                        <object data="../assets/keuangan/circle-light/circle-light-iconly.svg" class="iconly-light-outline-tick circle-light-iconly" type="image/svg+xml"></object>
+                    </div>
+                    <div class="column-f col-bottom3">
+                        <p class="column-text3">Pendapatan Bulan ini</p>
+                        <h2 class="column-subtitle"><span id="nilai-pendapatan-bulan">Rp. 500.000</span></h2>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tombol Tarik Saldo -->
+            <button class="btn-a btn4 hover-bright">TARIK SALDO</button>
+            
+            <!-- Card Utama (Tabel Transaksi) -->
+            <div class="col3">
+                <!-- Toolbar atas tabel -->
+                <div class="row-top3">
+                    <p class="text-left text4">Daftar Transaksi</p>
+                    
+                    <div class="row-f row10">
+                        <input type="text" placeholder="Cari Produk..." class="input-cari-produk" />
+                        <object data="../assets/row/row-vuesax-outline2.svg" class="row-vuesax-outline-search-b row-vuesax-outline3" type="image/svg+xml"></object>
+                    </div>
+                    
+                    <div class="row-right">
+                        <div class="iconly-light-outline-filter iconly-light2">
+                            <img src="../assets/iconly-light-outline-filter/iconly-light-outline-filter-filter.png" class="iconly-light-outline-filter-filter" />
+                        </div>
+                        <p class="text-urutkan-transaksi">Urutkan Transaksi</p>
+                        <object data="../assets/row/row-iconly-light-970.svg" class="iconly-light-outline-arrow iconly-light3" type="image/svg+xml"></object>
+                    </div>
+                </div>
+                
+                <!-- Header Tabel Grid -->
+                <div class="table-header">
+                    <div>No. Pesanan</div>
+                    <div>Nama Pembeli</div>
+                    <div>Produk</div>
+                    <div>Total</div>
+                    <div>Tanggal</div>
+                </div>
+                
+                <!-- Body Tabel (Data Transaksi) -->
+                <div id="table-body">
+                    <!-- Baris 1 -->
+                    <div class="table-row">
+                        <div>P0001</div>
+                        <div>Reisya Seinanda</div>
+                        <div>Charme Boquet</div>
+                        <div>250.000</div>
+                        <div>12-12-2025</div>
+                    </div>
+
+                    <!-- Baris 2 -->
+                    <div class="table-row">
+                        <div>P0002</div>
+                        <div>M. Iqbal</div>
+                        <div>Charme Boquet</div>
+                        <div>250.000</div>
+                        <div>12-12-2025</div>
+                    </div>
+
+                    <!-- Baris 3 -->
+                    <div class="table-row">
+                        <div>P0003</div>
+                        <div>M. Fadhil</div>
+                        <div>Charme Boquet</div>
+                        <div>250.000</div>
+                        <div>12-12-2025</div>
+                    </div>
+
+                    <!-- Baris 4 -->
+                    <div class="table-row">
+                        <div>P0004</div>
+                        <div>Hendri P</div>
+                        <div>Charme Boquet</div>
+                        <div>250.000</div>
+                        <div>12-12-2025</div>
+                    </div>
+
+                    <!-- Baris 5 -->
+                    <div class="table-row">
+                        <div>P0005</div>
+                        <div>Reza F</div>
+                        <div>Charme Boquet</div>
+                        <div>250.000</div>
+                        <div>12-12-2025</div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+    </div>
+
+    <!-- Script Component Loader -->
+    <script src="../js/components.js"></script>
+    <script src="../js/keuangan.js"></script>
+</body>
+</html>

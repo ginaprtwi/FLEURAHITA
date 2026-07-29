@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/pengiriman.css" />
+</head>
+
+<body style="display: flex;">
+
+    <!-- 1. Wadah Sidebar (Otomatis terisi via components.js) -->
+    <div id="sidebar-container"></div>
+
+    <!-- Wrapper Area Kanan (Navbar + Content) -->
+    <div style="flex-grow: 1; display: flex; flex-direction: column; width: 100%;">
+
+        <!-- 2. Wadah Navbar (Otomatis terisi via components.js) -->
+        <div id="navbar-container"></div>
+        <div class="line-c line1" style="width: 100%; height: 1px; background-color: #eee; display: block;"></div>
+        <!-- 3. Content Pengiriman -->
+        <main class="col2">
+            <!-- Judul Halaman -->
+            <h2 class="subtitle-pengiriman">Pengiriman</h2>
+            
+            <!-- Search & Filter Bar -->
+            <div class="row-filter">
+                <!-- Box Cari Pengiriman -->
+                <div class="cari-pengiriman">
+                    <input type="text" placeholder="Cari Pengiriman..." />
+                    <button type="submit" style="background: none; border: none; padding: 0; cursor: pointer; display: flex; align-items: center;">
+                        <img src="../assets/pengiriman/vuesax-outline-search.svg" class="icon-search-svg" alt="Cari" />
+                    </button>
+                </div>
+                
+                <!-- Button Filter Status -->
+                <div class="btn-status">
+                    <span>Semua Status</span>
+                    <small>Ã¢â€“Â¼</small>
+                </div>
+            </div>
+            
+            <!-- Card Utama (Tabel Pengiriman) -->
+            <div class="col-card-utama">
+                <!-- Header Tabel In-Card -->
+                <div class="row-header-tabel">
+                    <div>No. Pesanan</div>
+                    <div>Nama Pembeli</div>
+                    <div>Produk</div>
+                    <div>Alamat</div>
+                    <div style="text-align: center;">Status</div>
+                </div>
+                
+                <!-- Container Data Dinamis -->
+                <div id="table-body">
+                <!-- Item Data 1 -->
+                <div class="row-item-tabel">
+                    <div>#1001</div>
+                    <div>Jane Doe</div>
+                    <div>Buket Bunga Merah</div>
+                    <div>Jl. Mawar No. 12</div>
+                    <div style="text-align: center;">
+                        <span class="badge-status dikirim">Dikirim</span>
+                    </div>
+                </div>
+
+                <!-- Item Data 2 -->
+                <div class="row-item-tabel">
+                    <div>#1002</div>
+                    <div>Reisya Seinanda</div>
+                    <div>Charme Bouquet</div>
+                    <div>Jalan Dipatiukur</div>
+                    <div style="text-align: center;">
+                        <span class="badge-status dikirim">Dikirim</span>
+                    </div>
+                </div>
+
+                <!-- Item Data 3 -->
+                <div class="row-item-tabel">
+                    <div>#1003</div>
+                    <div>Hendri Pradita</div>
+                    <div>Charme Bouquet</div>
+                    <div>Jalan Dipatiukur</div>
+                    <div style="text-align: center;">
+                        <span class="badge-status dikirim">Dikirim</span>
+                    </div>
+                </div>
+                </div><!-- end #table-body -->
+
+            </div>
+        </main>
+
+    </div>
+
+    <!-- Panggil JS Handler Kamu -->
+    <script src="../js/components.js"></script>
+    <script src="../js/pengiriman.js"></script>
+</body>
+</html>
