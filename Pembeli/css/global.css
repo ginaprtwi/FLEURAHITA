@@ -683,6 +683,7 @@ body {
 	text-align: left;
 	background: linear-gradient(180deg, #820805 0%, #ff5f5b 100%) top left / auto auto no-repeat;
 	-webkit-background-clip: text;
+	background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
 
@@ -889,6 +890,7 @@ body {
 	font-weight: 700;
 	background: linear-gradient(180deg, #820805 0%, #ff5f5b 100%) top left / auto auto no-repeat;
 	-webkit-background-clip: text;
+	background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
 
@@ -1356,6 +1358,7 @@ body {
 	text-align: left;
 	background: linear-gradient(180deg, #820805 0%, #ff5f5b 100%) top left / auto auto no-repeat;
 	-webkit-background-clip: text;
+	background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
 
@@ -1379,6 +1382,7 @@ body {
 	text-align: left;
 	background: linear-gradient(180deg, #820805 0%, #ff5f5b 100%) top left / auto auto no-repeat;
 	-webkit-background-clip: text;
+	background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
 /* end column-e*/
@@ -1554,6 +1558,7 @@ body {
 	text-align: left;
 	background: linear-gradient(180deg, #820805 0%, #ff5f5b 100%) top left / auto auto no-repeat;
 	-webkit-background-clip: text;
+	background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
 /* end info*/
@@ -1614,6 +1619,7 @@ body {
 	text-align: left;
 	background: linear-gradient(180deg, #820805 0%, #ff5f5b 100%) top left / auto auto no-repeat;
 	-webkit-background-clip: text;
+	background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
 
@@ -1805,3 +1811,4 @@ body {
 		margin-left: unset !important;
 	}
 }
+
