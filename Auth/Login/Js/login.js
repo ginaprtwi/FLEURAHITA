@@ -1,5 +1,6 @@
 
 const API_BASE_URL = 'http://localhost:3000/api'; // Ganti dengan URL backend Anda
+const ADMIN_EMAIL = 'admin@fleurahita.com'; // Email admin (hardcoded)
 const loginForm = document.getElementById('loginForm');
 const submitBtn = loginForm.querySelector('.submit-btn');
 
@@ -97,8 +98,15 @@ loginForm.addEventListener('submit', async function(e) {
             const storage = rememberMe ? localStorage : sessionStorage;
             storage.setItem('user', JSON.stringify(result.data));
 
+            // Redirect based on admin email (hardcoded)
             setTimeout(() => {
-                window.location.href = '../../Pembeli/Pages/beranda.html';
+                if (email === ADMIN_EMAIL) {
+                    // Admin redirect ke dashboard Penjual
+                    window.location.href = '../../Penjual/Pages/beranda-fix.html';
+                } else {
+                    // Pembeli redirect ke dashboard Pembeli
+                    window.location.href = '../../Pembeli/Pages/beranda.html';
+                }
             }, 1000);
         } else {
             showError(result.error || 'Email atau password salah.');
