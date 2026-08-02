@@ -44,12 +44,11 @@ ketik di terminal vscode
 
 3. **Setup Environment Variables**
    - Copy `.env.example` ke `.env`:
-
+   
    ```bash
    copy .env.example .env
    ```
    - Edit `.env` dan sesuaikan dengan database credentials Anda:
-   
    ```env
    DB_HOST=localhost
    DB_USER=root
@@ -59,11 +58,7 @@ ketik di terminal vscode
    ```
 
 4. **Setup Database**
-   - Import schema dari `db_si.sql`:
-   ```bash
-   mysql -u root -p < db_si.sql
-   ```
-   - Database `Fleurahita` akan otomatis dibuat
+   Patiin udah ada databasenya di mysql
 
 5. **Start Server**
    ```bash
@@ -103,12 +98,6 @@ All endpoints return consistent error format:
 - `404` - Not Found (User/data tidak ditemukan)
 - `500` - Internal Server Error
 
-## Development
-
-### Running Server
-```bash
-node server.js
-```
 
 ### Adding New Routes
 CONTOH :
