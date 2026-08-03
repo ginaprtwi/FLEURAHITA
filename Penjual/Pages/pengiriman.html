@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+
     <!-- CSS Links -->
     <link rel="stylesheet" href="../css/reset.css" />
     <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/sidebar.css" />
     <link rel="stylesheet" href="../css/pengiriman.css" />
 </head>
 
@@ -27,24 +31,44 @@
         <main class="col2">
             <!-- Judul Halaman -->
             <h2 class="subtitle-pengiriman">Pengiriman</h2>
-            
+
             <!-- Search & Filter Bar -->
             <div class="row-filter">
                 <!-- Box Cari Pengiriman -->
                 <div class="cari-pengiriman">
                     <input type="text" placeholder="Cari Pengiriman..." />
-                    <button type="submit" style="background: none; border: none; padding: 0; cursor: pointer; display: flex; align-items: center;">
+                    <button type="submit"
+                        style="background: none; border: none; padding: 0; cursor: pointer; display: flex; align-items: center;">
                         <img src="../assets/pengiriman/vuesax-outline-search.svg" class="icon-search-svg" alt="Cari" />
                     </button>
                 </div>
-                
-                <!-- Button Filter Status -->
-                <div class="btn-status">
-                    <span>Semua Status</span>
-                    <small>Ã¢â€“Â¼</small>
+
+                <!-- Filter Status & Urutan -->
+                <div class="row-i row-right btn-status">
+                    <!-- Icon Sebelah Kiri: Tombol Urutan Nama Pembeli (Ascending / Descending / Normal) -->
+                    <div class="btn-sort" title="Urutkan Nama Pembeli (Normal)" style="cursor: pointer; display: flex; align-items: center; gap: 4px;">
+                        <div class="iconly-light-outline-filter iconly-light">
+                            <img src="../assets/iconly-light-outline-filter/iconly-light-outline-filter-filter.png" class="iconly-light-outline-filter-filter" alt="Filter Sort" />
+                        </div>
+                        <span class="sort-indicator" style="font-size: 11px; font-weight: bold; line-height: 1;"></span>
+                    </div>
+                    
+                    <!-- Dropdown Trigger (Teks Status + Arrow) -->
+                    <div class="dropdown-trigger" style="display: flex; align-items: center; gap: 8px; cursor: pointer; flex-grow: 1;">
+                        <p class="row-text8" style="margin: 0;">Semua Status</p>
+                        <object data="../assets/row/row-iconly-light-338.svg" class="row-iconly-light-outline-arrow-b row-iconly-light" type="image/svg+xml" style="pointer-events: none;"></object>
+                    </div>
+
+                    <!-- Dropdown Menu Opsi Status -->
+                    <div class="status-dropdown-menu">
+                        <div class="status-option active" data-status="Semua Status" style="padding: 10px 16px; color: #333; cursor: pointer; font-size: 14px; font-weight: 500;">Semua Status</div>
+                        <div class="status-option" data-status="Dikirim" style="padding: 10px 16px; color: #333; cursor: pointer; font-size: 14px; font-weight: 500;">Dikirim</div>
+                        <div class="status-option" data-status="Diproses" style="padding: 10px 16px; color: #333; cursor: pointer; font-size: 14px; font-weight: 500;">Diproses</div>
+                    </div>
                 </div>
+
             </div>
-            
+
             <!-- Card Utama (Tabel Pengiriman) -->
             <div class="col-card-utama">
                 <!-- Header Tabel In-Card -->
@@ -55,42 +79,38 @@
                     <div>Alamat</div>
                     <div style="text-align: center;">Status</div>
                 </div>
-                
+
                 <!-- Container Data Dinamis -->
                 <div id="table-body">
-                <!-- Item Data 1 -->
-                <div class="row-item-tabel">
-                    <div>#1001</div>
-                    <div>Jane Doe</div>
-                    <div>Buket Bunga Merah</div>
-                    <div>Jl. Mawar No. 12</div>
-                    <div style="text-align: center;">
-                        <span class="badge-status dikirim">Dikirim</span>
-                    </div>
-                </div>
-
-                <!-- Item Data 2 -->
-                <div class="row-item-tabel">
-                    <div>#1002</div>
-                    <div>Reisya Seinanda</div>
-                    <div>Charme Bouquet</div>
-                    <div>Jalan Dipatiukur</div>
-                    <div style="text-align: center;">
-                        <span class="badge-status dikirim">Dikirim</span>
-                    </div>
-                </div>
-
-                <!-- Item Data 3 -->
-                <div class="row-item-tabel">
-                    <div>#1003</div>
-                    <div>Hendri Pradita</div>
-                    <div>Charme Bouquet</div>
-                    <div>Jalan Dipatiukur</div>
-                    <div style="text-align: center;">
-                        <span class="badge-status dikirim">Dikirim</span>
-                    </div>
-                </div>
                 </div><!-- end #table-body -->
+
+                <!-- Control Pagination (Single Horizontal Line) -->
+                <div class="table-pagination" id="pagination-container">
+                    <!-- Kiri: Info Results -->
+                    <div class="pagination-results-text">
+                        Results: <span id="page-start">0</span> - <span id="page-end">0</span> of <span id="total-count">0</span>
+                    </div>
+
+                    <!-- Kanan: Tombol Navigasi Angka + Dropdown Per Page -->
+                    <div class="pagination-right-controls">
+                        <div class="pagination-buttons-row">
+                            <button class="btn-page-nav" id="btn-prev" aria-label="Previous Page">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                            </button>
+                            <div class="page-numbers" id="page-numbers"></div>
+                            <button class="btn-page-nav" id="btn-next" aria-label="Next Page">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </button>
+                        </div>
+                        <div class="per-page-selector">
+                            <select id="items-per-page-select" class="per-page-select">
+                                <option value="8" selected>8</option>
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </main>
@@ -101,4 +121,5 @@
     <script src="../js/components.js"></script>
     <script src="../js/pengiriman.js"></script>
 </body>
+
 </html>

@@ -74,16 +74,71 @@ body {
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
 }
 
+.btn-status {
+    position: relative;
+    user-select: none;
+}
+
+.status-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.12);
+    z-index: 100;
+    min-width: 160px;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-8px) scale(0.96);
+    transform-origin: top right;
+    transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.22s;
+}
+
+.status-dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+}
+
+.row-iconly-light-outline-arrow-b {
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.btn-status.open .row-iconly-light-outline-arrow-b {
+    transform: rotate(180deg) !important;
+}
+
+.status-dropdown-menu .status-option {
+    transition: background 0.2s, color 0.2s;
+}
+
+.status-dropdown-menu .status-option:hover {
+    background: linear-gradient(135deg, #fff0f0 0%, #ffe0e0 100%);
+    color: #820805 !important;
+}
+
+.status-dropdown-menu .status-option.active {
+    background: linear-gradient(180deg, #820805 0%, #ff5f5b 100%);
+    color: #ffffff !important;
+}
+
 /* CARD TABEL KONTEN */
 .col3 {
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 14.82px;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.05);
-    padding: 20px;
+    padding: 18px 20px 14px 20px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 6px;
 }
 
 /* GRID TABEL: Produk, Nama Pembeli, Total, Status (DULU), Aksi */
@@ -93,7 +148,7 @@ body {
     grid-template-columns: 2fr 1.5fr 1fr 1fr 2fr; /* Kolom 4 = Status, Kolom 5 = Aksi */
     align-items: center;
     gap: 16px;
-    padding: 12px 16px;
+    padding: 10px 16px;
     font-size: 14px;
 }
 
@@ -122,29 +177,6 @@ body {
     gap: 12px;
 }
 
-.col-status {
-    display: flex;
-    align-items: center;
-}
-
-.col-aksi {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-/* BADGE / BUTTON */
-.btn-belum-lunas {
-    background-color: #ffe6e6;
-    color: #25282c;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 12px;
-    cursor: pointer;
-}
-
-/* ASSET DENGAN UKURAN ASLI */
 .img-a {
     width: 50px;
     height: 50px;
@@ -152,35 +184,68 @@ body {
     border-radius: 8px;
 }
 
-.column-d {
+.col-status {
+    display: flex;
+    align-items: center;
+}
+
+/* GRID KOLOM AKSI */
+.col-aksi {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: flex-start;
+}
+
+/* --- STATUS BADGE --- */
+.status-badge {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    white-space: nowrap;
+    border: none;
+}
+
+.badge-belum-lunas {
+    background-color: #ffe0de;
+    color: #820805;
+}
+
+.badge-lunas {
+    background-color: #d4f5e0;
+    color: #1a7a3a;
+}
+
+/* --- AKSI ITEM (Icon + Label) --- */
+.aksi-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    cursor: pointer;
+    gap: 4px;
+    transition: opacity 0.2s;
 }
 
-.column-iconly-light2 {
-    position: relative;
-    width: 25px;
-    height: 20px;
+.aksi-item:hover {
+    opacity: 0.7;
 }
 
-.column-fill {
-    position: absolute;
-    top: 5px;
-    left: 8px;
-    width: 10px;
-    height: 10px;
+.aksi-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
 }
 
-.column-img2 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 25px;
+.aksi-icon-svg {
+    width: 24px;
+    height: 24px;
+    pointer-events: none;
 }
 
-.column-text2 {
+.aksi-label {
     font-size: 9px;
-    color: #000;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
 }

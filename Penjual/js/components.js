@@ -1,44 +1,66 @@
 /**
  * components.js
- * Loader untuk komponen navbar & sidebar yang dipakai berulang di banyak halaman.
- * Path komponen relatif terhadap file HTML yang memanggilnya (biasanya dari /Pages/).
+ * Loader untuk komponen navbar & sidebar.
  */
 
 async function loadComponent(targetId, path) {
     const target = document.getElementById(targetId);
-    if (!target) return;
+    if (!target) {
+        console.warn('Target element #' + targetId + ' tidak ditemukan');
+        return false;
+    }
+
+    const cached = sessionStorage.getItem('component:' + path);
+    if (cached) {
+        target.innerHTML = cached;
+        return true;
+    }
 
     try {
         const res = await fetch(path);
-        if (!res.ok) throw new Error(`Gagal memuat ${path} (status ${res.status})`);
-        target.innerHTML = await res.text();
+        if (!res.ok) throw new Error('Gagal memuat ' + path + ' (status ' + res.status + ')');
+        const html = await res.text();
+        target.innerHTML = html;
+        sessionStorage.setItem('component:' + path, html);
+        return true;
     } catch (err) {
         console.error(err);
-        target.innerHTML = `<p style="color:red">Komponen gagal dimuat: ${path}</p>`;
+        target.innerHTML = '<p style="color:red">Komponen gagal dimuat: ' + path + '</p>';
+        return false;
     }
 }
 
-// Highlight menu sidebar sesuai halaman aktif.
-// Dipanggil setelah sidebar selesai di-load.
 function setActiveSidebarMenu() {
-    const currentPage = window.location.pathname.split('/').pop();
+    let currentPage = window.location.pathname.split('/').pop();
+    
+    if (!currentPage) {
+        currentPage = 'index.html'; 
+    }
 
-    // Cari semua elemen di sidebar yang punya onclick navigasi
     const sidebar = document.querySelector('.sidebar-menu');
     if (!sidebar) return;
 
     const menuItems = sidebar.querySelectorAll('[onclick]');
     menuItems.forEach(el => {
-        const href = el.getAttribute('onclick');
-        // Cocokkan dengan halaman saat ini
-        if (href && href.includes(currentPage)) {
+        const targetAttr = el.getAttribute('onclick') || el.getAttribute('href');
+        if (targetAttr && currentPage && targetAttr.includes(currentPage)) {
             el.classList.add('active');
         }
     });
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-    await loadComponent('sidebar-container', '../components/sidebar.html');
-    await loadComponent('navbar-container', '../components/navbar.html');
-    setActiveSidebarMenu();
+    try {
+        const [sidebarLoaded, navbarLoaded] = await Promise.all([
+            loadComponent('sidebar-container', '/components/sidebar.html'),
+            loadComponent('navbar-container', '/components/navbar.html')
+        ]);
+
+        if (sidebarLoaded) {
+            setActiveSidebarMenu();
+        }
+    } catch (err) {
+        console.error('Error during component initialization:', err);
+    }
 });
+

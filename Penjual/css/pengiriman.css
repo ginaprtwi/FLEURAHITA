@@ -72,6 +72,58 @@ body {
     padding: 10px 20px;
     border-radius: 10px;
     cursor: pointer;
+    position: relative;
+    user-select: none;
+}
+
+.status-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.12);
+    z-index: 100;
+    min-width: 160px;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-8px) scale(0.96);
+    transform-origin: top right;
+    transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.22s;
+}
+
+.status-dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+}
+
+.row-iconly-light-outline-arrow-b {
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.btn-status.open .row-iconly-light-outline-arrow-b {
+    transform: rotate(180deg) !important;
+}
+
+.status-dropdown-menu .status-option {
+    transition: background 0.2s, color 0.2s;
+}
+
+.status-dropdown-menu .status-option:hover {
+    background: linear-gradient(135deg, #fff0f0 0%, #ffe0e0 100%);
+    color: #820805 !important;
+}
+
+.status-dropdown-menu .status-option.active {
+    background: linear-gradient(180deg, #820805 0%, #ff5f5b 100%);
+    color: #ffffff !important;
 }
 
 /* 4. CARD UTAMA (Bungkus Seluruh Tabel) */
@@ -80,10 +132,10 @@ body {
     display: flex;
     flex-direction: column;
     background-color: #fff;
-    padding: 20px;
+    padding: 18px 20px 14px 20px;
     border: 1px solid #eee;
     border-radius: 16px;
-    min-height: 400px;
+    gap: 6px;
     /* Berikan margin kiri-kanan khusus untuk Card Utama */
     margin: 0 30px 30px 30px; 
 }
@@ -95,7 +147,7 @@ body {
     align-items: center;
     color: #820805;
     background-color: #fbf7f7;
-    padding: 12px 16px;
+    padding: 10px 16px;
     border-radius: 8px;
     font-weight: 600;
     font-size: 14px;
@@ -106,7 +158,7 @@ body {
     display: grid;
     grid-template-columns: 1.2fr 1.5fr 1.5fr 2fr 1fr;
     align-items: center;
-    padding: 16px;
+    padding: 10px 16px;
     border-bottom: 1px solid #f0f0f0;
     font-size: 14px;
     color: #333;
@@ -124,11 +176,23 @@ body {
     font-weight: 500;
     text-align: center;
     display: inline-block;
+    font-family: 'Poppins', sans-serif;
+    border: none;
+}
+
+.badge-status.diproses {
+    background-color: #fff3bf;
+    color: #925408;
 }
 
 .badge-status.dikirim {
     background-color: #ffe6e6;
     color: #d90429;
+}
+
+.badge-status.selesai {
+    background-color: #d4f5e0;
+    color: #1a7a3a;
 }
 
 /* Pastikan garis pembatas navbar memiliki wujud */

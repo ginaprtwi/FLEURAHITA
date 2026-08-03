@@ -47,14 +47,18 @@ body {
 
 .card-left-circle, .card-circle, .circle-light-c {
     position: relative;
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
     flex-shrink: 0;
     background-color: #f6eded;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+    padding: 0;
 }
 
 .column-f {
@@ -152,6 +156,61 @@ body {
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
 }
 
+.btn-sort-keuangan {
+    position: relative;
+    user-select: none;
+}
+
+.sort-dropdown-menu-keuangan {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.12);
+    z-index: 100;
+    min-width: 185px;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-8px) scale(0.96);
+    transform-origin: top right;
+    transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.22s;
+}
+
+.sort-dropdown-menu-keuangan.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+}
+
+.dropdown-arrow-keuangan {
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.btn-sort-keuangan.open .dropdown-arrow-keuangan {
+    transform: rotate(180deg) !important;
+}
+
+.sort-dropdown-menu-keuangan .sort-option-keuangan {
+    transition: background 0.2s, color 0.2s;
+}
+
+.sort-dropdown-menu-keuangan .sort-option-keuangan:hover {
+    background: linear-gradient(135deg, #fff0f0 0%, #ffe0e0 100%);
+    color: #820805 !important;
+}
+
+.sort-dropdown-menu-keuangan .sort-option-keuangan.active {
+    background: linear-gradient(180deg, #820805 0%, #ff5f5b 100%);
+    color: #ffffff !important;
+}
+
 /* STRUCTURE TABEL MEMAKAI GRID (FIXED SIMPEL) */
 .table-header,
 .table-row {
@@ -160,7 +219,7 @@ body {
     grid-template-columns: 1fr 1.5fr 2fr 1.2fr 1fr;
     align-items: center;
     gap: 16px;
-    padding: 12px 16px;
+    padding: 10px 16px;
     font-size: 14px;
 }
 
@@ -182,20 +241,25 @@ body {
     border-bottom: none;
 }
 
-/* ASSET & ICON UTUHN KUSTOM SIZES (Dipertahankan) */
-.card-left-group {
-    position: absolute; top: 19px; left: 24px; width: 8px; height: 7px;
+/* ASSET & ICON SIZES SUMMARY CARDS */
+.card-left-img {
+    width: 24px;
+    height: 24px;
+    background-color: #820805;
+    -webkit-mask: url(../assets/wallet.png) center / contain no-repeat;
+    mask: url(../assets/wallet.png) center / contain no-repeat;
+    flex-shrink: 0;
+    margin: auto;
 }
-.card-left-fill1 { position: absolute; top: 0; left: 0; width: 8px; height: 7px; }
-.card-left-fill2 { position: absolute; top: 3px; left: 3px; width: 2px; height: 2px; }
-.card-left-img { position: absolute; top: 13px; left: 12px; width: 21px; }
-.card-left-fill3 { position: absolute; top: 18px; left: 16px; width: 7px; height: 2px; }
 
-.card-img { position: absolute; z-index: 3; top: 12px; left: 13px; width: 18px; }
-.card-fill { position: relative; height: 2px; flex-shrink: 0; }
-.card-fill1 { z-index: 2; width: 4px; align-self: start; }
-.card-fill2 { z-index: 1; }
-.card-fill3 { position: static; }
+.card-img, .circle-light-iconly {
+    position: static;
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    flex-shrink: 0;
+    margin: auto;
+}
 
 .iconly-light2 { width: 18px; height: 18px; }
 .iconly-light3 { width: 20px; height: 20px; }

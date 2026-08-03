@@ -11,6 +11,7 @@
     <!-- CSS Links -->
     <link rel="stylesheet" href="../css/reset.css" />
     <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/sidebar.css" />
     <link rel="stylesheet" href="../css/keuangan.css" />
 </head>
 
@@ -35,12 +36,7 @@
                 <!-- Total Saldo -->
                 <div class="card-left">
                     <div class="card-left-circle circle">
-                        <div class="card-left-group">
-                            <object data="../assets/keuangan/card-left-fill1.svg" class="card-left-fill1" type="image/svg+xml"></object>
-                            <object data="../assets/keuangan/card-left-fill2.svg" class="card-left-fill2" type="image/svg+xml"></object>
-                        </div>
-                        <img src="../assets/keuangan/card-left-img.png" class="card-left-img" />
-                        <object data="../assets/keuangan/card-left-fill3.svg" class="card-left-fill3" type="image/svg+xml"></object>
+                        <div class="card-left-img" title="Total Saldo"></div>
                     </div>
                     <div class="column-f col-bottom1">
                         <p class="column-text3">Total Saldo</p>
@@ -51,10 +47,7 @@
                 <!-- Jumlah Transaksi -->
                 <div class="card">
                     <div class="card-circle">
-                        <img src="../assets/keuangan/card-img.png" class="card-img" />
-                        <object data="../assets/keuangan/card-fill1.svg" class="card-fill card-fill1" type="image/svg+xml"></object>
-                        <object data="../assets/keuangan/card-fill2.svg" class="card-fill card-fill2" type="image/svg+xml"></object>
-                        <object data="../assets/keuangan/card-fill2.svg" class="card-fill card-fill3" type="image/svg+xml"></object>
+                        <span class="symbol-dollar" style="font-size: 22px; font-weight: 700; color: #820805; font-family: 'Poppins', sans-serif; line-height: 1;">$</span>
                     </div>
                     <div class="column-f col-bottom2">
                         <p class="column-text3">Jumlah Transaksi</p>
@@ -65,7 +58,7 @@
                 <!-- Pendapatan Bulan Ini -->
                 <div class="card-right">
                     <div class="circle-light-c circle-light-top">
-                        <object data="../assets/keuangan/circle-light/circle-light-iconly.svg" class="iconly-light-outline-tick circle-light-iconly" type="image/svg+xml"></object>
+                        <object data="../assets/keuangan/circle-light/circle-light-iconly.svg" class="circle-light-iconly" type="image/svg+xml" style="pointer-events: none;"></object>
                     </div>
                     <div class="column-f col-bottom3">
                         <p class="column-text3">Pendapatan Bulan ini</p>
@@ -85,15 +78,36 @@
                     
                     <div class="row-f row10">
                         <input type="text" placeholder="Cari Produk..." class="input-cari-produk" />
-                        <object data="../assets/row/row-vuesax-outline2.svg" class="row-vuesax-outline-search-b row-vuesax-outline3" type="image/svg+xml"></object>
+                        <button type="button" class="btn-search-trigger" style="background: none; border: none; padding: 0; cursor: pointer; display: flex; align-items: center;">
+                            <object data="../assets/row/row-vuesax-outline2.svg" class="row-vuesax-outline-search-b row-vuesax-outline3" type="image/svg+xml" style="pointer-events: none;"></object>
+                        </button>
                     </div>
                     
-                    <div class="row-right">
-                        <div class="iconly-light-outline-filter iconly-light2">
-                            <img src="../assets/iconly-light-outline-filter/iconly-light-outline-filter-filter.png" class="iconly-light-outline-filter-filter" />
+                    <!-- Dropdown Filter & Urutan Transaksi -->
+                    <div class="row-right btn-sort-keuangan" style="position: relative; cursor: pointer;">
+                        <div class="dropdown-trigger-keuangan" style="display: flex; align-items: center; gap: 10px; width: 100%; pointer-events: none;">
+                            <div class="iconly-light-outline-filter iconly-light2">
+                                <img src="../assets/iconly-light-outline-filter/iconly-light-outline-filter-filter.png" class="iconly-light-outline-filter-filter" alt="Filter" style="pointer-events: none;" />
+                            </div>
+                            <p class="text-urutkan-transaksi" style="margin: 0; pointer-events: none;">Urutkan: Terbaru</p>
+                            <object data="../assets/row/row-iconly-light-970.svg" class="iconly-light-outline-arrow iconly-light3 dropdown-arrow-keuangan" type="image/svg+xml" style="pointer-events: none; transition: transform 0.2s;"></object>
                         </div>
-                        <p class="text-urutkan-transaksi">Urutkan Transaksi</p>
-                        <object data="../assets/row/row-iconly-light-970.svg" class="iconly-light-outline-arrow iconly-light3" type="image/svg+xml"></object>
+
+                        <!-- Dropdown Menu Options -->
+                        <div class="sort-dropdown-menu-keuangan">
+                            <div class="sort-option-keuangan active" data-sort="terbaru" style="padding: 10px 16px; color: #333; cursor: pointer; font-size: 13px; font-weight: 500; display: flex; align-items: center; gap: 8px;">
+                                <span>🕒</span> Terbaru
+                            </div>
+                            <div class="sort-option-keuangan" data-sort="terlama" style="padding: 10px 16px; color: #333; cursor: pointer; font-size: 13px; font-weight: 500; display: flex; align-items: center; gap: 8px;">
+                                <span>⏳</span> Terlama
+                            </div>
+                            <div class="sort-option-keuangan" data-sort="tertinggi" style="padding: 10px 16px; color: #333; cursor: pointer; font-size: 13px; font-weight: 500; display: flex; align-items: center; gap: 8px;">
+                                <span>📈</span> Nominal Tertinggi
+                            </div>
+                            <div class="sort-option-keuangan" data-sort="terendah" style="padding: 10px 16px; color: #333; cursor: pointer; font-size: 13px; font-weight: 500; display: flex; align-items: center; gap: 8px;">
+                                <span>📉</span> Nominal Terendah
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
@@ -106,51 +120,36 @@
                     <div>Tanggal</div>
                 </div>
                 
-                <!-- Body Tabel (Data Transaksi) -->
+                <!-- Body Tabel (Data Transaksi Dinamis) -->
                 <div id="table-body">
-                    <!-- Baris 1 -->
-                    <div class="table-row">
-                        <div>P0001</div>
-                        <div>Reisya Seinanda</div>
-                        <div>Charme Boquet</div>
-                        <div>250.000</div>
-                        <div>12-12-2025</div>
+                    <!-- Diisi secara dinamis via keuangan.js -->
+                </div>
+
+                <!-- Control Pagination (Single Horizontal Line) -->
+                <div class="table-pagination" id="pagination-container">
+                    <!-- Kiri: Info Results -->
+                    <div class="pagination-results-text">
+                        Results: <span id="page-start">0</span> - <span id="page-end">0</span> of <span id="total-count">0</span>
                     </div>
 
-                    <!-- Baris 2 -->
-                    <div class="table-row">
-                        <div>P0002</div>
-                        <div>M. Iqbal</div>
-                        <div>Charme Boquet</div>
-                        <div>250.000</div>
-                        <div>12-12-2025</div>
-                    </div>
-
-                    <!-- Baris 3 -->
-                    <div class="table-row">
-                        <div>P0003</div>
-                        <div>M. Fadhil</div>
-                        <div>Charme Boquet</div>
-                        <div>250.000</div>
-                        <div>12-12-2025</div>
-                    </div>
-
-                    <!-- Baris 4 -->
-                    <div class="table-row">
-                        <div>P0004</div>
-                        <div>Hendri P</div>
-                        <div>Charme Boquet</div>
-                        <div>250.000</div>
-                        <div>12-12-2025</div>
-                    </div>
-
-                    <!-- Baris 5 -->
-                    <div class="table-row">
-                        <div>P0005</div>
-                        <div>Reza F</div>
-                        <div>Charme Boquet</div>
-                        <div>250.000</div>
-                        <div>12-12-2025</div>
+                    <!-- Kanan: Tombol Navigasi Angka + Dropdown Per Page -->
+                    <div class="pagination-right-controls">
+                        <div class="pagination-buttons-row">
+                            <button class="btn-page-nav" id="btn-prev" aria-label="Previous Page">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                            </button>
+                            <div class="page-numbers" id="page-numbers"></div>
+                            <button class="btn-page-nav" id="btn-next" aria-label="Next Page">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </button>
+                        </div>
+                        <div class="per-page-selector">
+                            <select id="items-per-page-select" class="per-page-select">
+                                <option value="8" selected>8</option>
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
 
