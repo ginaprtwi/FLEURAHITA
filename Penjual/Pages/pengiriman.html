@@ -12,6 +12,7 @@
     <!-- CSS Links -->
     <link rel="stylesheet" href="../css/reset.css" />
     <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/navbar.css" />
     <link rel="stylesheet" href="../css/sidebar.css" />
     <link rel="stylesheet" href="../css/pengiriman.css" />
 </head>
@@ -71,18 +72,21 @@
 
             <!-- Card Utama (Tabel Pengiriman) -->
             <div class="col-card-utama">
-                <!-- Header Tabel In-Card -->
-                <div class="row-header-tabel">
-                    <div>No. Pesanan</div>
-                    <div>Nama Pembeli</div>
-                    <div>Produk</div>
-                    <div>Alamat</div>
-                    <div style="text-align: center;">Status</div>
-                </div>
+                <!-- Wrapper Tabel Responsif (Header & Body scroll bersama sebagai 1 kesatuan) -->
+                <div class="table-responsive-wrapper">
+                    <!-- Header Tabel In-Card -->
+                    <div class="row-header-tabel">
+                        <div>No. Pesanan</div>
+                        <div>Nama Pembeli</div>
+                        <div>Produk</div>
+                        <div>Alamat</div>
+                        <div style="text-align: center;">Status</div>
+                    </div>
 
-                <!-- Container Data Dinamis -->
-                <div id="table-body">
-                </div><!-- end #table-body -->
+                    <!-- Container Data Dinamis -->
+                    <div id="table-body">
+                    </div><!-- end #table-body -->
+                </div>
 
                 <!-- Control Pagination (Single Horizontal Line) -->
                 <div class="table-pagination" id="pagination-container">

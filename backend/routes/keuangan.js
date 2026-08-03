@@ -2,14 +2,21 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../config/db');
 
-// GET summary keuangan (Total Saldo, Jumlah Transaksi, Pendapatan Bulan ini)
+// GET summary keuangan (Total Saldo, Jumlah Transaksi, Pendapatan Bulan ini) HANYA untuk pesanan dengan Status_Pesanan = 'Selesai'
 router.get('/summary', async (req, res) => {
     try {
         const query = `
             SELECT 
-                IFNULL(SUM(CASE WHEN Status_Pesanan != 'Dibatalkan' THEN Total_Bayar ELSE 0 END), 0) AS total_saldo,
-                COUNT(CASE WHEN Status_Pesanan != 'Dibatalkan' THEN id_Pesanan END) AS jumlah_transaksi,
-                IFNULL(SUM(CASE WHEN Status_Pesanan != 'Dibatalkan' AND DATE_FORMAT(Tanggal_Pesan, '%Y-%m') = (SELECT DATE_FORMAT(MAX(Tanggal_Pesan), '%Y-%m') FROM pesanan) THEN Total_Bayar ELSE 0 END), 0) AS pendapatan_bulan
+                IFNULL(SUM(CASE WHEN Status_Pesanan = 'Selesai' THEN Total_Bayar ELSE 0 END), 0) AS total_saldo,
+                COUNT(CASE WHEN Status_Pesanan = 'Selesai' THEN id_Pesanan END) AS jumlah_transaksi,
+                IFNULL(SUM(CASE 
+                    WHEN Status_Pesanan = 'Selesai' 
+                         AND DATE_FORMAT(Tanggal_Pesan, '%Y-%m') = IFNULL(
+                             (SELECT DATE_FORMAT(MAX(Tanggal_Pesan), '%Y-%m') FROM pesanan WHERE Status_Pesanan = 'Selesai'),
+                             DATE_FORMAT(CURRENT_DATE(), '%Y-%m')
+                         ) 
+                    THEN Total_Bayar ELSE 0 
+                END), 0) AS pendapatan_bulan
             FROM pesanan
         `;
 
@@ -21,13 +28,13 @@ router.get('/summary', async (req, res) => {
     }
 });
 
-// GET daftar transaksi keuangan
+// GET daftar transaksi keuangan (HANYA pesanan dengan Status_Pesanan = 'Selesai')
 router.get('/transaksi', async (req, res) => {
     try {
         await pool.query("SET SESSION group_concat_max_len = 10000;");
 
         const { search } = req.query;
-        let whereConditions = [];
+        let whereConditions = ["p.Status_Pesanan = 'Selesai'"];
         let queryParams = [];
 
         if (search) {
@@ -36,7 +43,7 @@ router.get('/transaksi', async (req, res) => {
             queryParams.push(searchTerm, searchTerm, searchTerm);
         }
 
-        const whereClause = whereConditions.length > 0 ? `WHERE ${whereConditions.join(' AND ')}` : '';
+        const whereClause = `WHERE ${whereConditions.join(' AND ')}`;
 
         const query = `
             SELECT 
@@ -45,7 +52,8 @@ router.get('/transaksi', async (req, res) => {
                 u.Nama AS customer_name,
                 IFNULL(GROUP_CONCAT(pr.Nama_Produk SEPARATOR ', '), '-') AS product_name,
                 p.Total_Bayar AS total,
-                DATE_FORMAT(p.Tanggal_Pesan, '%d-%m-%Y') AS date
+                DATE_FORMAT(p.Tanggal_Pesan, '%d-%m-%Y') AS date,
+                p.Status_Pesanan AS status
             FROM pesanan p
             JOIN pengguna u ON p.id_User = u.id_User
             LEFT JOIN detail_pesanan dp ON p.id_Pesanan = dp.id_Pesanan

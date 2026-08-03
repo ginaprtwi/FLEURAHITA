@@ -78,16 +78,23 @@ function renderPesananRow(item) {
             <span class="status-badge ${statusBadgeClass}">${statusBadgeText}</span>
         </div>
 
-        <!-- Aksi (Detail + Selesai) -->
+        <!-- Aksi Kontekstual (Detail + [Selesai / Batalkan]) -->
         <div class="col-aksi">
             <div class="aksi-item" onclick="showDetailPesanan(${item.id})" style="cursor: pointer;">
                 <img src="../assets/pesanan-masuk/eye-detail-icon.svg" class="aksi-icon" alt="Detail" />
                 <span class="aksi-label">Detail</span>
             </div>
+            ${isLunas ? `
             <div class="aksi-item" onclick="selesaikanPesanan(${item.id})" style="cursor: pointer;">
                 <object data="../assets/pesanan-masuk/column/column-iconly-light.svg" class="aksi-icon-svg" type="image/svg+xml"></object>
                 <span class="aksi-label">Selesai</span>
             </div>
+            ` : `
+            <div class="aksi-item" onclick="batalkanPesanan(${item.id})" style="cursor: pointer;">
+                <img src="../assets/pesanan-masuk/trash-icon.svg" class="aksi-icon" alt="Batalkan" />
+                <span class="aksi-label" style="color: #dc2626; font-weight: 500;">Batalkan</span>
+            </div>
+            `}
         </div>
     `;
     
@@ -131,38 +138,236 @@ function formatCurrency(amount) {
     }).format(amount).replace('Rp', 'Rp. ');
 }
 
+// Cache memory untuk detail pesanan agar modal terbuka INSTANT (0ms latency)
+const detailCache = new Map();
+
 /**
- * Show detail pesanan (implementasi sesuai kebutuhan)
+ * Show detail pesanan via Modal Pop-up Dinamis (Ultra Optimized)
  */
-function showDetailPesanan(orderId) {
-    console.log('Show detail for order:', orderId);
-    // TODO: Implement modal atau redirect ke halaman detail
-    alert(`Detail pesanan #${orderId} - Implementasikan sesuai kebutuhan`);
+async function showDetailPesanan(orderId) {
+    const modal = document.getElementById('modal-detail-pesanan');
+    if (!modal) return;
+
+    try {
+        let data;
+        if (detailCache.has(orderId)) {
+            data = detailCache.get(orderId);
+        } else {
+            const response = await fetch(`${API_BASE_URL}/pesanan-masuk/detail/${orderId}`);
+            if (!response.ok) throw new Error('Gagal mengambil data detail pesanan');
+            data = await response.json();
+            detailCache.set(orderId, data);
+        }
+
+        // Populate header & ringkasan
+        const kodeEl = document.getElementById('modal-kode-order');
+        if (kodeEl) kodeEl.textContent = data.kode_orderan || `ORD#${data.id}`;
+        
+        const custNameEl = document.getElementById('modal-customer-name');
+        if (custNameEl) custNameEl.textContent = data.customer_name || '-';
+
+        const tglEl = document.getElementById('modal-tanggal-pesan');
+        if (tglEl) tglEl.textContent = data.tanggal_pesan || '-';
+
+        const bayarEl = document.getElementById('modal-metode-bayar');
+        if (bayarEl) bayarEl.textContent = data.metode_pembayaran || '-';
+
+        const kirimEl = document.getElementById('modal-metode-kirim');
+        if (kirimEl) kirimEl.textContent = data.metode_pengiriman || '-';
+
+        // Populate Alamat
+        const penerimaNameEl = document.getElementById('modal-penerima-name');
+        if (penerimaNameEl) penerimaNameEl.textContent = data.nama_penerima || data.customer_name || '-';
+
+        const penerimaPhoneEl = document.getElementById('modal-penerima-phone');
+        if (penerimaPhoneEl) penerimaPhoneEl.textContent = (data.no_hp_penerima || data.customer_phone) ? `📞 ${data.no_hp_penerima || data.customer_phone}` : '';
+
+        const alamatEl = document.getElementById('modal-alamat-lengkap');
+        if (alamatEl) {
+            const fullAlamat = [
+                data.alamat_lengkap,
+                data.kelurahan ? `Kel. ${data.kelurahan}` : '',
+                data.kecamatan ? `Kec. ${data.kecamatan}` : '',
+                data.kotakab,
+                data.kode_pos
+            ].filter(Boolean).join(', ');
+            alamatEl.textContent = fullAlamat || 'Alamat tidak tersedia';
+        }
+
+        // Populate Items List (Optimized Batch Join)
+        const itemsListEl = document.getElementById('modal-items-list');
+        if (itemsListEl) {
+            if (data.items && data.items.length > 0) {
+                itemsListEl.innerHTML = data.items.map(item => {
+                    const imgSrc = item.foto_produk ? (item.foto_produk.startsWith('http') ? item.foto_produk : `../assets/${item.foto_produk}`) : '../assets/pesanan-masuk/column/column-img2.png';
+                    return `
+                        <div class="modal-item-row">
+                            <img src="${imgSrc}" class="modal-item-img" alt="${item.nama_produk}" onerror="this.src='../assets/pesanan-masuk/column/column-img2.png'" />
+                            <div class="modal-item-info">
+                                <span class="modal-item-name">${item.nama_produk} x ${item.jumlah}</span>
+                                ${item.catatan ? `<span class="modal-item-note">Catatan: "${item.catatan}"</span>` : ''}
+                            </div>
+                            <span class="modal-item-price">${formatCurrency(item.total_item_price || (item.jumlah * item.harga_satuan))}</span>
+                        </div>
+                    `;
+                }).join('');
+            } else {
+                itemsListEl.innerHTML = '<div style="font-size: 13px; color: #777;">Tidak ada rincian produk</div>';
+            }
+        }
+
+        // Populate Total
+        const totalEl = document.getElementById('modal-total-bayar');
+        if (totalEl) totalEl.textContent = formatCurrency(data.total_bayar || data.subtotal || 0);
+
+        // Instant hardware-accelerated show
+        modal.style.display = 'flex';
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                modal.classList.add('active');
+            });
+        });
+
+    } catch (error) {
+        console.error('Error detail pesanan:', error);
+        alert('Gagal memuat detail pesanan');
+    }
 }
 
 /**
- * Tandai pesanan sebagai Selesai
+ * Tutup Modal Detail Pesanan
  */
-async function selesaikanPesanan(orderId) {
-    if (!confirm('Tandai pesanan ini sebagai SELESAI?')) return;
-    
-    try {
-        const response = await fetch(`${API_ENDPOINTS.updateStatus}/${orderId}`, {
-            method: 'PATCH',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ status: 'Selesai' })
-        });
-        
-        if (response.ok) {
-            alert('Pesanan berhasil ditandai selesai');
-            initPesananMasuk(); // Reload data
-        } else {
-            throw new Error('Failed to update status');
+function closeDetailModal() {
+    const modal = document.getElementById('modal-detail-pesanan');
+    if (!modal) return;
+    modal.classList.remove('active');
+    setTimeout(() => {
+        if (!modal.classList.contains('active')) {
+            modal.style.display = 'none';
         }
-    } catch (error) {
-        console.error('Error updating order status:', error);
-        alert('Gagal mengubah status pesanan');
+    }, 180);
+}
+
+// Tutup modal saat area overlay di luar modal diklik
+document.addEventListener('click', (e) => {
+    const modal = document.getElementById('modal-detail-pesanan');
+    if (modal && modal.classList.contains('active') && e.target === modal) {
+        closeDetailModal();
     }
+});
+
+let pendingActionCallback = null;
+
+/**
+ * Tampilkan Modal Pop-up Peringatan Konfirmasi (Ultra Optimized)
+ */
+function showWarningModal({ title, message, onConfirm }) {
+    const modal = document.getElementById('modal-confirm-warning');
+    const titleEl = document.getElementById('warning-modal-title');
+    const messageEl = document.getElementById('warning-modal-message');
+    const confirmBtn = document.getElementById('btn-warning-confirm');
+
+    if (!modal) return;
+
+    if (titleEl) titleEl.textContent = title || 'Konfirmasi Tindakan';
+    if (messageEl) messageEl.textContent = message || 'Apakah Anda yakin ingin melanjutkan tindakan ini?';
+
+    pendingActionCallback = onConfirm;
+
+    if (confirmBtn) {
+        confirmBtn.onclick = async () => {
+            closeWarningModal();
+            if (pendingActionCallback) {
+                await pendingActionCallback();
+                pendingActionCallback = null;
+            }
+        };
+    }
+
+    modal.style.display = 'flex';
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            modal.classList.add('active');
+        });
+    });
+}
+
+/**
+ * Tutup Modal Peringatan Konfirmasi
+ */
+function closeWarningModal() {
+    const modal = document.getElementById('modal-confirm-warning');
+    if (!modal) return;
+    modal.classList.remove('active');
+    setTimeout(() => {
+        if (!modal.classList.contains('active')) {
+            modal.style.display = 'none';
+        }
+    }, 180);
+}
+
+// Tutup modal warning jika area overlay di luar modal diklik
+document.addEventListener('click', (e) => {
+    const modalWarning = document.getElementById('modal-confirm-warning');
+    if (modalWarning && modalWarning.classList.contains('active') && e.target === modalWarning) {
+        closeWarningModal();
+    }
+});
+
+/**
+ * Handler aksi Selesai (Khusus Pesanan Lunas):
+ * Update Status_Pesanan ke 'Selesai' sehingga masuk ke Histori Keuangan.
+ */
+function selesaikanPesanan(orderId) {
+    showWarningModal({
+        title: 'Konfirmasi Selesai',
+        message: 'Tandai pesanan LUNAS ini sebagai SELESAI? (Pesanan akan otomatis masuk ke Histori Keuangan)',
+        onConfirm: async () => {
+            try {
+                const response = await fetch(`${API_ENDPOINTS.updateStatus}/${orderId}`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ status: 'Selesai' })
+                });
+                
+                if (response.ok) {
+                    initPesananMasuk(); // Reload data
+                } else {
+                    throw new Error('Failed to update status');
+                }
+            } catch (error) {
+                console.error('Error updating order status:', error);
+                alert('Gagal mengubah status pesanan');
+            }
+        }
+    });
+}
+
+/**
+ * Handler aksi Batalkan (Khusus Pesanan Belum Lunas):
+ * Menghapus (drop) pesanan belum lunas dari database.
+ */
+function batalkanPesanan(orderId) {
+    showWarningModal({
+        title: 'Konfirmasi Pembatalan',
+        message: 'Pesanan ini BELUM LUNAS. Batalkan dan hapus pesanan ini dari database?',
+        onConfirm: async () => {
+            try {
+                const response = await fetch(`${API_ENDPOINTS.pesananMasuk}/${orderId}`, {
+                    method: 'DELETE'
+                });
+                
+                if (response.ok) {
+                    initPesananMasuk(); // Reload data
+                } else {
+                    throw new Error('Failed to drop order from database');
+                }
+            } catch (error) {
+                console.error('Error deleting order:', error);
+                alert('Gagal menghapus pesanan dari database');
+            }
+        }
+    });
 }
 
 /**

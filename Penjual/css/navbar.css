@@ -43,46 +43,38 @@
     letter-spacing: 1px;
 }
 
-/* Sisi Kanan (Search Bar "Ingin mencari sesuatu") */
-.navbar-search,
-.card-light3 {
-    display: flex;
+/* Sisi Kanan (Tombol Hamburger Menu) */
+.sidebar-toggle-btn {
+    display: none; /* Sembunyikan di Desktop (> 1024px) karena Sidebar sudah muncul secara permanen */
+    background: #fbf7f7;
+    border: 1px solid #eeeeee;
+    border-radius: 10px;
+    width: 44px;
+    height: 44px;
     align-items: center;
-    justify-content: space-between;
-    background-color: #fbf7f7;
-    border: 1px solid #eee;
-    
-    /* 1. Rounded tumpul halus persis box Cari Pesanan */
-    border-radius: 12px; 
-    
-    /* 2. Lebar & Tinggi persis seperti di gambar */
-    width: 482px;
-    height: 48px;
-    padding: 0 16px;
-    
-    /* 3. Shadow lembut khas elemen card */
+    justify-content: center;
+    cursor: pointer;
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.04);
-    box-sizing: border-box;
-}
-
-.search-input {
-    border: none;
+    transition: all 0.2s ease;
     outline: none;
-    background: transparent;
-    width: 100%;
-    font-size: 14px;
-    color: #820805; /* Menggunakan warna teks sesuai desain */
-    font-family: 'Poppins', sans-serif;
 }
 
-.search-input::placeholder {
-    color: #c48b89; /* Warna placeholder pudar merona */
-    opacity: 0.7;
+.sidebar-toggle-btn:hover {
+    background: #f3e8e8;
+    transform: scale(1.04);
 }
 
-.search-icon {
-    width: 20px;
-    height: 20px;
-    margin-left: 10px;
-    flex-shrink: 0;
+.sidebar-toggle-btn:active {
+    transform: scale(0.96);
+}
+
+/* Tampilkan HANYA pada layar Mobile & Tablet (<= 1024px) saat Sidebar TIDAK muncul */
+@media (max-width: 1024px) {
+    .sidebar-toggle-btn {
+        display: flex;
+    }
+
+    .sidebar-toggle-btn.hidden-when-drawer-open {
+        display: none !important;
+    }
 }

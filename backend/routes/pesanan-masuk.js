@@ -94,4 +94,70 @@ router.patch('/update-status/:id', async (req, res) => {
     }
 });
 
+// GET detail pesanan berdasarkan id
+router.get('/detail/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        // Query info header pesanan, pemesan, & alamat
+        const orderQuery = `
+            SELECT 
+                p.id_Pesanan AS id,
+                p.Kode_Orderan AS kode_orderan,
+                DATE_FORMAT(p.Tanggal_Pesan, '%d-%m-%Y %H:%i') AS tanggal_pesan,
+                p.Metode_Pengiriman AS metode_pengiriman,
+                p.Metode_Pembayaran AS metode_pembayaran,
+                p.Status_Pesanan AS status_pesanan,
+                p.Subtotal AS subtotal,
+                p.Total_Bayar AS total_bayar,
+                u.Nama AS customer_name,
+                u.Email AS customer_email,
+                u.No_HP AS customer_phone,
+                a.Nama_Penerima AS nama_penerima,
+                a.No_HP AS no_hp_penerima,
+                a.Alamat_Lengkap AS alamat_lengkap,
+                a.Kecamatan AS kecamatan,
+                a.Kelurahan AS kelurahan,
+                a.Kotakab AS kotakab,
+                a.Kode_Pos AS kode_pos
+            FROM pesanan p
+            JOIN pengguna u ON p.id_User = u.id_User
+            LEFT JOIN alamat a ON p.id_Alamat = a.id_Alamat
+            WHERE p.id_Pesanan = ?
+        `;
+
+        const [orderRows] = await pool.query(orderQuery, [id]);
+
+        if (orderRows.length === 0) {
+            return res.status(404).json({ error: "Pesanan tidak ditemukan" });
+        }
+
+        const orderInfo = orderRows[0];
+
+        // Query rincian item pesanan
+        const itemsQuery = `
+            SELECT 
+                dp.id_Detail AS id_detail,
+                dp.id_Produk AS id_produk,
+                pr.Nama_Produk AS nama_produk,
+                IFNULL(pr.Foto_Produk, 'column-img2.png') AS foto_produk,
+                dp.Jumlah AS jumlah,
+                dp.Harga_Satuan AS harga_satuan,
+                dp.Catatan_Pesanan AS catatan,
+                (dp.Jumlah * dp.Harga_Satuan) AS total_item_price
+            FROM detail_pesanan dp
+            JOIN produk pr ON dp.id_Produk = pr.id_produk
+            WHERE dp.id_Pesanan = ?
+        `;
+
+        const [itemRows] = await pool.query(itemsQuery, [id]);
+        orderInfo.items = itemRows;
+
+        res.json(orderInfo);
+    } catch (err) {
+        console.error("Database error (pesanan detail):", err);
+        res.status(500).json({ error: err.message });
+    }
+});
+
 module.exports = router;
