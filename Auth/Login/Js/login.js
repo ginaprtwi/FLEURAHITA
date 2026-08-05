@@ -1,5 +1,5 @@
 
-const API_BASE_URL = 'http://localhost:3000/api'; // Ganti dengan URL backend Anda
+const API_BASE_URL = window.location.origin.startsWith('http') ? `${window.location.origin}/api` : 'http://localhost:3000/api';
 const ADMIN_EMAIL = 'admin@fleurahita.com'; // Email admin (hardcoded)
 const loginForm = document.getElementById('loginForm');
 const submitBtn = loginForm.querySelector('.submit-btn');

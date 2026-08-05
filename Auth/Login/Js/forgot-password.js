@@ -1,6 +1,6 @@
 // Forgot Password Logic - FLEURAHITA
 
-const API_BASE_URL = 'http://localhost:3000/api';
+const API_BASE_URL = window.location.origin.startsWith('http') ? `${window.location.origin}/api` : 'http://localhost:3000/api';
 
 const forgotPasswordForm = document.getElementById('forgotPasswordForm');
 const submitBtn = forgotPasswordForm.querySelector('.submit-btn');
