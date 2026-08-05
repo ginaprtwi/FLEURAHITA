@@ -149,7 +149,7 @@ loginForm.addEventListener('submit', async function(e) {
                 if (email === ADMIN_EMAIL) {
                     window.location.href = "/beranda-fix.html";
                 } else {
-                    window.location.href = "../../Pembeli/Pages/beranda.html";
+                    window.location.href = "/beranda.html";
                 }
             }, 1000);
         } else {

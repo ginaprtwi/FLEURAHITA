@@ -27,6 +27,11 @@ app.use(express.static(path.join(__dirname, '../Pembeli/Pages')));
 // Serve uploaded files
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+app.use('/css', express.static(path.join(__dirname, '../Pembeli/css')));
+app.use('/js', express.static(path.join(__dirname, '../Pembeli/js')));
+app.use('/assets', express.static(path.join(__dirname, '../Pembeli/assets')));
+app.use('/components', express.static(path.join(__dirname, '../Pembeli/components')));
+
 app.use('/css', express.static(path.join(__dirname, '../Penjual/css')));
 app.use('/js', express.static(path.join(__dirname, '../Penjual/js')));
 app.use('/assets', express.static(path.join(__dirname, '../Penjual/assets')));
