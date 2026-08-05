@@ -4,7 +4,7 @@
  */
 
 // API Configuration (Server Express Backend Port 3001)
-const API_BASE_URL = 'http://localhost:3001/api';
+const API_BASE_URL = window.location.origin.startsWith('http') ? `${window.location.origin}/api` : 'http://localhost:3000/api';
 const API_ENDPOINTS = {
     summary: `${API_BASE_URL}/keuangan/summary`,
     transaksi: `${API_BASE_URL}/keuangan/transaksi`

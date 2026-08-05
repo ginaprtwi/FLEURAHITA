@@ -2,7 +2,7 @@
 // Database connection untuk registrasi user
 
 // Configuration - Sesuaikan dengan setup database Anda
-const API_BASE_URL = 'http://localhost:3000/api'; // Ganti dengan URL backend Anda
+const API_BASE_URL = window.location.origin.startsWith('http') ? `${window.location.origin}/api` : 'http://localhost:3000/api';
 
 // Get form elements
 const registerForm = document.getElementById('registerForm');
