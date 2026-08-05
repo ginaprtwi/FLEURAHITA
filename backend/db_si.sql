@@ -867,3 +867,23 @@ ALTER TABLE `ulasan_chat`
   ADD CONSTRAINT `fk_ulasan_produk` FOREIGN KEY (`id_Produk`) REFERENCES `produk` (`id_produk`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_ulasan_user` FOREIGN KEY (`id_User`) REFERENCES `pengguna` (`id_User`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
+
+
+-- ============================================================
+-- Tabel chat_pesan
+-- Menyimpan percakapan antara penjual dan setiap pembeli.
+-- Pengirim: 'penjual' | 'pembeli'
+-- ============================================================
+
+CREATE TABLE IF NOT EXISTS `chat_pesan` (
+  `id_Chat`    int(11)      NOT NULL AUTO_INCREMENT,
+  `id_User`    int(11)      NOT NULL COMMENT 'id pembeli (FK ke pengguna)',
+  `Pengirim`   enum('penjual','pembeli') NOT NULL DEFAULT 'pembeli',
+  `Isi_Pesan`  text         NOT NULL,
+  `Waktu`      datetime     NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id_Chat`),
+  KEY `fk_chat_user` (`id_User`),
+  CONSTRAINT `fk_chat_user`
+    FOREIGN KEY (`id_User`) REFERENCES `pengguna` (`id_User`)
+    ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;

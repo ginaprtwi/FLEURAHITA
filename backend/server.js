@@ -8,6 +8,10 @@ const pengirimanRoutes = require('./routes/pengiriman');
 const pesananMasukRoutes = require('./routes/pesanan-masuk');
 const keuanganRoutes = require('./routes/keuangan');
 const authRoutes = require('./routes/authRoutes');
+const chatRoutes = require('./routes/chat');
+const ulasanRoutes   = require('./routes/ulasan');
+const produkRoutes   = require('./routes/produk');
+const keranjangRoutes = require('./routes/keranjang');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -50,6 +54,29 @@ db.connect((err) => {
         return;
     }
     console.log('✅ Connected to MySQL database:', dbConfig.database);
+
+    // Auto-create tabel chat_pesan jika belum ada
+    const createChatTable = `
+        CREATE TABLE IF NOT EXISTS \`chat_pesan\` (
+            \`id_Chat\`   INT(11)                      NOT NULL AUTO_INCREMENT,
+            \`id_User\`   INT(11)                      NOT NULL,
+            \`Pengirim\`  ENUM('penjual','pembeli')     NOT NULL DEFAULT 'pembeli',
+            \`Isi_Pesan\` TEXT                         NOT NULL,
+            \`Waktu\`     DATETIME                     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            PRIMARY KEY (\`id_Chat\`),
+            KEY \`fk_chat_user\` (\`id_User\`),
+            CONSTRAINT \`fk_chat_user\`
+                FOREIGN KEY (\`id_User\`) REFERENCES \`pengguna\` (\`id_User\`)
+                ON DELETE CASCADE ON UPDATE CASCADE
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
+    `;
+    db.query(createChatTable, (err2) => {
+        if (err2) {
+            console.error('⚠️ Gagal membuat tabel chat_pesan:', err2.message);
+        } else {
+            console.log('✅ Tabel chat_pesan siap.');
+        }
+    });
 });
 
 // ==================== API ROUTES ====================
@@ -57,6 +84,10 @@ app.use('/api/auth', authRoutes(db));
 app.use('/api/pengiriman', pengirimanRoutes);
 app.use('/api/pesanan-masuk', pesananMasukRoutes);
 app.use('/api/keuangan', keuanganRoutes);
+app.use('/api/chat', chatRoutes);
+app.use('/api/ulasan',    ulasanRoutes);
+app.use('/api/produk',    produkRoutes);
+app.use('/api/keranjang', keranjangRoutes);
 
 // Test endpoint
 app.get('/api/test', (req, res) => {

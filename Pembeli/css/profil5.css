@@ -1,569 +1,576 @@
+/* =============================================
+   CHAT & ULASAN — PEMBELI
+   profil5.css
+   ============================================= */
+
+/* ── Page body ─────────────────────────────── */
 body {
-	container: body / inline-size;
-	gap: 29px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
 }
 
-
-
-/* header-d */
-
+/* ── Header ────────────────────────────────── */
 .header-d {
-	container: header-d / inline-size;
-	margin-top: -52px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	padding-top: 52px;
-	padding-right: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 0;
+    margin-top: 0;
+    width: 100%;
 }
 
 .header-row4 {
-	container: header-row4 / inline-size;
-	width: 100%;
-	max-width: 1434px;
-	display: flex;
-	align-items: flex-start;
-	justify-content: space-between;
-	background-color: #fff;
-	padding: 12px 65px 19px 68px;
-	border-top: 1px solid #717171;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 14px 64px;
+    border-top: 1px solid #717171;
+    box-sizing: border-box;
 }
 
 .header-row-left {
-	margin-top: 3px;
-	display: flex;
-	align-items: flex-start;
-	gap: 16px;
-	color: #820805;
-	font-size: 20px;
-	font-family: 'Playfair Display';
-	font-weight: 600;
-	line-height: normal;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #820805;
+    font-size: 20px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
 }
 
 .header-img {
-	width: 48px;
-	flex-shrink: 0;
-}
-
-.header-text-fleurahita {
-	margin-top: 11px;
-	text-align: left;
+    width: 44px;
+    flex-shrink: 0;
 }
 
 .header-auto-layout2 {
-	display: flex;
-	align-items: center;
-	gap: 48px;
-	color: #000;
-	font-size: 16px;
-	font-family: 'Poppins';
-	font-weight: 400;
-	line-height: 1.5;
-	letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    color: #000;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
 }
 
-.header-text-left2 {
-	margin-top: -1px;
-	width: 92px;
-	flex-shrink: 0;
-	text-align: center;
-}
-/* end header-d*/
-
-
-.header1 .header-text-produk2 {
-	color: #0d0d0d;
-}
-
+/* ── Page title ─────────────────────────────── */
 .title1 {
-	margin-left: 88px; margin-top: 16px;
+    margin: 28px 0 0 64px;
+    font-size: clamp(32px, 5vw, 54px);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    background: linear-gradient(180deg, #820805 0%, #ff5f5b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    align-self: flex-start;
 }
 
+/* ── Main two-column row ─────────────────────── */
 .row1 {
-	margin-left: 170px;
-	display: flex;
-	align-items: flex-start;
-	gap: 37px;
-	align-self: start;
+    display: flex;
+    align-items: flex-start;
+    gap: 32px;
+    padding: 28px 64px 0 64px;
+    box-sizing: border-box;
+    width: 100%;
 }
 
+/* ── Sidebar account card ─────────────────────── */
 .card-account {
-	gap: 48px;
-	font-family: 'Poppins';
-	font-weight: 600;
-	text-align: left;
+    flex-shrink: 0;
+    width: 240px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    background-color: #f3f5f7;
+    padding: 28px 20px;
+    border-radius: 12px;
 }
 
 .card-account-col-top {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 6px;
-	color: #000;
-	font-size: 20px;
-	line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: #000;
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: center;
 }
 
 .card-account-avatars-3d {
-	width: 52px;
-	flex-shrink: 0;
+    width: 52px;
+    flex-shrink: 0;
 }
 
 .card-account-col {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	gap: 20px;
-	font-size: 16px;
-	line-height: 1.625;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    font-size: 14px;
 }
 
-.card-account-text-elements {
-	margin-top: 8px;
-	width: 230px;
-	color: var(--neutral-04-100);
-	padding-bottom: 7px;
-	border-bottom: 1px solid var(--transparent);
+.card-account-text-elements,
+.card-account-text-elements1,
+.card-account-text-elements3,
+.card-account-text-elements4,
+.card-account-text-elements5,
+.card-account-text-elements6 {
+    width: 100%;
+    color: #6c7275;
+    padding: 8px 0;
+    border-bottom: 1px solid transparent;
+    cursor: pointer;
+    transition: color 0.15s;
 }
 
-.card-account-text-elements1 {
-	width: 230px;
-	color: #6c7275;
-}
-
-.card-account-text-elements3 {
-	width: 230px;
-	color: #757a7d;
-}
-
-.card-account-text-elements4 {
-	margin-top: 8px;
-	width: 230px;
-	color: var(--grey);
-}
+.card-account-text-elements1 { color: #6c7275; }
+.card-account-text-elements3 { color: #757a7d; }
+.card-account-text-elements4 { color: #696969; }
 
 .card-account-text-elements5 {
-	color: var(--main-color);
-	border-bottom: 1px solid #820805;
+    color: #820805 !important;
+    font-weight: 700;
+    border-bottom: 1px solid #820805;
 }
 
-.card-account-text-elements6 {
-	margin-top: 0;
+.card-account-text-elements:hover,
+.card-account-text-elements1:hover,
+.card-account-text-elements3:hover,
+.card-account-text-elements4:hover {
+    color: #820805;
 }
 
+/* ── Chat UI panel ────────────────────────────── */
 .group2 {
-	position: relative;
-	width: 888px;
-	min-height: 520px;
-	flex-shrink: 0;
-	color: #160211;
-	font-size: 14px;
-	font-family: 'Manrope';
-	font-weight: 400;
-	line-height: normal;
-	text-align: center;
+    flex: 1;
+    min-width: 0;
+    position: relative;
 }
 
+/* .chat-bot-ui — reset all absolute positioning, render as flex column */
 .chat-bot-ui {
-	position: absolute; top: 0; left: 0; 
-	width: calc(100% - 0px);
-	max-width: 888px;
-	min-height: 520px;
-	background-color: #fff;
-	border: 1px solid rgba(0, 0, 0, 0.22);
-	border-radius: 32px;
-	overflow: hidden;
+    position: relative !important;
+    top: unset !important;
+    left: unset !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 460px !important;
+    max-height: 540px !important;
+    border-radius: 16px !important;
+    border: 1px solid #e5e5e5 !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    background: #fff !important;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.08) !important;
 }
 
-.chat-bot-ui-group {
-	position: absolute; top: 331px; left: 358px; 
-	width: calc(100% - 358px); height: 464px;
-	max-width: 544px;
-}
-
-.chat-bot-ui-circle-red1 {
-	position: absolute; top: 0; right: 0; 
-	filter: blur(150px);
-	width: 280px; height: 280px;
-	background-color: #820805;
-}
-
-.chat-bot-ui-circle-red2 {
-	position: absolute; top: 50px; left: 0; 
-	filter: blur(250px);
-	width: calc(100% - 0px); height: 414px;
-	max-width: 414px;
-	background-color: #ff383c;
-}
-
-.chat-bot-ui-col {
-	position: absolute; top: 15px; left: 238px; 
-	width: calc(100% - 238px);
-	max-width: 409px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 18px;
-	font-size: 24px;
-}
-
-.chat-bot-ui-img-top {
-	width: 55px;
-	flex-shrink: 0;
-}
-
-.chat-bot-ui-subtitle {
-	align-self: stretch;
-}
-
-.chat-bot-ui-img {
-	position: absolute; top: 189px; left: 52px; 
-	width: 55px;
-}
-
-.chat-bot-ui-btn-halo-exclamation-kamu-sedang {
-	position: absolute; top: 189px; left: 115px; 
-	width: 319px;
-	display: flex;
-	justify-content: center;
-	font-style: normal;
-	letter-spacing: 0px;
-	text-align: center;
-	background-color: rgba(255, 255, 255, 0.5);
-	padding: 9px;
-	border: 1px solid #e1e1e1;
-	border-radius: 8px;
-}
-
-.chat-bot-ui-row {
-	position: absolute; top: 439px; left: 74px; 
-	width: calc(100% - 74px);
-	max-width: 702px;
-	display: flex;
-	align-items: center;
-	gap: 372px;
-	color: #56637e;
-	background-color: #fff;
-	padding: 4px 9px;
-	border: 1px solid rgba(22, 2, 17, 0.3);
-	border-radius: 8px;
-}
-
-.chat-bot-ui-send {
-	width: 36px; height: 36px;
-	flex-shrink: 0;
-}
-
-.chat-bot-ui-text {
-	flex-grow: 1;
-	text-align: left;
-}
-
+/* Hide all the old absolutely-positioned children — JS replaces them */
+.chat-bot-ui-group,
+.chat-bot-ui-circle-red1,
+.chat-bot-ui-circle-red2,
+.chat-bot-ui-col,
+.chat-bot-ui-img-top,
+.chat-bot-ui-img,
+.chat-bot-ui-subtitle,
+.chat-bot-ui-btn-halo-exclamation-kamu-sedang,
+.chat-bot-ui-row,
+.chat-bot-ui-send,
+.chat-bot-ui-text,
 .line1 {
-	position: absolute; top: 138px; left: 2px; 
-	width: calc(100% - 2px); height: 0;
-	max-width: 888px;
-	border-top: 1px solid #c9c9c9;
+    display: none !important;
 }
 
+/* ── Ulasan card ─────────────────────────────── */
 .card4 {
-	container: card4 / inline-size;
-	margin: 38px 93px 0 auto;
-	width: 90%;
-	max-width: 868px;
-	display: flex;
-	flex-direction: column;
-	gap: 7px;
-	align-self: end;
-	font-family: 'Poppins';
-	background-color: #fff;
-	padding: 39px 43px 22px 43px;
-	border-radius: 33px;
+    margin: 36px 64px;
+    width: calc(100% - 128px);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff;
+    padding: 36px 40px 28px 40px;
+    border-radius: 20px;
+    border: 1px solid #f0e0e0;
+    box-shadow: 0 2px 12px rgba(130,8,5,0.07);
 }
 
 .card-ulasan-anda {
-	margin-left: 17px;
-	align-self: start;
-	font-size: 30px;
-	font-weight: 600;
-	line-height: 1.067;
-	background: linear-gradient(180deg, #820805 0%, #ff5f5b 100%) top left / auto auto no-repeat;
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 700;
+    background: linear-gradient(180deg, #820805 0%, #ff5f5b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .card-row3 {
-	margin-right: 21px; margin-top: 17px;
-	display: flex;
-	align-items: flex-start;
-	gap: 46px;
-	font-family: 'Public Sans';
-	font-weight: 400;
+    display: flex;
+    align-items: flex-start;
+    gap: 32px;
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 400;
 }
 
 .card-img6 {
-	margin-top: 1px;
-	width: 260px;
-	flex-shrink: 0;
-	border: 1px solid #820805;
-	border-radius: 21px;
+    width: 220px;
+    flex-shrink: 0;
+    border: 1px solid #820805;
+    border-radius: 16px;
+    object-fit: cover;
 }
 
 .card-col1 {
-	margin-top: -1px;
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	gap: 5px;
-	flex-grow: 1;
-	text-align: left;
-	padding-top: 1px;
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
 
 .card-lush-and-plush {
-	margin-left: 7px;
-	width: 100%;
-	max-width: 365px;
-	font-size: 40px;
-	line-height: 0.7;
-	background: linear-gradient(180deg, #820805 0%, #ff5f5b 100%) top left / auto auto no-repeat;
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
+    font-size: clamp(26px, 3.5vw, 40px);
+    font-weight: 600;
+    line-height: 1.1;
+    background: linear-gradient(180deg, #820805 0%, #ff5f5b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .card-text2 {
-	margin-left: 7px;
-	color: #696969;
-	font-size: 15px;
-	line-height: 1.867;
+    color: #696969;
+    font-size: 13px;
+    line-height: 1.6;
 }
 
 .card-col2 {
-	margin-top: 40px; margin-bottom: -1px;
-	display: flex;
-	flex-direction: column;
-	gap: 20px;
-	align-self: stretch;
-	color: #000;
-	font-family: 'Poppins';
-	background-color: #fff;
-	padding: 16px 12px 71px 26px;
-	border: 1px solid #820805;
-	border-radius: 11px;
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    color: #000;
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff;
+    padding: 16px 20px 24px 20px;
+    border: 1px solid #820805;
+    border-radius: 12px;
 }
 
 .card-row-top2 {
-	display: flex;
-	align-items: flex-start;
-	gap: 8px;
-	font-size: 15px;
-	font-weight: 500;
-	line-height: 2.133;
-	padding-right: 2px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 600;
 }
 
 .card-iconly-light-outline-edit {
-	margin-left: auto; margin-top: 4px;
-	width: 20px; height: 20px;
-	flex-shrink: 0;
+    margin-left: auto;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    cursor: pointer;
 }
 
 .card-avatars-3d {
-	margin: -1px 0 -1px -1px;
-	width: 37px;
-	flex-shrink: 0;
+    width: 34px;
+    flex-shrink: 0;
 }
 
 .card-text-gibran-rakabuming {
-	margin-top: 2px;
-	text-align: left;
+    font-size: 14px;
+    font-weight: 600;
 }
 
 .card-text-detail {
-	margin-left: -30px;
-	width: 100%;
-	max-width: 369px;
-	align-self: center;
-	font-size: 16px;
-	line-height: 1.666;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #333;
 }
 
+/* Star rating row */
 .card-frame {
-	position: relative;
-	margin-left: 87px;
-	width: 86px; height: 24px;
-	flex-shrink: 0;
-	align-self: start;
-	background-color: #fff;
+    position: relative;
+    width: 100px;
+    height: 24px;
+    flex-shrink: 0;
 }
 
 .card-graphic5 {
-	position: absolute; top: 0; left: 0; right: 0; 
-	height: 24px;
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
 }
 
+/* "Lihat selengkapnya" button */
 .card-row-bottom5 {
-	margin-left: -5px; margin-top: 4px;
-	width: 223px;
-	display: flex;
-	align-items: flex-start;
-	gap: 7px;
-	align-self: center;
-	color: #fff;
-	font-size: 15px;
-	font-weight: 300;
-	line-height: 2.133;
-	background-color: var(--main-color);
-	padding-left: 40px;
-	padding-right: 19px;
-	border: 1px solid var(--main-color);
-	border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    align-self: center;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 400;
+    background-color: #820805;
+    padding: 8px 28px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: filter 0.15s;
+}
+
+.card-row-bottom5:hover {
+    filter: brightness(0.88);
 }
 
 .card-iconly-light-outline-arrow {
-	margin-top: 6px;
-	width: 14px; height: 12px;
-	flex-shrink: 0;
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
 }
 
-.card-text-lihat {
-	margin: -1px 0;
-	text-align: left;
-}
-
+/* ── Footer row ──────────────────────────────── */
 .row2 {
-	margin-left: 2px; margin-top: 102px;
-	padding-top: 82px;
-	padding-bottom: 78px;
+    margin-top: 60px;
+    padding: 64px 64px 72px 64px;
+    border-top: 1px solid #000;
 }
 
-.row2 .col-left4 {
-	margin-left: -51px;
+/* ── Responsive ──────────────────────────────── */
+@media (max-width: 1100px) {
+    .header-row4 {
+        padding: 14px 32px;
+    }
+    .title1 {
+        margin-left: 32px;
+    }
+    .row1 {
+        padding: 24px 32px 0 32px;
+    }
+    .card4 {
+        margin: 28px 32px;
+        width: calc(100% - 64px);
+        padding: 28px 28px;
+    }
+    .row2 {
+        padding: 48px 32px;
+    }
 }
 
-.row2 .col-left4 .column-001-facebook {
-	width: 9px; height: 18px;
+@media (max-width: 820px) {
+    .header-row4 {
+        padding: 12px 20px;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+    .header-auto-layout2 {
+        flex-wrap: wrap;
+        gap: 16px;
+        justify-content: center;
+    }
+    .title1 {
+        margin-left: 20px;
+    }
+    .row1 {
+        flex-direction: column;
+        padding: 20px 20px 0 20px;
+    }
+    .card-account {
+        width: 100%;
+    }
+    .card-account-col {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    .card4 {
+        margin: 24px 20px;
+        width: calc(100% - 40px);
+        padding: 24px 20px;
+    }
+    .card-row3 {
+        flex-direction: column;
+        align-items: center;
+    }
+    .card-img6 {
+        width: 100%;
+        max-width: 320px;
+    }
+    .row2 {
+        padding: 40px 20px;
+    }
 }
 
-.row2 .col-left4 .column-004-vimeo {
-	width: 20px; height: 20px;
+@media (max-width: 480px) {
+    .header-row4 {
+        padding: 10px 14px;
+    }
+    .title1 {
+        margin-left: 14px;
+        font-size: 28px;
+    }
+    .row1 {
+        padding: 14px 14px 0 14px;
+    }
+    .card4 {
+        margin: 16px 14px;
+        width: calc(100% - 28px);
+        padding: 20px 16px;
+    }
+    .row2 {
+        padding: 32px 14px;
+    }
 }
 
-.row2 .row-right4 .explore .column-col2 {
-	gap: 11px;
+/* ── Header supplemental elements ────────────── */
+.header-text-fleurahita {
+    color: #820805;
+    font-size: 20px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
 }
 
-.row2 .row-right4 .product .column-col2 {
-	gap: 10px;
+.header-auto-layout2 a {
+    color: #333;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    text-decoration: none;
+    transition: color 0.15s;
 }
 
-
-
-/** breakpoints (margin / paddings) **/
-
-@media screen and (max-width: 1280px) {
-	.header-row4 {
-		padding-inline: var(--margin-md);
-	}
-	.title1 {
-		margin-inline: 0;
-	}
-	.card4 {
-		padding-inline: var(--margin-md);
-	}
-	.card-row3 {
-		margin-inline: 0;
-	}
-	.card-lush-and-plush {
-		margin-inline: 0;
-	}
-	.card-text-detail {
-		margin-inline: 0;
-	}
-	.row2 .col-left4 {
-		margin-inline: 0;
-	}
+.header-auto-layout2 a:hover {
+    color: #820805;
 }
 
-@media screen and (max-width: 576px) {
-	.header-row4 {
-		padding-inline: var(--margin-sm);
-	}
-	.card4 {
-		padding-inline: var(--margin-sm);
-	}
+.header-cart {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
 }
 
-
-
-/* container queries (flex rows) */
-
-@container header-d (width < 1013px) {
-	.header-row4 {
-		flex-direction: column;
-		align-items: center;
-		gap: 14px;
-	}
-	.header-row4 > * {
-		margin-top: unset !important;
-		text-align: center;
-	}
+.header-cart-icon {
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
 }
 
-@container header-row4 (width < 691px) {
-	.header-auto-layout2 {
-		flex-direction: column;
-		align-items: center;
-		gap: 13px;
-	}
-	.header-auto-layout2 > * {
-		margin-left: unset !important; margin-top: unset !important;
-		text-align: center;
-	}
+.header-cart-icon object {
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
 }
 
-@container body (width < 1356px) {
-	.row1 {
-		margin-left: 0;
-		flex-direction: column;
-		align-items: center;
-		gap: 89px;
-	}
-	.card4 {
-		margin-left: 0; margin-right: 0;
-	}
-	.row2 {
-		margin-left: 0; margin-right: 0;
-	}
-	.row1 > * {
-		text-align: center;
-	}
-	.row1 > .group2 {
-		width: 100%;
-		max-width: 888px;
-	}
+.header-cart-info {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
 }
 
-@container card4 (width < 796px) {
-	.card-row3 {
-		margin-left: 0; margin-right: 0;
-		flex-direction: column;
-		align-items: center;
-		gap: 42px;
-	}
-	.card4 > * {
-		margin-left: 0; margin-right: 0;
-	}
-	.card-row3 > * {
-		margin-top: unset !important;
-		text-align: center;
-	}
-	.card-row3 .card-col2 {
-		align-self: center;
-	}
-	.card-row3 > .card-col1 {
-		width: 100%;
-		align-items: center;
-	}
+.header-cart-label {
+    font-size: 12px;
+    font-family: 'Poppins', sans-serif;
+    color: #555;
+}
+
+.header-cart-price {
+    font-size: 11px;
+    font-weight: 600;
+    color: #820805;
+}
+
+.header-chat-icon {
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.header-chat-icon object {
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.header-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+/* ── Chat loading placeholder ─────────────────── */
+.chat-loading-state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    color: #aaa;
+    font-size: 13px;
+    font-family: 'Poppins', sans-serif;
+    padding: 40px;
+}
+
+/* ── Star rating ──────────────────────────────── */
+.card-stars {
+    display: flex;
+    gap: 3px;
+    margin: 4px 0;
+}
+
+.card-stars .star {
+    color: #f5a623;
+    font-size: 18px;
+    line-height: 1;
+}
+
+/* ── Override card-light on sidebar ──────────── */
+/* global.css .card-light adds padding:40px 16px — override for sidebar */
+.card-account.card-light {
+    padding: 28px 20px !important;
+    align-items: flex-start !important;
+    border-radius: 12px !important;
+    width: 240px !important;
+    flex-shrink: 0 !important;
+}
+
+/* ── Footer row overrides ─────────────────────── */
+/* global.css .row-d adds border:1px solid #000 — keep but fix spacing */
+.row2.row-d {
+    padding: 64px !important;
+    margin-top: 60px !important;
+    gap: 60px !important;
+}
+
+@media (max-width: 1100px) {
+    .row2.row-d { padding: 48px 32px !important; }
+}
+@media (max-width: 820px) {
+    .row2.row-d {
+        flex-direction: column !important;
+        padding: 40px 20px !important;
+        gap: 32px !important;
+    }
+    .header-auto-layout2 {
+        gap: 20px;
+    }
+}
+@media (max-width: 480px) {
+    .row2.row-d { padding: 32px 14px !important; }
 }

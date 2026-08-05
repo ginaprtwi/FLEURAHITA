@@ -1,222 +1,179 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Public+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=DM+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Playfair+Display:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Manrope:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <title>Chat &amp; Ulasan — Fleurahita</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@400;500;600;700&family=Public+Sans:wght@400;500;600&family=DM+Sans:wght@400;500&family=Playfair+Display:wght@600&family=Manrope:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/reset.css" />
     <link rel="stylesheet" href="../css/global.css" />
     <link rel="stylesheet" href="../css/profil5.css" />
 </head>
 
 <body>
-    <header class="header-d header1">
+
+    <!-- ═══ HEADER ═══ -->
+    <header class="header-d">
         <div class="header-row4">
             <div class="header-row-left">
-                <img src="../assets/row/row-img.png" class="header-img" />
-                <p class="header-text-fleurahita">FLEURAHITA</p>
+                <img src="../assets/row/row-img.png" class="header-img" alt="Logo" />
+                <span class="header-text-fleurahita">FLEURAHITA</span>
             </div>
-            
-            <div class="header-auto-layout2">
-                <p class="header-text-left2">Beranda</p>
-                <p class="text-b header-text-produk2">Produk</p>
-                <p class="text-b">Pesanan Saya</p>
-                
-                <div class="frame-b">
-                    <div class="frame-iconly-light2">
-                        <div class="frame-group2">
-                            <object data="../assets/frame-group/frame-graphic2.svg" class="frame-graphic3" type="image/svg+xml"></object>
-                            <img src="../assets/frame-group/frame-img2.png" class="frame-img3" />
-                        </div>
-                        
-                        <object data="../assets/frame-iconly-light/frame-graphic.svg" class="frame-graphic4" type="image/svg+xml"></object>
-                        <img src="../assets/frame-group/frame-img2.png" class="frame-img4" />
-                        <object data="../assets/frame-iconly-light/frame-fill2.svg" class="frame-fill2" type="image/svg+xml"></object>
+
+            <nav class="header-auto-layout2">
+                <a href="../Pages/beranda.html">Beranda</a>
+                <a href="../Pages/produk.html">Produk</a>
+                <a href="../Pages/histori_pesanan.html">Pesanan Saya</a>
+
+                <!-- Keranjang -->
+                <div class="header-cart">
+                    <div class="header-cart-icon">
+                        <object data="../assets/frame-group/frame-graphic2.svg" type="image/svg+xml" aria-hidden="true"></object>
                     </div>
-                    
-                    <div class="frame-col2">
-                        <p class="frame-text-keranjang2">Keranjang</p>
-                        <p class="frame-text-rp2 text1">Rp 0,00</p>
+                    <div class="header-cart-info">
+                        <span class="header-cart-label">Keranjang</span>
+                        <span class="header-cart-price">Rp 0,00</span>
                     </div>
                 </div>
-                
-                <div class="iconly-light-outline-chat-b iconly-light6">
-                    <div class="iconly-light-outline-chat-chat2">
-                        <object data="../assets/iconly-light-outline-chat-chat/iconly-light-outline-chat-fill.svg" class="iconly-light-outline-chat-fill-a iconly-light-outline-chat-fill4" type="image/svg+xml"></object>
-                        <object data="../assets/iconly-light-outline-chat-chat/iconly-light-outline-chat-fill.svg" class="iconly-light-outline-chat-fill-a iconly-light-outline-chat-fill5" type="image/svg+xml"></object>
-                        <object data="../assets/iconly-light-outline-chat-chat/iconly-light-outline-chat-fill2.svg" class="iconly-light-outline-chat-fill-a iconly-light-outline-chat-fill6" type="image/svg+xml"></object>
-                    </div>
+
+                <!-- Chat icon -->
+                <div class="header-chat-icon" aria-label="Chat">
+                    <object data="../assets/iconly-light-outline-chat-chat/iconly-light-outline-chat-fill.svg" type="image/svg+xml" aria-hidden="true"></object>
                 </div>
-                
-                <img src="../assets/auto-layout-horizontal/auto-layout-horizontal-3d-avatars.png" class="_3d-avatars-b header-3d-avatars2" />
-            </div>
+
+                <!-- Avatar -->
+                <img src="../assets/auto-layout-horizontal/auto-layout-horizontal-3d-avatars.png"
+                     class="header-avatar" alt="Profil" />
+            </nav>
         </div>
     </header>
-    
-    <div class="title title1">Chat & Ulasan</div>
-    
+
+    <!-- ═══ PAGE TITLE ═══ -->
+    <h1 class="title title1">Chat &amp; Ulasan</h1>
+
+    <!-- ═══ MAIN ROW: sidebar + chat ═══ -->
     <div class="row1">
-        <div class="card-account card-light">
+
+        <!-- Sidebar akun -->
+        <aside class="card-account">
             <div class="card-account-col-top">
-                <img src="../assets/auto-layout-horizontal/auto-layout-horizontal-3d-avatars.png" class="card-account-avatars-3d" />
-                <p>Gibran Rakabuming</p>
+                <img src="../assets/auto-layout-horizontal/auto-layout-horizontal-3d-avatars.png"
+                     class="card-account-avatars-3d" alt="Avatar" />
+                <p id="sidebar-nama">Gibran Rakabuming</p>
             </div>
-            
-            <div class="card-account-col">
-                <p class="card-account-text-elements1">Akun Saya</p>
-                <p class="card-account-text-elements">Alamat</p>
-                <p class="card-account-text-elements3">Keranjang</p>
-                <p class="card-account-text-elements4">Histori Pesanan</p>
-                <p class="card-account-text-elements card-account-text-elements5">Chat & Ulasan</p>
-                <p class="card-account-text-elements card-account-text-elements6">Keluar</p>
-            </div>
-        </div>
-        
+
+            <nav class="card-account-col">
+                <a class="card-account-text-elements1" href="detail_akun.html">Akun Saya</a>
+                <a class="card-account-text-elements" href="alamat_profil.html">Alamat</a>
+                <a class="card-account-text-elements3" href="keranjang_di_profil.html">Keranjang</a>
+                <a class="card-account-text-elements4" href="histori_pesanan.html">Histori Pesanan</a>
+                <a class="card-account-text-elements card-account-text-elements5" href="chat&ulasan.html">Chat &amp; Ulasan</a>
+                <a class="card-account-text-elements card-account-text-elements6"
+                   href="#"
+                   onclick="localStorage.clear();sessionStorage.clear();location.href='/Auth/Login/log-in-user.html';return false;">
+                   Keluar
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Chat UI (JS renders inside .chat-bot-ui) -->
         <div class="group2">
             <div class="chat-bot-ui">
-                <div class="chat-bot-ui-group">
-                    <div class="chat-bot-ui-circle-red1 circle"></div>
-                    <div class="chat-bot-ui-circle-red2 circle"></div>
-                </div>
-                
-                <div class="chat-bot-ui-col">
-                    <img src="../assets/profil/chat-bot-ui-img.png" class="chat-bot-ui-img-top" />
-                    <h2 class="chat-bot-ui-subtitle">
-                        Tanya <span class="sub-text-red">Fleurahita</span> apapun!
-                    </h2>
-                </div>
-                
-                <img src="../assets/profil/chat-bot-ui-img.png" class="chat-bot-ui-img" />
-                <button class="chat-bot-ui-btn-halo-exclamation-kamu-sedang hover-dark">Halo! Kamu sedang mencari bunga untuk apa?</button>
-                
-                <div class="chat-bot-ui-row">
-                    <p class="chat-bot-ui-text">Masukan text disini...</p>
-                    <object data="../assets/profil/chat-bot-ui-send.svg" class="chat-bot-ui-send" type="image/svg+xml"></object>
-                </div>
-            </div>
-            
-            <div class="line1"></div>
-        </div>
-    </div>
-    
-    <div class="card4">
-        <div class="card-ulasan-anda">Ulasan Anda</div>
-        
-        <div class="card-row3">
-            <img src="../assets/profil/card-img.png" class="card-img6" />
-            
-            <div class="card-col1">
-                <div class="card-lush-and-plush">Lush and Plush</div>
-                <p class="card-text2">2026-02-11 23:25</p>
-                
-                <div class="card-col2">
-                    <div class="card-row-top2">
-                        <img src="../assets/profil/card-avatars-3d.png" class="card-avatars-3d" />
-                        <p class="card-text-gibran-rakabuming">Gibran Rakabuming</p>
-                        <object data="../assets/profil/card-iconly-light1.svg" class="card-iconly-light-outline-edit card-iconly-light2" type="image/svg+xml"></object>
-                    </div>
-                    
-                    <p class="card-text-detail">
-                        Detail pengerjaannya sangat rapi, apalagi kain saljunya bikin buketnya kelihatan mewah dan berkelas. Rekomendasi banget!
-                    </p>
+                <!-- Placeholder content — replaced by chat-pembeli.js -->
+                <div class="chat-loading-state">
+                    <p>Memuat chat...</p>
                 </div>
             </div>
         </div>
-        
-        <div class="card-frame">
-            <object data="../assets/card-graphic.svg" class="card-graphic5" type="image/svg+xml"></object>
-        </div>
-        
-        <div class="card-row-bottom5">
-            <p class="card-text-lihat">Lihat selengkapnya</p>
-            <object data="../assets/profil/card-iconly-light2.svg" class="card-iconly-light-outline-arrow card-iconly-light3" type="image/svg+xml"></object>
-        </div>
+
     </div>
-    
-    <div class="row-d row2">
+
+    <!-- ═══ ULASAN SECTION ═══ -->
+    <!-- Konten diisi dinamis oleh ulasan.js -->
+    <section class="card4" aria-label="Ulasan Anda">
+        <h2 class="card-ulasan-anda">Ulasan Anda</h2>
+        <!-- ulasan.js akan menambahkan tombol + daftar ulasan di sini -->
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer class="row-d row2">
         <div class="column-c col-left4">
             <div class="column-col1">
                 <div class="column-col-top">
                     <p class="column-text-fleurahita">FLEURAHITA</p>
                     <p class="column-text-hello">Buket bunga no 1 di Kota Bandung</p>
                 </div>
-                
+
                 <div class="card1">
                     <div class="card-row-top">
                         <div class="iconly-light-outline-calling iconly-light2">
                             <div class="iconly-light-outline-calling-calling">
-                                <object data="../assets/iconly-light-outline-calling-calling/iconly-light-outline-calling-fill.svg" class="iconly-light-outline-calling-fill" type="image/svg+xml"></object>
+                                <object data="../assets/iconly-light-outline-calling-calling/iconly-light-outline-calling-fill.svg" class="iconly-light-outline-calling-fill" type="image/svg+xml" aria-hidden="true"></object>
                             </div>
-                            
-                            <object data="../assets/iconly-light-outline-calling/iconly-light-outline-calling-stroke.svg" class="iconly-light-outline-calling-stroke" type="image/svg+xml"></object>
+                            <object data="../assets/iconly-light-outline-calling/iconly-light-outline-calling-stroke.svg" class="iconly-light-outline-calling-stroke" type="image/svg+xml" aria-hidden="true"></object>
                         </div>
-                        
-                        <p class="card-text">08956789000 </p>
+                        <p class="card-text">08956789000</p>
                     </div>
-                    
+
                     <div class="card-row1">
                         <div class="card-iconly-light">
                             <div class="card-row2">
-                                <object data="../assets/card-row/card-fill.svg" class="card-fill1" type="image/svg+xml"></object>
-                                <object data="../assets/card-row/card-fill2.svg" class="card-fill2" type="image/svg+xml"></object>
+                                <object data="../assets/card-row/card-fill.svg" class="card-fill1" type="image/svg+xml" aria-hidden="true"></object>
+                                <object data="../assets/card-row/card-fill2.svg" class="card-fill2" type="image/svg+xml" aria-hidden="true"></object>
                             </div>
-                            
                             <div class="card-row-bottom3">
-                                <img src="../assets/card-row/card-img.png" class="card-img5" />
-                                <img src="../assets/card-row/card-img2.png" class="card-img-right" />
+                                <img src="../assets/card-row/card-img.png" class="card-img5" alt="" />
+                                <img src="../assets/card-row/card-img2.png" class="card-img-right" alt="" />
                             </div>
                         </div>
-                        
                         <p class="card-text-fleu">fleurahita@gmail.com</p>
                     </div>
-                    
+
                     <div class="card-row-bottom4">
                         <div class="iconly-light-outline-home iconly-light3">
-                            <img src="../assets/iconly-light-outline-home/iconly-light-outline-home-home.png" class="iconly-light-outline-home-home" />
+                            <img src="../assets/iconly-light-outline-home/iconly-light-outline-home-home.png" class="iconly-light-outline-home-home" alt="" />
                         </div>
-                        
                         <p class="card-text-jalan-dago-no">Jalan Dago No.20</p>
                     </div>
                 </div>
-                
+
                 <div class="column-input-field">
-                    <object data="../assets/column-input-field/column-search.svg" class="column-search" type="image/svg+xml"></object>
+                    <object data="../assets/column-input-field/column-search.svg" class="column-search" type="image/svg+xml" aria-hidden="true"></object>
                     <p class="column-text-search">Cari</p>
                 </div>
             </div>
-            
+
             <div class="column-socials">
-                <object data="../assets/column-socials/column-001-facebook.svg" class="column-graphic column-001-facebook" type="image/svg+xml"></object>
-                <object data="../assets/column-socials/column-004-vimeo.svg" class="column-graphic column-004-vimeo" type="image/svg+xml"></object>
-                <img src="../assets/column-socials/column-img.png" class="column-img" />
+                <object data="../assets/column-socials/column-001-facebook.svg" class="column-graphic" type="image/svg+xml" aria-label="Facebook"></object>
+                <object data="../assets/column-socials/column-004-vimeo.svg" class="column-graphic" type="image/svg+xml" aria-label="Vimeo"></object>
+                <img src="../assets/column-socials/column-img.png" class="column-img" alt="Instagram" />
             </div>
         </div>
-        
+
         <div class="row-b row-right4">
             <div class="column-d explore">
                 <p class="column-text-explore">Profil Saya</p>
-                
                 <div class="column-col2">
-                    <p class="column-text-a column-text-resources">Dashboard</p>
-                    <p class="column-text-a column-text-documents1">Profil Saya</p>
-                    <p class="column-text-a column-text-blog">Pesanan Saya</p>
-                    <p class="column-text-a column-text-documents2">Penilaian Saya</p>
+                    <p class="column-text-a">Dashboard</p>
+                    <p class="column-text-a">Profil Saya</p>
+                    <p class="column-text-a">Pesanan Saya</p>
+                    <p class="column-text-a">Penilaian Saya</p>
                 </div>
             </div>
-            
+
             <div class="column-d product">
                 <p class="column-text-explore">Produk</p>
-                
                 <div class="column-col2">
-                    <p class="column-text-a column-text-resources">Happy Wedding</p>
-                    <p class="column-text-a column-text-documents1">Birthday Party</p>
-                    <p class="column-text-a column-text-blog">Personal Gifts</p>
-                    <p class="column-text-a column-text-documents2">Congraduation!</p>
+                    <p class="column-text-a">Happy Wedding</p>
+                    <p class="column-text-a">Birthday Party</p>
+                    <p class="column-text-a">Personal Gifts</p>
+                    <p class="column-text-a">Congraduation!</p>
                 </div>
             </div>
         </div>
-    </div>
-   
-</body>
+    </footer>
 
+    <script src="../js/chat-pembeli.js"></script>
+    <script src="../js/ulasan.js"></script>
+</body>
 </html>

@@ -9,12 +9,18 @@ body {
 	font-family: 'Poppins';
 	font-weight: 500;
 	text-align: center;
-	background-color: unset;
+	background: linear-gradient(135deg, #820805 0%, #c0392b 50%, #2c0000 100%);
+	min-height: 100vh;
 }
 
 .col2 {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	padding: 24px;
+	box-sizing: border-box;
 }
 
 .col3 {

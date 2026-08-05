@@ -1,225 +1,146 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Playfair Display:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Plus Jakarta Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <title>Produk Saya — Fleurahita</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@600&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/reset.css" />
     <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/sidebar.css" />
+    <link rel="stylesheet" href="../css/navbar.css" />
     <link rel="stylesheet" href="../css/produk-saya.css" />
 </head>
 
 <body>
-    <div class="circle-light-a circle-light1"></div>
-    
-    <div class="sidebar-menu card-light2">
-        <div class="sidebar-menu-menu">
-            <button class="btn-light-a btn-light5 hover-dark">
-                <div class="icon-ly-light-outline-home icon-ly-light1">
-                    <img src="../assets/icon-ly-light-outline-home/icon-ly-light-outline-home-home.png" class="icon-ly-light-outline-home-home" />
+
+    <!-- ═══ SIDEBAR (loaded by components.js) ═══ -->
+    <div id="sidebar-container"></div>
+
+    <!-- ═══ MAIN CONTENT ═══ -->
+    <div class="ps-wrapper">
+
+        <!-- Navbar (loaded by components.js) -->
+        <div id="navbar-container" class="ps-navbar"></div>
+        <div class="ps-navbar-divider"></div>
+
+        <!-- Page body -->
+        <main class="ps-main">
+
+            <h2 class="ps-title subtitle-main-color">Produk Saya</h2>
+
+            <!-- Toolbar: search + tambah -->
+            <div class="ps-toolbar">
+                <div class="ps-search">
+                    <object data="../assets/row/row-vuesax-outline-343.svg"
+                            class="ps-search-icon" type="image/svg+xml" aria-hidden="true"></object>
+                    <input type="text" id="ps-search-input"
+                           class="ps-search-input" placeholder="Cari produk..." />
                 </div>
-                
-                <p class="label">Beranda</p>
-            </button>
-            
-            <div class="row-b row5">
-                <object data="../assets/produk-saya/row/row-streamline.svg" class="row-vuesax-outline-user-octagon row-streamline" type="image/svg+xml"></object>
-                <p class="text-a">Produk Saya</p>
+
+                <button class="ps-btn-tambah hover-bright" id="btn-tambah-produk">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2.5"
+                         stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    <span>Tambah Produk</span>
+                </button>
             </div>
-            
-            <button class="btn-light-b btn-light6 hover-dark">
-                <div class="icon-ly-light-outline-document icon-ly-light2">
-                    <img src="../assets/icon-ly-light-outline-document/icon-ly-light-outline-document-img.png" class="icon-ly-light-outline-document-img" />
-                    <object data="../assets/icon-ly-light-outline-document/icon-ly-light-outline-document-fill.svg" class="icon-ly-light-outline-document-fill icon-ly-light-outline-document-fill1" type="image/svg+xml"></object>
-                    <object data="../assets/icon-ly-light-outline-document/icon-ly-light-outline-document-fill2.svg" class="icon-ly-light-outline-document-fill icon-ly-light-outline-document-fill2" type="image/svg+xml"></object>
-                    <object data="../assets/icon-ly-light-outline-document/icon-ly-light-outline-document-fill2.svg" class="icon-ly-light-outline-document-fill icon-ly-light-outline-document-fill3" type="image/svg+xml"></object>
+
+            <!-- Product table -->
+            <div class="ps-card">
+
+                <!-- Table header -->
+                <div class="ps-table-header">
+                    <div class="ps-col-produk">Produk</div>
+                    <div class="ps-col-harga">Harga</div>
+                    <div class="ps-col-stok">Stok</div>
+                    <div class="ps-col-aksi">Aksi</div>
                 </div>
-                
-                <p class="label">Pesanan Masuk</p>
-            </button>
-            
-            <div class="row-c row6">
-                <object data="../assets/row/row-mdi-light.svg" class="row-ant-design-form-outlined row-mdi-light" type="image/svg+xml"></object>
-                <p class="text-b">Pengiriman</p>
-            </div>
-            
-            <button class="btn-light-c btn-light7 hover-dark">
-                <div class="icon-ly-light-outline-chat icon-ly-light3">
-                    <div class="icon-ly-light-outline-chat-chat">
-                        <object data="../assets/icon-ly-light-outline-chat-chat/icon-ly-light-outline-chat-fill.svg" class="icon-ly-light-outline-chat-fill" type="image/svg+xml"></object>
-                        <object data="../assets/icon-ly-light-outline-chat-chat/icon-ly-light-outline-chat-fill.svg" class="icon-ly-light-outline-chat-fill" type="image/svg+xml"></object>
-                        <object data="../assets/icon-ly-light-outline-chat-chat/icon-ly-light-outline-chat-fill.svg" class="icon-ly-light-outline-chat-fill" type="image/svg+xml"></object>
-                    </div>
+
+                <!-- Table body (filled by JS) -->
+                <div id="ps-table-body">
+                    <div class="ps-loading">Memuat produk...</div>
                 </div>
-                
-                <p class="label">Chat & Komplain</p>
-            </button>
-        </div>
-        
-        <div class="line-a"></div>
-        
-        <div class="column-a col-bottom">
-            <div class="row-c row-top1">
-                <object data="../assets/row/row-ant-design.svg" class="row-ant-design-form-outlined row-mdi-light" type="image/svg+xml"></object>
-                <p class="text-b">Profil Toko</p>
+
+                <!-- Pagination -->
+                <div class="table-pagination" id="ps-pagination" style="display:none;"></div>
             </div>
-            
-            <div class="row-d row1">
-                <object data="../assets/row/row-vuesax-outline.svg" class="row-iconly-light-outline-arrow-a row-vuesax-outline1" type="image/svg+xml"></object>
-                <p class="label">Akun Saya</p>
+
+        </main>
+    </div>
+
+    <!-- ═══ MODAL TAMBAH / EDIT PRODUK ═══ -->
+    <div id="ps-modal" class="ps-modal" role="dialog" aria-modal="true" aria-labelledby="ps-modal-title" style="display:none;">
+        <div class="ps-modal-backdrop" id="ps-modal-backdrop"></div>
+        <div class="ps-modal-box">
+            <div class="ps-modal-header">
+                <h2 id="ps-modal-title" class="ps-modal-title">Tambah Produk</h2>
+                <button class="ps-modal-close" id="ps-modal-close" aria-label="Tutup">✕</button>
             </div>
-            
-            <button class="btn-light-d btn-light1 hover-dark">
-                <div class="icon-ly-light-outline-wallet icon-ly-light4">
-                    <div class="icon-ly-light-outline-wallet-group">
-                        <object data="../assets/icon-ly-light-outline-wallet-group/icon-ly-light-outline-wallet-fill.svg" class="icon-ly-light-outline-wallet-fill1" type="image/svg+xml"></object>
-                        <object data="../assets/icon-ly-light-outline-wallet-group/icon-ly-light-outline-wallet-fill2.svg" class="icon-ly-light-outline-wallet-fill2" type="image/svg+xml"></object>
-                    </div>
-                    
-                    <img src="../assets/icon-ly-light-outline-wallet/icon-ly-light-outline-wallet-img.png" class="icon-ly-light-outline-wallet-img" />
-                    <object data="../assets/icon-ly-light-outline-wallet/icon-ly-light-outline-wallet-fill.svg" class="icon-ly-light-outline-wallet-fill3" type="image/svg+xml"></object>
+
+            <input type="hidden" id="ps-modal-id" />
+
+            <div class="ps-form-grid">
+                <div class="ps-form-group">
+                    <label class="ps-label" for="ps-f-nama">Nama Produk</label>
+                    <input id="ps-f-nama" class="ps-input" type="text" placeholder="Nama produk" />
                 </div>
-                
-                <p class="label">Keuangan</p>
-            </button>
-            
-            <div class="row-d row-bottom1">
-                <object data="../assets/row/row-iconly-light.svg" class="row-iconly-light-outline-arrow-a row-vuesax-outline1" type="image/svg+xml"></object>
-                <p class="label">Logout</p>
+
+                <div class="ps-form-group">
+                    <label class="ps-label" for="ps-f-harga">Harga (Rp)</label>
+                    <input id="ps-f-harga" class="ps-input" type="number" min="0" placeholder="0" />
+                </div>
+
+                <div class="ps-form-group">
+                    <label class="ps-label" for="ps-f-stok">Stok</label>
+                    <input id="ps-f-stok" class="ps-input" type="number" min="0" placeholder="0" />
+                </div>
+
+                <div class="ps-form-group">
+                    <label class="ps-label" for="ps-f-kategori">Kategori</label>
+                    <select id="ps-f-kategori" class="ps-input">
+                        <option value="">-- Pilih kategori --</option>
+                        <option value="Bucket Bunga">Bucket Bunga</option>
+                        <option value="Bucket Bunga + Boneka">Bucket Bunga + Boneka</option>
+                        <option value="Bucket Snack">Bucket Snack</option>
+                        <option value="Bucket Uang">Bucket Uang</option>
+                        <option value="Bunga Papan">Bunga Papan</option>
+                    </select>
+                </div>
+
+                <div class="ps-form-group ps-form-group--full">
+                    <label class="ps-label" for="ps-f-deskripsi">Deskripsi</label>
+                    <textarea id="ps-f-deskripsi" class="ps-input ps-textarea"
+                              placeholder="Deskripsi produk..." rows="3"></textarea>
+                </div>
+            </div>
+
+            <p id="ps-modal-error" class="ps-modal-error" role="alert"></p>
+
+            <div class="ps-modal-actions">
+                <button id="ps-modal-cancel" class="ps-btn-cancel">Batal</button>
+                <button id="ps-modal-submit" class="ps-btn-submit">Simpan</button>
             </div>
         </div>
     </div>
-    
-    <div class="col2">
-        <div class="row-top3">
-            <div class="logo text1">logo</div>
-            
-            <div class="row-e row7">
-                <p class="row-text-fleurahita1 text2">FLEURAHITA</p>
-                
-                <div class="row-row-right1 card-light3">
-                    <p class="row-text-ingin-mencari1">Ingin mencari sesuatu?</p>
-                    <object data="../assets/row-row/row-vuesax-outline.svg" class="row-vuesax-outline-search-a row-vuesax-outline2" type="image/svg+xml"></object>
-                </div>
-            </div>
-        </div>
-        
-        <div class="line-b"></div>
-        <h2 class="subtitle-produk-saya subtitle-main-color">Produk Saya</h2>
-        
-        <div class="row8">
-            <div class="row-f row9">
-                <p class="row-text6">Cari Produk</p>
-                <object data="../assets/row/row-vuesax-outline-343.svg" class="row-vuesax-outline-search-b row-vuesax-outline3" type="image/svg+xml"></object>
-            </div>
-            
-            <button class="btn-right hover-bright">
-                <object data="../assets/produk-saya/btn-right-icon.svg" class="btn-right-icon-ly-light-outline-plus btn-right-icon" type="image/svg+xml"></object>
-                <p class="btn-right-label">Tambah Produk</p>
-            </button>
-        </div>
-        
-        <div class="col3">
-            <div class="row-top4">
-                <div class="row-g row10">
-                    <div class="row-line-left1"></div>
-                    <p class="text-c">Produk</p>
-                </div>
-                
-                <div class="row-g row11">
-                    <div class="row-line-left1"></div>
-                    <p class="text-c">Harga</p>
-                </div>
-                
-                <div class="row-g row12">
-                    <div class="row-line-left1"></div>
-                    <p class="text-c">Aksi</p>
-                </div>
-            </div>
-            
-            <div class="row13">
-                <div class="col-left1">
-                    <div class="rect rect1"></div>
-                    <img src="../assets/produk-saya/img1.png" class="img-a" />
-                </div>
-                
-                <div class="col4">
-                    <div class="row14">
-                        <p class="text-left">Sweet Aurora Bloom</p>
-                        <p class="text-d text5">250.000</p>
-                        <object data="../assets/produk-saya/iconly-light.svg" class="iconly-light-outline-delete iconly-light2" type="image/svg+xml"></object>
-                        <object data="../assets/produk-saya/iconly-light2.svg" class="iconly-light-outline-delete iconly-light3" type="image/svg+xml"></object>
-                    </div>
-                    
-                    <div class="row-bottom3">
-                        <p class="text-e">Edit</p>
-                        <p class="text-e">Hapus</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="row15">
-                <div class="column-b col5">
-                    <div class="rect column-rect"></div>
-                    <img src="../assets/produk-saya/column/column-img.png" class="img-a" />
-                </div>
-                
-                <p class="text-lush-and-plush text-dark">Lush and Plush</p>
-                <p class="text-f text7">135.000</p>
-                
-                <div class="column-c col6">
-                    <object data="../assets/produk-saya/iconly-light.svg" class="column-iconly-light-outline-tick column-iconly-light1" type="image/svg+xml"></object>
-                    <p class="column-text1">Edit</p>
-                </div>
-                
-                <div class="column-c col7">
-                    <object data="../assets/produk-saya/iconly-light2.svg" class="column-iconly-light-outline-tick column-iconly-light1" type="image/svg+xml"></object>
-                    <p class="column-text1">Hapus</p>
-                </div>
-            </div>
-            
-            <div class="row16">
-                <div class="col-left2">
-                    <div class="rect rect2"></div>
-                    <img src="../assets/produk-saya/img2.png" class="img-a" />
-                </div>
-                
-                <p class="text-charme-boquet text-dark">Charme Boquet</p>
-                <p class="text-f text8">60.000</p>
-                
-                <div class="column-c col8">
-                    <object data="../assets/produk-saya/iconly-light.svg" class="column-iconly-light-outline-tick column-iconly-light1" type="image/svg+xml"></object>
-                    <p class="column-text1">Edit</p>
-                </div>
-                
-                <div class="column-c col9">
-                    <object data="../assets/produk-saya/iconly-light2.svg" class="column-iconly-light-outline-tick column-iconly-light1" type="image/svg+xml"></object>
-                    <p class="column-text1">Hapus</p>
-                </div>
-            </div>
-            
-            <div class="row-bottom4">
-                <div class="row-left">
-                    <div class="rect rect3"></div>
-                    <img src="../assets/produk-saya/img3.png" class="img3" />
-                </div>
-                
-                <p class="text-snow-white-bloom text-dark">Snow White Bloom</p>
-                <p class="text-f text9">160.000</p>
-                
-                <div class="column-c col10">
-                    <object data="../assets/produk-saya/iconly-light.svg" class="column-iconly-light-outline-tick column-iconly-light1" type="image/svg+xml"></object>
-                    <p class="column-text1">Edit</p>
-                </div>
-                
-                <div class="column-c col11">
-                    <object data="../assets/produk-saya/iconly-light2.svg" class="column-iconly-light-outline-tick column-iconly-light1" type="image/svg+xml"></object>
-                    <p class="column-text1">Hapus</p>
-                </div>
+
+    <!-- ═══ MODAL KONFIRMASI HAPUS ═══ -->
+    <div id="ps-confirm-modal" class="ps-modal" role="dialog" aria-modal="true" style="display:none;">
+        <div class="ps-modal-backdrop" id="ps-confirm-backdrop"></div>
+        <div class="ps-modal-box ps-modal-box--sm">
+            <h2 class="ps-modal-title">Hapus Produk?</h2>
+            <p class="ps-confirm-text">Produk <strong id="ps-confirm-nama"></strong> akan dihapus permanen.</p>
+            <div class="ps-modal-actions">
+                <button id="ps-confirm-cancel" class="ps-btn-cancel">Batal</button>
+                <button id="ps-confirm-ok"     class="ps-btn-hapus">Ya, Hapus</button>
             </div>
         </div>
     </div>
 
     <script src="../js/components.js"></script>
+    <script src="../js/produk-saya.js"></script>
 </body>
 </html>
