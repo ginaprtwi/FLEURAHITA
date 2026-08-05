@@ -58,20 +58,20 @@
         <div class="cart card-white2">
             <div class="pesanan-anda">Pesanan anda</div>
             
-            <div class="process-c process1">
+            <div class="process-c process1" id="order-stepper">
                 <div class="process-process7">
-                    <button class="btn-a process-btn7 hover-bright">1</button>
+                    <button class="btn-a process-btn4 hover-bright" data-step-page="pilih_pengiriman.html">1</button>
                     <p class="text-d">Keranjang belanja</p>
                 </div>
                 
                 <div class="process-process8">
-                    <button class="btn-a process-btn8 hover-bright">2</button>
-                    <p class="text-d">Detail pesanan</p>
+                    <button class="btn-a process-btn5 hover-bright" data-step-page="detail_pesanan.html">2</button>
+                    <p class="text-e">Detail pesanan</p>
                 </div>
                 
                 <div class="process-process9">
-                    <button class="process-btn9 body-2-semi btn1 hover-bright">3</button>
-                    <p class="text-e">Pesanan selesai</p>
+                    <button class="process-btn6 body-2-semi btn1 hover-bright" data-step-page="pesanan-saya4.html">3</button>
+                    <p class="text-d process-text-order-complete2">Pesanan selesai</p>
                 </div>
             </div>
         </div>
@@ -203,8 +203,12 @@
             </div>
         </div>
     </footer>
+</div>
+
+    <script src="stepper.js"></script>
     <!-- Masukkan script ini tepat sebelum </body> -->
- 
+    <script src="navbar.js"></script>
+    <script src="sidebarprofil.js"></script>
 </body>
 
 </html>
