@@ -1,197 +1,555 @@
+/* ============================================================
+   FLEURAHITA — Alamat Saya (Profil 3)
+   Layout mengikuti Akun Saya (desain referensi 1440px)
+   Seluruh teks menggunakan font Poppins
+   ============================================================ */
+
+/* ---------- 1. Font Poppins untuk semua teks ---------- */
+body,
+body * {
+    font-family: 'Poppins', sans-serif !important;
+}
+
 body {
-	container: body / inline-size;
-	gap: 28px;
+    container: body / inline-size;
+    gap: 0;
+    background-color: #fff;
+    overflow-x: hidden;
 }
 
-.card-content-text-a {
-	font-size: 16px;
-	font-family: 'Inter';
-	font-style: normal;
-	font-weight: 600;
-	line-height: 1.625;
-	letter-spacing: 0px;
-	text-align: left;
+/* ---------- 2. Ruang navbar pengganti ---------- */
+.header-spacer {
+    height: 80px;
+    flex-shrink: 0;
 }
 
-.header1 .auto-layout-horizontal2 .auto-layout-horizontal-text {
-	color: #0d0d0d;
+.card-menu-col > p,
+.footer-link {
+    cursor: pointer;
+    transition: color 0.2s ease;
 }
 
-.header1 .auto-layout-horizontal2 .auto-layout-horizontal-text-pesanan-saya {
-	color: #000;
-}
-
+/* ---------- 3. Judul halaman ---------- */
 .title1 {
-	margin-left: 43px; margin-top: 52px;
+    margin: 30px auto 0;
+    width: min(1048px, 100%);
+    padding: 0 20px;
+    align-self: center;
+    text-align: left;
 }
 
-.row1 {
-	margin-left: 170px;
-	display: flex;
-	align-items: flex-start;
-	gap: 1px;
-	align-self: start;
-	color: #000;
-	font-family: 'Inter';
+/* ---------- 4. Bagian utama (kartu menu + konten) ---------- */
+.account-section {
+    margin: 30px auto 0;
+    width: min(1048px, 100%);
+    padding: 0 20px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 79px;
+    color: var(--neutral-04-100);
 }
 
-.card-account {
-	gap: 48px;
+/* ---------- 5. Kartu menu akun ---------- */
+.card-menu {
+    width: 262px;
+    flex-shrink: 0;
+    gap: 48px;
 }
 
-.card-account-col {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	gap: 20px;
+.card-menu .column-e {
+    width: 100%;
 }
 
-.card-account-text-elements1 {
-	width: 230px;
-	color: #6c7275;
-	text-align: left;
+.card-menu-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
 }
 
-.card-account-text-elements2 {
-	margin-top: 8px;
-	color: var(--main-color);
-	border-bottom: 1px solid #820805;
+.card-menu-col p {
+    width: 230px;
+    padding-bottom: 7px;
+    border-bottom: 1px solid transparent;
+    text-align: left;
 }
 
-.address {
-	margin-right: -72px;
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	gap: 19px;
-	text-align: left;
-	padding: 0 72px;
+.card-menu-text-elements2 {
+    color: var(--main-color) !important;
+    border-bottom-color: var(--main-color) !important;
+    font-weight: 600;
 }
 
-.address-alamat {
-	background: linear-gradient(180deg, #820805 0%, #ff5f5b 100%) top left / auto auto no-repeat;
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
+.card-menu-col p:not(.card-menu-text-elements2):hover {
+    color: var(--main-color);
 }
 
-.card-content {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 8px;
-	font-size: 14px;
-	font-weight: 400;
-	line-height: 1.571;
-	padding: 15px 15px 15px 24px;
-	border: 1px solid var(--neutral-04-100);
-	border-radius: 8px;
+.column-gibran-rakabuming {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.6;
+    text-align: center;
 }
 
-.card-content-title {
-	margin-left: -9px;
-	width: 100%;
-	max-width: 289px;
-	display: flex;
-	align-items: flex-start;
-	justify-content: space-between;
+/* ---------- 6. Konten alamat ---------- */
+.alamat-section {
+    width: 100%;
+    max-width: 707px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    text-align: left;
 }
 
-.card-content-text1 {
-	color: #000;
+.alamat-heading {
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 1.4;
+    background: linear-gradient(180deg, #820805 0%, #ff5f5b 100%) top left / auto auto no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
 }
 
-.card-content-butoon {
-	display: flex;
-	align-items: center;
-	gap: 4px;
+.alamat-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
-.card-content-outline-edit {
-	width: 16px; height: 16px;
-	flex-shrink: 0;
+/* Kartu alamat */
+.alamat-card {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #fff;
+    padding: 18px 24px;
+    border: 1px solid var(--black-300);
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
 }
 
-.card-content-text-edit {
-	color: var(--neutral-04-100);
+.alamat-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
 }
 
-.card-content-col {
-	width: 302px;
-	display: flex;
-	flex-direction: column;
-	gap: 4px;
+.alamat-card-label {
+    color: #000;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
 }
 
-.card-content-text-top {
-	color: #000;
-	text-align: left;
+.alamat-card-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
 }
 
+.alamat-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--neutral-04-100);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    cursor: pointer;
+    background: none;
+    border: none;
+    transition: color 0.2s ease;
+}
+
+.alamat-action:hover {
+    color: var(--main-color);
+}
+
+.alamat-action-hapus {
+    color: #b3261e;
+}
+
+.alamat-action-hapus:hover {
+    color: #8f1d16;
+}
+
+.alamat-action-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    display: inline-block;
+    font-size: 15px;
+    line-height: 1;
+}
+
+.alamat-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.alamat-card-nama {
+    color: #000;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.alamat-card-telp,
+.alamat-card-detail {
+    color: var(--neutral-04-100);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+.alamat-card-region {
+    color: var(--neutral-04-100);
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+.alamat-empty {
+    width: 100%;
+    text-align: center;
+    color: var(--neutral-04-100);
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 24px 0;
+    border: 1px dashed var(--black-300);
+    border-radius: 8px;
+}
+
+/* ---------- 7. Tombol tambah alamat ---------- */
+.alamat-btn {
+    width: 180px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.2px;
+    text-align: center;
+    background: linear-gradient(180deg, #820805 0%, #ff5f5b 100%) top left / auto auto no-repeat;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.alamat-btn:hover {
+    filter: brightness(1.08);
+    box-shadow: 0 8px 20px rgba(130, 8, 5, 0.25);
+}
+
+.alamat-btn:active {
+    transform: scale(0.98);
+}
+
+/* ---------- 8. Modal tambah / edit alamat ---------- */
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(10, 20, 47, 0.45);
+    padding: 24px;
+}
+
+.modal[hidden] {
+    display: none;
+}
+
+.modal-box {
+    width: 100%;
+    max-width: 520px;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+    animation: modal-in 0.2s ease;
+}
+
+@keyframes modal-in {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: none; }
+}
+
+.modal-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.modal-title {
+    color: #000;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.modal-close {
+    color: var(--neutral-04-100);
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
+    background: none;
+    border: none;
+    transition: color 0.2s ease;
+}
+
+.modal-close:hover {
+    color: #000;
+}
+
+.input-group-row {
+    display: flex;
+    gap: 12px;
+}
+
+.input-group-row .input-group {
+    flex: 1;
+}
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.input-group label {
+    color: var(--neutral-04-100);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.input-group input,
+.input-group textarea {
+    width: 100%;
+    box-sizing: border-box;
+    color: #6c7275;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    background-color: #fff;
+    padding: 10px 14px;
+    border: 1px solid var(--black-300);
+    border-radius: 6px;
+    resize: vertical;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-group input::placeholder,
+.input-group textarea::placeholder {
+    color: #9aa0a6;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+    outline: none;
+    border-color: var(--main-color);
+    box-shadow: 0 0 0 3px rgba(130, 8, 5, 0.12);
+}
+
+.input-group .input-error {
+    border-color: #b3261e;
+    box-shadow: 0 0 0 3px rgba(179, 38, 30, 0.12);
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--neutral-04-100);
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    background-color: #fff;
+    padding: 12px 22px;
+    border: 1px solid var(--black-300);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-secondary:hover {
+    background-color: var(--neutral-02-100);
+}
+
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    background: linear-gradient(180deg, #820805 0%, #ff5f5b 100%) top left / auto auto no-repeat;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: filter 0.2s ease;
+}
+
+.btn-primary:hover {
+    filter: brightness(1.08);
+}
+
+/* ---------- 9. Footer ---------- */
 .footer1 {
-	margin: 192px -10px 0 -63px;
-	padding-top: 82px;
-	padding-bottom: 78px;
-}
-
-.footer1 .footer-row2 {
-	margin-left: -25px;
+    margin-top: 80px;
+    width: 100%;
 }
 
 .footer1 .col-left2 .column-001-facebook {
-	width: 9px; height: 18px;
+    width: 9px; height: 18px;
 }
 
 .footer1 .col-left2 .column-004-vimeo {
-	width: 20px; height: 20px;
+    width: 20px; height: 20px;
 }
 
 .footer1 .row-right2 .explore .column-col2 {
-	gap: 11px;
+    gap: 11px;
 }
 
 .footer1 .row-right2 .product .column-col2 {
-	gap: 10px;
+    gap: 10px;
 }
 
-
-
-/** breakpoints (margin / paddings) **/
-
-@media screen and (max-width: 1024px) {
-	.title1 {
-		margin-inline: 0;
-	}
-	.address {
-		padding-inline: 0;
-		margin-inline: 0;
-	}
-	.card-content-title {
-		margin-inline: 0;
-	}
+.footer-link:hover {
+    color: var(--main-color);
 }
 
+/* ---------- 10. Toast notifikasi ---------- */
+.toast {
+    position: fixed;
+    left: 50%;
+    bottom: 32px;
+    transform: translate(-50%, 20px);
+    z-index: 3000;
+    max-width: min(440px, calc(100vw - 32px));
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 18px;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #fff;
+    background-color: #1f2937;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
 
+.toast.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
 
-/* container queries (flex rows) */
+.toast.toast-success {
+    background: linear-gradient(180deg, #820805 0%, #ff5f5b 100%);
+}
 
-@container body (width < 846px) {
-	.row1 {
-		margin-left: 0;
-		flex-direction: column;
-		align-items: center;
-		gap: 58px;
-	}
-	.footer1 {
-		margin-left: 0; margin-right: 0;
-	}
-	.row1 > * {
-		margin-right: unset !important;
-		text-align: center;
-	}
-	.row1 > .address {
-		align-items: center;
-	}
-	.row1 > .address > * {
-		text-align: unset;
-	}
+.toast.toast-error {
+    background: #b3261e;
+}
+
+.toast-icon {
+    flex-shrink: 0;
+    font-size: 18px;
+    line-height: 1;
+}
+
+/* ---------- 11. Responsif ---------- */
+@container body (width < 1191px) {
+    .account-section {
+        flex-direction: column;
+        align-items: center;
+        gap: 60px;
+    }
+
+    .title1 {
+        width: 100%;
+        padding: 0 24px;
+    }
+
+    .alamat-section {
+        align-items: center;
+    }
+
+    .alamat-section > * {
+        text-align: unset;
+    }
+
+    .card-menu {
+        width: 100%;
+        max-width: 420px;
+    }
+
+    .card-menu .column-e,
+    .card-menu-col {
+        align-items: center;
+    }
+
+    .card-menu-col p {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .account-section {
+        padding: 0 16px;
+        gap: 48px;
+    }
+
+    .alamat-heading {
+        font-size: 22px;
+    }
+
+    .alamat-btn {
+        width: 100%;
+    }
+
+    .modal {
+        padding: 16px;
+    }
+
+    .modal-box {
+        padding: 20px;
+    }
 }

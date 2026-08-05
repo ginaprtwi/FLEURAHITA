@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,900;1,100;1,300;1,400;1,500;1,600;1,700;1,900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/pembeli/css/reset.css" />
+	<link rel="stylesheet" href="/pembeli/css/global.css" />
+	<link rel="stylesheet" href="/pembeli/css/profil1.css" />
+</head>
+
+<body>
+		<!-- Ruang untuk navbar pengganti -->
+	<div class="header-spacer" aria-hidden="true"></div>
+
+	<div class="title title1">Akun Saya</div>
+
+	<div class="account-section">
+		<div class="card-menu card-light">
+			<div class="column-e">
+				<img id="avatarSidebar" src="/pembeli/assets/auto-layout-horizontal/auto-layout-horizontal-3d-avatars.png" class="column-avatars-3d" alt="Avatar" />
+				<div id="namaSidebar" class="column-gibran-rakabuming body-1-semi">Gibran Rakabuming</div>
+			</div>
+
+			<div class="card-menu-col">
+					<p class="text-elements card-menu-text-elements1" data-nav="akun-saya">Akun Saya</p>
+					<p class="text-elements card-menu-text-elements2" data-nav="alamat">Alamat</p>
+					<p class="text-elements card-menu-text-elements3">Keranjang</p>
+					<p class="text-elements card-menu-text-elements4" data-nav="pesanan-saya">Histori Pesanan</p>
+					<p class="text-elements card-menu-text-elements5">Chat &amp; Ulasan</p>
+					<p class="text-elements card-menu-text-elements6">Keluar</p>
+				</div>
+		</div>
+
+		<form id="formAkun" class="account-section-detail" novalidate>
+			<div class="account-section-form">
+				<div class="account-section-details body-1-semi">Account Details</div>
+
+				<div class="input-group-name-a input-group-name3">
+					<p class="input-group-name-text1">Nama LENGKAP</p>
+					<input id="namaLengkap" class="input input-group-name-input1" type="text" placeholder="Masukkan nama lengkap" />
+				</div>
+
+				<div class="account-section-name">
+					<p class="account-section-text-top hairline">Nama pengguna</p>
+					<input id="namaPengguna" class="input account-section-input" type="text" placeholder="Masukkan nama pengguna" />
+					<p id="errorNamaPengguna" class="input-error-msg"></p>
+					<p>This will be how your name will be displayed in the account section and in reviews</p>
+				</div>
+
+				<div class="input-group-name-a input-group-name4">
+					<p class="input-group-name-text1">NO TELP*</p>
+					<input id="noTelp" class="input input-group-name-input1" type="tel" placeholder="Masukkan nomor telepon" />
+				</div>
+
+				<div class="input-group-name-a input-group-name5">
+					<p class="input-group-name-text1">Email *</p>
+					<input id="email" class="input input-group-name-input1" type="email" placeholder="Masukkan email" />
+					<p id="errorEmail" class="input-error-msg"></p>
+				</div>
+			</div>
+
+			<button id="btnSimpan" type="submit" class="btn-c account-section-btn-form hover-bright">Simpan</button>
+		</form>
+	</div>
+
+	<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+	<script src="/pembeli/js/data.js"></script>
+	<script src="/pembeli/js/akun-saya.js"></script>
+</body>
+</html>
