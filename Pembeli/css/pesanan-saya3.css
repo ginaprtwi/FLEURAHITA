@@ -5,12 +5,35 @@ body {
 
 
 
+/* checkout-content: wrapper 2 kolom (menggantikan posisi absolute) */
+
+.checkout-content {
+	display: grid;
+	grid-template-columns: minmax(0, 643px) minmax(0, 413px);
+	align-items: start;
+	justify-content: center;
+	gap: 40px;
+	max-width: 1200px;
+	margin: 40px auto 0 auto;
+	padding: 0 24px 80px;
+}
+
+.checkout-main {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	width: 100%;
+	min-width: 0;
+}
+/* end checkout-content*/
+
+
+
 /* elements-checkout-order */
 
 .elements-checkout-order {
-	position: absolute; top: 397px; right: 165px; 
-	width: calc(100% - 165px);
-	max-width: 413px;
+	width: 100%;
+	min-width: 0;
 	display: flex;
 	flex-direction: column;
 	gap: 16px;
@@ -270,29 +293,6 @@ body {
 	border-radius: 50%;
 }
 
-.footer1 {
-	position: absolute; top: 2077px; left: -73px; right: 0; 
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 7px;
-	padding-left: 24px;
-}
-
-.header1 {
-	margin-left: auto; margin-right: auto; margin-top: -2128px;
-	width: 90%;
-	max-width: 1440px;
-}
-
-.header1 .auto-layout-horizontal1 .auto-layout-horizontal-text {
-	color: #0d0d0d;
-}
-
-.header1 .auto-layout-horizontal1 .auto-layout-horizontal-text-pesanan-saya {
-	color: #820805;
-}
-
 .footer-cart {
 	margin-left: -13px;
 	gap: 40px;
@@ -365,46 +365,13 @@ body {
 	color: var(--grey);
 }
 
-.row1 {
-	margin: 1729px auto 0 auto;
-	width: 90%;
-	max-width: 1440px;
-	padding-top: 70px;
-	padding-bottom: 90px;
-}
-
-.row1 .col-left3 {
-	margin-left: -50px;
-}
-
-.row1 .col-left3 .column-col1 {
-	width: 100%;
-	max-width: 291px;
-}
-
-.row1 .col-left3 .column-001-facebook {
-	width: 9px; height: 18px;
-}
-
-.row1 .col-left3 .column-004-vimeo {
-	width: 20px; height: 20px;
-}
-
-.row1 .row-right3 .explore .column-col2 {
-	gap: 11px;
-}
-
-.row1 .row-right3 .product .column-col2 {
-	gap: 10px;
-}
-
 .elements-checkout-order1 .elements-order2 {
 	margin-top: 1px;
 }
 
 .card-form1 {
 	container: card-form1 / inline-size;
-	position: absolute; top: 399px; left: 184px; 
+	width: 100%;
 	max-width: 643px;
 	gap: 24px;
 }
@@ -471,7 +438,7 @@ body {
 }
 
 .card-form2 {
-	position: absolute; top: 1053px; left: 184px; 
+	width: 100%;
 	max-width: 643px;
 	gap: 24px;
 }
@@ -612,17 +579,15 @@ body {
 }
 
 .btn7 {
-	position: absolute; top: 1577px; left: 184px; 
+	width: 100%;
 	max-width: 643px;
 	text-align: center;
 	background-image: linear-gradient(180deg, #820805 0%, #ff5f5b 100%);
 }
 
 #footer-container {
-    position: absolute;
-    top: 1700px;   /* sesuaikan: di bawah btn7 + jarak aman */
-    left: 0;
     width: 100%;
+    margin-top: 60px;
 }
 
 /* Stepper status */
@@ -690,5 +655,17 @@ p.step-upcoming {
 	}
 	.state > .input-group-name2 {
 		width: 100%;
+	}
+}
+
+/* checkout-content: stack ke 1 kolom cuma di layar sempit */
+@media (max-width: 900px) {
+	.checkout-content {
+		grid-template-columns: 1fr;
+	}
+	.checkout-main,
+	.elements-checkout-order {
+		max-width: 643px;
+		margin: 0 auto;
 	}
 }

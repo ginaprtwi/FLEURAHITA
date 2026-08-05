@@ -58,7 +58,7 @@ ketik di terminal vscode
    ```
 
 4. **Setup Database**
-   Patiin udah ada databasenya di mysql
+   Pastiin udah ada databasenya di mysql
 
 5. **Start Server**
    ```bash

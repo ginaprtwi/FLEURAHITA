@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const PAGES = {
     'Beranda': 'beranda.html',
     'Produk': 'produk.html',
-    'Pesanan Saya': 'pesanan-saya4.html',
+    'Pesanan Saya': 'pilih_pengiriman.html',
   };
 
   // TODO: ganti kalau nama file halaman detail akun beda
