@@ -99,7 +99,8 @@ module.exports = (db) => {
                 if (results.length === 0) {
                     return res.status(401).json({
                         success: false,
-                        message: 'Email atau password salah'
+                        message: 'Email tidak terdaftar',
+                        errorField: 'email'
                     });
                 }
 
@@ -111,7 +112,8 @@ module.exports = (db) => {
                 if (!isPasswordValid) {
                     return res.status(401).json({
                         success: false,
-                        message: 'Email atau password salah'
+                        message: 'Password salah',
+                        errorField: 'password'
                     });
                 }
 

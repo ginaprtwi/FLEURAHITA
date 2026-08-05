@@ -8,6 +8,7 @@ const pengirimanRoutes = require('./routes/pengiriman');
 const pesananMasukRoutes = require('./routes/pesanan-masuk');
 const keuanganRoutes = require('./routes/keuangan');
 const authRoutes = require('./routes/authRoutes');
+const adminRoutes = require('./routes/adminRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -19,8 +20,12 @@ app.use(express.urlencoded({ extended: true }));
 
 
 // ==================== STATIC FILES ====================
-
 app.use(express.static(path.join(__dirname, '../Penjual/Pages')));
+app.use(express.static(path.join(__dirname, '../Auth')));
+app.use(express.static(path.join(__dirname, '../Pembeli/Pages')));
+
+// Serve uploaded files
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.use('/css', express.static(path.join(__dirname, '../Penjual/css')));
 app.use('/js', express.static(path.join(__dirname, '../Penjual/js')));
@@ -50,7 +55,7 @@ db.connect((err) => {
 // ==================== API ROUTES ====================
 
 app.use('/api/auth', authRoutes(db));
-
+app.use('/api/admin', adminRoutes(db));
 app.use('/api/pengiriman', pengirimanRoutes);
 app.use('/api/pesanan-masuk', pesananMasukRoutes);
 app.use('/api/keuangan', keuanganRoutes);
