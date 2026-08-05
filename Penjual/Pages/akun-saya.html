@@ -1,166 +1,106 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Playfair Display:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Plus Jakarta Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akun Saya - FLEURAHITA</title>
+    
+    <!-- CSS Links -->
     <link rel="stylesheet" href="../css/reset.css" />
     <link rel="stylesheet" href="../css/global.css" />
-    <link rel="stylesheet" href="../css/akun-saya.css" />
-
+    <link rel="stylesheet" href="../css/navbar.css" />
+    <link rel="stylesheet" href="../css/sidebar.css" />
+    <link rel="stylesheet" href="../css/akun-saya.css">
+    
+    <style>
+        /* Prevent FOUC - hide until loaded */
+        #sidebar-container:empty {
+            opacity: 0;
+        }
+        #sidebar-container {
+            transition: opacity 0.15s ease-in;
+        }
+        #navbar-container:empty {
+            opacity: 0;
+        }
+        #navbar-container {
+            transition: opacity 0.15s ease-in;
+        }
+    </style>
 </head>
 
-<body>
-    <div class="sidebar-menu card-light2">
-        <div class="menu menu1">
-            <button class="btn-light-a btn-light2 hover-dark">
-                <div class="icon-ly-light-outline-home icon-ly-light1">
-                    <img src="../assets/icon-ly-light-outline-home/icon-ly-light-outline-home-home.png" class="icon-ly-light-outline-home-home" />
-                </div>
-                
-                <p class="label">Beranda</p>
-            </button>
-            
-            <div class="row-d row3">
-                <object data="../assets/row/row-streamline.svg" class="row-iconly-light-outline-arrow-a row-vuesax-outline1" type="image/svg+xml"></object>
-                <p class="label">Produk Saya</p>
-            </div>
-            
-            <button class="btn-light-e btn-light3 hover-dark">
-                <div class="icon-ly-light-outline-document icon-ly-light5">
-                    <img src="../assets/icon-ly-light-outline-document/icon-ly-light-outline-document-img.png" class="icon-ly-light-outline-document-img" />
-                    <object data="../assets/icon-ly-light-outline-document/icon-ly-light-outline-document-fill.svg" class="icon-ly-light-outline-document-fill icon-ly-light-outline-document-fill1" type="image/svg+xml"></object>
-                    <object data="../assets/icon-ly-light-outline-document/icon-ly-light-outline-document-fill2.svg" class="icon-ly-light-outline-document-fill icon-ly-light-outline-document-fill2" type="image/svg+xml"></object>
-                    <object data="../assets/icon-ly-light-outline-document/icon-ly-light-outline-document-fill2.svg" class="icon-ly-light-outline-document-fill icon-ly-light-outline-document-fill3" type="image/svg+xml"></object>
-                </div>
-                
-                <p class="text-b">Pesanan Masuk</p>
-            </button>
-            
-            <div class="row-d row4">
-                <object data="../assets/row/row-mdi-light.svg" class="row-iconly-light-outline-arrow-a row-vuesax-outline1" type="image/svg+xml"></object>
-                <p class="label">Pengiriman</p>
-            </div>
-            
-            <button class="btn-light4 hover-dark">
-                <div class="icon-ly-light-outline-chat icon-ly-light6">
-                    <div class="icon-ly-light-outline-chat-chat">
-                        <object data="../assets/icon-ly-light-outline-chat-chat/icon-ly-light-outline-chat-fill.svg" class="icon-ly-light-outline-chat-fill" type="image/svg+xml"></object>
-                        <object data="../assets/icon-ly-light-outline-chat-chat/icon-ly-light-outline-chat-fill.svg" class="icon-ly-light-outline-chat-fill" type="image/svg+xml"></object>
-                        <object data="../assets/icon-ly-light-outline-chat-chat/icon-ly-light-outline-chat-fill.svg" class="icon-ly-light-outline-chat-fill" type="image/svg+xml"></object>
+<body style="display: flex;">
+    <!-- Sidebar Component -->
+    <div id="sidebar-container"></div>
+
+    <!-- Area Kanan (Navbar + Content) -->
+    <div style="flex-grow: 1; display: flex; flex-direction: column; width: 100%;">
+        <!-- Navbar Component -->
+        <div id="navbar-container"></div>
+        <div class="line-c line1" style="width: 100%; height: 1px; background-color: #eee; display: block;"></div>
+
+        <!-- Konten Utama -->
+        <main class="content-wrapper">
+            <h1 class="page-title">Akun Saya</h1>
+
+            <div class="container">
+                <!-- Main Edit Card -->
+                <div class="card main-card">
+                    <h2>Ubah Akun</h2>
+
+                    <div class="field-group">
+                        <label for="avatarInput">Unggah Avatar</label>
+                        <label class="avatar-upload" id="avatarUploadBox">
+                            <img id="avatarPreview" src="" alt="Avatar" style="display: none;">
+                            <div class="upload-placeholder" id="uploadPlaceholder">
+                                <img src="../assets/picture-icon.svg" class="icon" id="avatarIcon" alt="Upload">
+                                <span id="avatarText">Masukan Gambar</span>
+                            </div>
+                            <input type="file" id="avatarInput" accept="image/*">
+                        </label>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="namaPenjual">Nama Penjual</label>
+                        <input type="text" id="namaPenjual" placeholder="Masukkan nama">
+                    </div>
+
+                    <div class="field-group">
+                        <label for="nomorTelepon">Nomor Telepon</label>
+                        <input type="tel" id="nomorTelepon" placeholder="Masukkan nomor telepon">
+                    </div>
+
+                    <div class="field-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="Masukkan email" readonly>
+                    </div>
+
+                    <div class="btn-row">
+                        <button class="btn-simpan" id="simpanBtn">SIMPAN PERUBAHAN</button>
                     </div>
                 </div>
-                
-                <p class="text-b">Chat & Komplain</p>
-            </button>
-        </div>
-        
-        <div class="line-a"></div>
-        
-        <div class="sidebar-menu-col-bottom">
-            <div class="row-d row-top3">
-                <object data="../assets/row/row-ant-design.svg" class="row-iconly-light-outline-arrow-a row-vuesax-outline1" type="image/svg+xml"></object>
-                <p class="label">Profil Toko</p>
-            </div>
-            
-            <div class="row-b row5">
-                <object data="../assets/akun-saya/row/row-vuesax-outline.svg" class="row-vuesax-outline-user-octagon row-streamline" type="image/svg+xml"></object>
-                <p class="text-a">Akun Saya</p>
-            </div>
-            
-            <button class="btn-light-d btn-light5 hover-dark">
-                <div class="icon-ly-light-outline-wallet icon-ly-light4">
-                    <div class="icon-ly-light-outline-wallet-group">
-                        <object data="../assets/icon-ly-light-outline-wallet-group/icon-ly-light-outline-wallet-fill.svg" class="icon-ly-light-outline-wallet-fill1" type="image/svg+xml"></object>
-                        <object data="../assets/icon-ly-light-outline-wallet-group/icon-ly-light-outline-wallet-fill2.svg" class="icon-ly-light-outline-wallet-fill2" type="image/svg+xml"></object>
+
+                <!-- Side Profile Card -->
+                <div class="card side-card">
+                    <h3 id="sideNama">Loading...</h3>
+                    <div class="info-line" id="sidePhone">Loading...</div>
+                    <div class="info-line" id="sideEmail">Loading...</div>
+                    <div class="side-avatar" id="sideAvatarBox">
+                        <img id="sideAvatarPreview" src="" alt="Avatar" style="display: none;">
+                        <div class="side-placeholder" id="sidePlaceholder">
+                            <img src="../assets/picture-icon.svg" class="icon" alt="Avatar">
+                            <span>Masukan Gambar</span>
+                        </div>
                     </div>
-                    
-                    <img src="../assets/icon-ly-light-outline-wallet/icon-ly-light-outline-wallet-img.png" class="icon-ly-light-outline-wallet-img" />
-                    <object data="../assets/icon-ly-light-outline-wallet/icon-ly-light-outline-wallet-fill.svg" class="icon-ly-light-outline-wallet-fill3" type="image/svg+xml"></object>
                 </div>
-                
-                <p class="label">Keuangan</p>
-            </button>
-            
-            <div class="row-d row-bottom3">
-                <object data="../assets/row/row-iconly-light.svg" class="row-iconly-light-outline-arrow-a row-vuesax-outline1" type="image/svg+xml"></object>
-                <p class="label">Logout</p>
             </div>
-        </div>
+        </main>
     </div>
-    
-    <div class="col2">
-        <div class="row-top4">
-            <div class="column-g col-left">
-                <div class="circle-light-b column-circle"></div>
-                <img src="../assets/row-column/row-img.png" class="column-img3" />
-            </div>
-            
-            <div class="row-q row6">
-                <p class="row-text-fleurahita3 text2">FLEURAHITA</p>
-                
-                <div class="row-row-right3 card-light3">
-                    <p class="row-text-cari">Cari...</p>
-                    <object data="../assets/row-row/row-vuesax-outline.svg" class="vuesax-outline-search-b row-vuesax-outline5" type="image/svg+xml"></object>
-                </div>
-            </div>
-        </div>
-        
-        <div class="line-c line1"></div>
-        <h2 class="subtitle-akun-saya subtitle-main-color">Akun Saya</h2>
-        
-        <div class="content">
-            <div class="card-product card-white2">
-                <h2 class="card-product-subtitle header-heading-semibold-heading-6-semibold">Ubah Akun</h2>
-                
-                <div class="card-product-form">
-                    <p class="card-product-text text-text-bold-text-sm-bold">Unggah Avatar</p>
-                    
-                    <div class="column-h upload-foto">
-                        <object data="../assets/column/column-img2.svg" class="column-image column-img4" type="image/svg+xml"></object>
-                        <p class="column-text4">Masukan Gambar</p>
-                    </div>
-                    
-                    <div class="input-group-field-a input-group-field1">
-                        <p class="input-group-field-text">Nama Penjual</p>
-                        <input class="input-group-field-form1 input" value="Fawnia Azalia Sekar Parahita" />
-                    </div>
-                    
-                    <div class="input-group-field-a input-group-field2">
-                        <p class="input-group-field-text">Nomor Telepon</p>
-                        <input class="input-group-field-form1 input" value="08956789000" />
-                    </div>
-                </div>
-                
-                <div class="input-group-field-a input-group-field3">
-                    <p class="input-group-field-text">Email</p>
-                    <input class="input-group-field-form1 input" value="fleurahita@gmail.com" />
-                </div>
-                
-                <div class="input-group-field-a input-group-field4">
-                    <p class="input-group-field-text">Alamat</p>
-                    <input class="input-group-field-form1 input" value="Jalan Dago No.20" />
-                </div>
-                
-                <button class="card-product-btn text-text-bold-text-sm-bold btn2 hover-bright">SIMPAN PERUBAHAN</button>
-            </div>
-            
-            <div class="card-img-upload card-white2">
-                <div class="card-img-upload-title">
-                    <h2 class="card-img-upload-subtitle header-heading-semibold-heading-6-semibold">Fawnia Azalia Sekar Parahita</h2>
-                    <p class="text-h">
-                        08956789000 | fleurahita@gmail.com<br />
-                        Jalan Dago No.20
-                    </p>
-                </div>
-                
-                <div class="column-h list-photo">
-                    <object data="../assets/column/column-img2.svg" class="column-image column-img4" type="image/svg+xml"></object>
-                    <p class="column-text4">Avatar</p>
-                </div>
-            </div>
-        </div>
-    </div>
+
+    <!-- Script Component Loader -->
+    <script src="../js/components.js"></script>
+    <script src="../js/akun-saya.js"></script>
 </body>
 
 </html>

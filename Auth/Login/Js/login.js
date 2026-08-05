@@ -1,5 +1,4 @@
-
-const API_BASE_URL = 'http://localhost:3000/api'; // Ganti dengan URL backend Anda
+const API_BASE_URL = 'http://localhost:3001/api'; // Ganti dengan URL backend Anda
 const ADMIN_EMAIL = 'admin@fleurahita.com'; // Email admin (hardcoded)
 const loginForm = document.getElementById('loginForm');
 const submitBtn = loginForm.querySelector('.submit-btn');
@@ -31,12 +30,49 @@ function validateEmail(email) {
     return emailRegex.test(email);
 }
 
-function showError(message) {
-    alert(message);
+function clearErrors() {
+    // Clear all error messages
+    document.querySelectorAll('.error-message').forEach(el => {
+        el.textContent = '';
+    });
+    // Remove error styling from inputs
+    document.querySelectorAll('.input-error').forEach(el => {
+        el.classList.remove('input-error');
+    });
+}
+
+function showError(message, fieldId = null) {
+    clearErrors();
+    
+    if (fieldId) {
+        // Show error for specific field
+        const errorElement = document.getElementById(fieldId + 'Error');
+        const inputElement = document.getElementById(fieldId);
+        
+        if (errorElement) {
+            errorElement.textContent = message;
+        }
+        if (inputElement) {
+            inputElement.classList.add('input-error');
+        }
+    } else {
+        // Show general error
+        const generalError = document.getElementById('generalError');
+        if (generalError) {
+            generalError.textContent = message;
+        }
+    }
 }
 
 function showSuccess(message) {
-    alert(message);
+    clearErrors();
+    const generalError = document.getElementById('generalError');
+    if (generalError) {
+        generalError.textContent = message;
+        generalError.style.color = '#28a745';
+        generalError.style.background = '#f0fff4';
+        generalError.style.borderColor = '#c3e6cb';
+    }
 }
 
 async function loginUser(email, password) {
@@ -52,7 +88,11 @@ async function loginUser(email, password) {
         const data = await response.json();
 
         if (!response.ok) {
-            throw new Error(data.message || 'Login gagal');
+            return {
+                success: false,
+                error: data.message || 'Login gagal',
+                errorField: data.errorField || null
+            };
         }
 
         return {
@@ -63,7 +103,8 @@ async function loginUser(email, password) {
         console.error('Login error:', error);
         return {
             success: false,
-            error: error.message
+            error: 'Tidak dapat terhubung ke server',
+            errorField: null
         };
     }
 }
@@ -80,13 +121,18 @@ loginForm.addEventListener('submit', async function(e) {
         const password = document.getElementById('password').value;
         const rememberMe = document.getElementById('rememberMe').checked;
         
-        if (!email || !password) {
-            showError('Email dan password harus diisi!');
+        if (!email) {
+            showError('Email harus diisi!', 'email');
+            return;
+        }
+        
+        if (!password) {
+            showError('Password harus diisi!', 'password');
             return;
         }
         
         if (!validateEmail(email)) {
-            showError('Format email tidak valid!');
+            showError('Format email tidak valid!', 'email');
             return;
         }
         
@@ -101,15 +147,18 @@ loginForm.addEventListener('submit', async function(e) {
             // Redirect based on admin email (hardcoded)
             setTimeout(() => {
                 if (email === ADMIN_EMAIL) {
-                    // Admin redirect ke dashboard Penjual
-                    window.location.href = '../../Penjual/Pages/beranda-fix.html';
+                    window.location.href = "/beranda-fix.html";
                 } else {
-                    // Pembeli redirect ke dashboard Pembeli
-                    window.location.href = '../../Pembeli/Pages/beranda.html';
+                    window.location.href = "../../Pembeli/Pages/beranda.html";
                 }
             }, 1000);
         } else {
-            showError(result.error || 'Email atau password salah.');
+            // Show error on specific field if provided by backend
+            if (result.errorField) {
+                showError(result.error, result.errorField);
+            } else {
+                showError(result.error || 'Email atau password salah.');
+            }
         }
         
     } catch (error) {
