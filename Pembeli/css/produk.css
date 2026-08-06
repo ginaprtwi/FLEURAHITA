@@ -681,6 +681,13 @@ body {
 	left: 154px;
 }
 
+	font-family: 'Poppins';
+	font-weight: 700;
+	background: linear-gradient(180deg, #820805 0%, #ff5f5b 100%) top left / auto auto no-repeat;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
 .elements-filter2 {
 	margin-left: 55px;
 	margin-top: 32px;
@@ -904,6 +911,8 @@ body {
 	height: 13px;
 	flex-shrink: 0;
 }
+/* end iconly-light-outline-calling*/
+
 
 .iconly-light-outline-home-home {
 	position: absolute;
