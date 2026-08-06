@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Pesanan Masuk - FLEURAHITA</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/navbar.css" />
+    <link rel="stylesheet" href="../css/sidebar.css" />
+    <link rel="stylesheet" href="../css/pesanan-masuk.css" />
+</head>
+
+<body style="display: flex;">
+
+    <!-- 1. Container Sidebar (Modular) -->
+    <div id="sidebar-container"></div>
+
+    <!-- Area Kanan (Navbar + Content) -->
+    <div style="flex-grow: 1; display: flex; flex-direction: column; width: 100%;">
+
+        <!-- 2. Container Navbar -->
+        <div id="navbar-container"></div>
+        <div class="line-b line1"></div>
+
+        <!-- 3. Konten Utama -->
+        <main class="col2">
+            
+            <h2 class="subtitle-pesanan-masuk subtitle-main-color">Pesanan Masuk</h2>
+            
+            <!-- Filter & Search Bar -->
+            <div class="row8">
+                <!-- Search Bar (Ukuran disamakan seperti halaman Pengiriman) -->
+                <div class="cari-pesanan-box">
+                    <input type="text" placeholder="Cari Pesanan..." />
+                    <button type="submit" style="background: none; border: none; padding: 0; cursor: pointer; display: flex; align-items: center;">
+                        <img src="../assets/pesanan-masuk/vuesax-outline-search.svg" class="icon-search-svg" alt="Cari" />
+                    </button>
+                </div>
+                
+                <!-- Filter Status & Urutan -->
+                <div class="row-i row-right btn-status" style="position: relative;">
+                    <!-- Icon Sebelah Kiri: Tombol Urutan Nama Pembeli (Ascending / Descending / Normal) -->
+                    <div class="btn-sort" title="Urutkan Nama Pembeli (Normal)" style="cursor: pointer; display: flex; align-items: center; gap: 4px;">
+                        <div class="iconly-light-outline-filter iconly-light">
+                            <img src="../assets/iconly-light-outline-filter/iconly-light-outline-filter-filter.png" class="iconly-light-outline-filter-filter" alt="Filter Sort" />
+                        </div>
+                        <span class="sort-indicator" style="font-size: 11px; font-weight: bold; line-height: 1;"></span>
+                    </div>
+                    
+                    <!-- Dropdown Trigger (Teks Status + Arrow) -->
+                    <div class="dropdown-trigger" style="display: flex; align-items: center; gap: 8px; cursor: pointer; flex-grow: 1;">
+                        <p class="row-text8" style="margin: 0;">Semua Status</p>
+                        <object data="../assets/row/row-iconly-light-338.svg" class="row-iconly-light-outline-arrow-b row-iconly-light" type="image/svg+xml" style="pointer-events: none;"></object>
+                    </div>
+
+                    <!-- Dropdown Menu Opsi Status -->
+                    <div class="status-dropdown-menu">
+                        <div class="status-option active" data-status="Semua Status" style="padding: 10px 16px; color: #333; cursor: pointer; font-size: 14px; font-weight: 500;">Semua Status</div>
+                        <div class="status-option" data-status="Lunas" style="padding: 10px 16px; color: #333; cursor: pointer; font-size: 14px; font-weight: 500;">Lunas</div>
+                        <div class="status-option" data-status="Belum Lunas" style="padding: 10px 16px; color: #333; cursor: pointer; font-size: 14px; font-weight: 500;">Belum Lunas</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card Container Tabel Data -->
+            <div class="col3">
+                
+                <!-- Wrapper Tabel Responsif (Header & Body scroll bersama sebagai 1 kesatuan) -->
+                <div class="table-responsive-wrapper">
+                    <!-- Header Tabel (Status DULU, baru Aksi) -->
+                    <div class="table-header">
+                        <div>Produk</div>
+                        <div>Nama Pembeli</div>
+                        <div>Total</div>
+                        <div>Status</div>
+                        <div>Aksi</div>
+                    </div>
+                    
+                    <!-- Body Tabel (Baris Data) -->
+                    <div id="table-body">
+                    </div>
+                </div>
+
+                <!-- Control Pagination (Single Horizontal Line) -->
+                <div class="table-pagination" id="pagination-container">
+                    <!-- Kiri: Info Results -->
+                    <div class="pagination-results-text">
+                        Results: <span id="page-start">0</span> - <span id="page-end">0</span> of <span id="total-count">0</span>
+                    </div>
+
+                    <!-- Kanan: Tombol Navigasi Angka + Dropdown Per Page -->
+                    <div class="pagination-right-controls">
+                        <div class="pagination-buttons-row">
+                            <button class="btn-page-nav" id="btn-prev" aria-label="Previous Page">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                            </button>
+                            <div class="page-numbers" id="page-numbers"></div>
+                            <button class="btn-page-nav" id="btn-next" aria-label="Next Page">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </button>
+                        </div>
+                        <div class="per-page-selector">
+                            <select id="items-per-page-select" class="per-page-select">
+                                <option value="8" selected>8</option>
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+
+    <!-- MODAL POPUP DETAIL PESANAN -->
+    <div id="modal-detail-pesanan" class="modal-overlay" style="display: none;">
+        <div class="modal-container">
+            <!-- Header Modal -->
+            <div class="modal-header">
+                <div class="modal-title-wrapper">
+                    <h3 class="modal-title">Detail Pesanan</h3>
+                    <span id="modal-kode-order" class="modal-order-code">ORD...</span>
+                </div>
+                <button class="modal-close-btn" onclick="closeDetailModal()">&times;</button>
+            </div>
+
+            <!-- Body Modal -->
+            <div class="modal-body">
+                <!-- Section Info Ringkasan -->
+                <div class="modal-section-grid">
+                    <div class="modal-info-box">
+                        <span class="info-label">Nama Pemesan</span>
+                        <span class="info-value" id="modal-customer-name">-</span>
+                    </div>
+                    <div class="modal-info-box">
+                        <span class="info-label">Tanggal Pesan</span>
+                        <span class="info-value" id="modal-tanggal-pesan">-</span>
+                    </div>
+                    <div class="modal-info-box">
+                        <span class="info-label">Metode Pembayaran</span>
+                        <span class="info-value" id="modal-metode-bayar">-</span>
+                    </div>
+                    <div class="modal-info-box">
+                        <span class="info-label">Metode Pengiriman</span>
+                        <span class="info-value" id="modal-metode-kirim">-</span>
+                    </div>
+                </div>
+
+                <!-- Section Alamat Penerima -->
+                <div class="modal-address-card">
+                    <div class="address-header">
+                        <span class="address-icon">📍</span>
+                        <strong>Alamat Pengiriman</strong>
+                    </div>
+                    <div class="address-details">
+                        <p id="modal-penerima-name" style="margin: 0; font-weight: 600; color: #111827;"></p>
+                        <p id="modal-penerima-phone" style="margin: 2px 0 6px 0; color: #6b7280; font-size: 13px;"></p>
+                        <p id="modal-alamat-lengkap" style="margin: 0; color: #374151; font-size: 13px; line-height: 1.5;"></p>
+                    </div>
+                </div>
+
+                <!-- Section Daftar Produk -->
+                <div class="modal-items-section">
+                    <h4 class="items-title">Produk Dipesan</h4>
+                    <div id="modal-items-list" class="modal-items-list">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+                </div>
+
+                <!-- Total Ringkasan -->
+                <div class="modal-summary-row">
+                    <span>Total Pembayaran:</span>
+                    <strong id="modal-total-bayar">Rp. 0</strong>
+                </div>
+            </div>
+
+            <!-- Footer Modal -->
+            <div class="modal-footer">
+                <button class="btn-modal-close" onclick="closeDetailModal()">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL POPUP PERINGATAN KONFIRMASI -->
+    <div id="modal-confirm-warning" class="modal-overlay" style="display: none;">
+        <div class="modal-warning-container">
+            <div class="warning-icon-wrapper">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                    <line x1="12" y1="9" x2="12" y2="13"></line>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+            </div>
+            <h3 id="warning-modal-title" class="warning-title">Konfirmasi Tindakan</h3>
+            <p id="warning-modal-message" class="warning-message">Apakah Anda yakin ingin melanjutkan tindakan ini?</p>
+            
+            <div class="warning-actions">
+                <button class="btn-warning-cancel" onclick="closeWarningModal()">Batal</button>
+                <button id="btn-warning-confirm" class="btn-warning-ok">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Component Loader -->
+    <script src="../js/components.js"></script>
+    <script src="../js/pesanan-masuk.js"></script>
+</body>
+</html>

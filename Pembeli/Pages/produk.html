@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=DM Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Inter:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Playfair Display:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../css/reset.css" />
+	<link rel="stylesheet" href="../css/global.css" />
+	<link rel="stylesheet" href="../components/css/navbar.css" />
+	<link rel="stylesheet" href="../components/css/footer.css" />
+	<link rel="stylesheet" href="../css/produk.css" />
+	<style>
+		.cart-badge {
+			pointer-events: none;
+		}
+		.icons-check-line {
+			display: block !important;
+			cursor: pointer;
+			z-index: 10;
+			transition: transform 0.2s ease;
+		}
+		.icons-check-line:hover {
+			transform: scale(1.18);
+		}
+
+		/* Product Page Layout & Card Styling matching user reference file */
+		.row1 {
+			display: flex !important;
+			align-items: flex-start !important;
+			gap: 30px !important;
+			width: 100% !important;
+			max-width: 1200px !important;
+			margin: 16px auto 0 auto !important;
+			padding: 0 16px !important;
+		}
+
+		/* Checkbox & Sidebar Styling matching user reference screenshot */
+		.col-left {
+			width: 220px !important;
+			flex-shrink: 0 !important;
+			margin: 0 !important;
+			padding: 0 !important;
+			display: flex !important;
+			flex-direction: column !important;
+			gap: 0 !important;
+		}
+
+		.elements-filter-section-title {
+			font-size: 16px !important;
+			font-weight: 700 !important;
+			color: #820805 !important;
+			font-family: 'Inter', sans-serif !important;
+			margin: 0 0 12px 0 !important;
+			padding: 0 !important;
+			background: none !important;
+			-webkit-text-fill-color: initial !important;
+		}
+
+		.elements-filter1 {
+			margin: 0 0 16px 0 !important;
+		}
+
+		.elements-filter2 {
+			margin: 20px 0 10px 0 !important;
+		}
+
+		.row2 {
+			margin: 0 0 10px 0 !important;
+			display: flex !important;
+			align-items: flex-start !important;
+			gap: 16px !important;
+			padding: 0 !important;
+		}
+
+		.links {
+			margin: 0 !important;
+			display: flex !important;
+			flex-direction: column !important;
+			gap: 10px !important;
+			flex: 1 !important;
+		}
+
+		.links p {
+			font-size: 13px !important;
+			font-family: 'Inter', sans-serif !important;
+			margin: 0 !important;
+			padding: 0 !important;
+			color: #666666;
+		}
+
+		.links-text-btn1 {
+			color: #820805 !important;
+			font-weight: 700 !important;
+			border-bottom: 2px solid #820805 !important;
+			padding-bottom: 2px !important;
+			width: fit-content !important;
+		}
+
+		.links-text-btn2 {
+			color: #6c7275 !important;
+			font-weight: 400 !important;
+			border-bottom: none !important;
+			padding-bottom: 0 !important;
+		}
+
+		.scrollbar {
+			margin: 0 !important;
+			width: 8px !important;
+			height: 180px !important;
+			background: #eeeeee !important;
+			border-radius: 100px !important;
+			padding: 0 !important;
+		}
+
+		.scrollbar-line {
+			width: 8px !important;
+			height: 100px !important;
+			background: #666666 !important;
+			border-radius: 28px !important;
+			margin: 0 !important;
+			border: none !important;
+		}
+
+		.price-filter-group {
+			margin: 0 !important;
+			padding: 0 !important;
+			display: flex !important;
+			flex-direction: column !important;
+			gap: 10px !important;
+			width: 210px !important;
+		}
+
+		.checkbox-a, .checkbox-b {
+			cursor: pointer !important;
+			display: flex !important;
+			align-items: center !important;
+			justify-content: space-between !important;
+			width: 210px !important;
+			margin: 0 !important;
+			padding: 2px 0 !important;
+		}
+
+		.checkbox-ratio-btn1, .checkbox-ratio-btn2 {
+			width: 20px !important;
+			height: 20px !important;
+			border-radius: 5px !important;
+			cursor: pointer !important;
+			box-sizing: border-box !important;
+			flex-shrink: 0 !important;
+			margin: 0 !important;
+			transition: all 0.2s ease !important;
+		}
+
+		.checkbox-text1, .checkbox-text2 {
+			font-size: 13px !important;
+			font-family: 'Inter', sans-serif !important;
+			cursor: pointer !important;
+			margin: 0 !important;
+			font-weight: 600 !important;
+			color: #6c7275 !important;
+		}
+
+		/* Product Grid Card Styling */
+		.row3 {
+			flex: 1 !important;
+			display: flex !important;
+			flex-wrap: wrap !important;
+			gap: 20px !important;
+			margin: 0 !important;
+			padding: 0 !important;
+		}
+
+		.card1, .card2, .card3, .card4, .card-white {
+			width: 175px !important;
+			height: 260px !important;
+			background: #fafafa !important;
+			border-radius: 16px !important;
+			padding: 12px 10px 12px 10px !important;
+			position: relative !important;
+			display: flex !important;
+			flex-direction: column !important;
+			align-items: center !important;
+			justify-content: flex-start !important;
+			gap: 0 !important;
+			box-sizing: border-box !important;
+			border: 1px solid #eaeaea !important;
+			box-shadow: 0 2px 8px rgba(0,0,0,0.02) !important;
+			transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+		}
+
+		.card1:hover, .card2:hover, .card3:hover, .card4:hover, .card-white:hover {
+			transform: translateY(-3px) !important;
+			box-shadow: 0 6px 16px rgba(130,8,5,0.08) !important;
+		}
+
+		.card1 img.img, .card2 img.img, .card3 img.img, .card4 img.img, .card-white img.img {
+			width: 85% !important;
+			height: 135px !important;
+			object-fit: contain !important;
+			border-radius: 8px !important;
+			margin: 4px auto 0 auto !important;
+			display: block !important;
+			flex-shrink: 0 !important;
+		}
+
+		.icons-check-line, .card-iconly1, .card-iconly2, .card-iconly3, .card-iconly4 {
+			position: absolute !important;
+			top: 10px !important;
+			right: 10px !important;
+			left: auto !important;
+			bottom: auto !important;
+			width: 18px !important;
+			height: 18px !important;
+			cursor: pointer !important;
+			z-index: 10 !important;
+		}
+
+		.card-row-bottom1, .card-row-bottom2, .column-a, .col1, .col2, .col3, .col4, .card-col {
+			position: static !important;
+			width: 100% !important;
+			min-height: unset !important;
+			display: flex !important;
+			flex-direction: column !important;
+			align-items: center !important;
+			justify-content: flex-start !important;
+			margin: 24px 0 0 0 !important;
+			padding: 0 !important;
+		}
+
+		.column-text1, .card-text1 {
+			font-size: 11px !important;
+			font-weight: 700 !important;
+			color: #820805 !important;
+			font-family: 'Poppins', sans-serif !important;
+			text-align: center !important;
+			margin: 0 0 2px 0 !important;
+			line-height: 1.2 !important;
+			background: none !important;
+			-webkit-text-fill-color: initial !important;
+		}
+
+		.text {
+			font-size: 10px !important;
+			color: #555555 !important;
+			font-family: 'Inter', sans-serif !important;
+			font-weight: 500 !important;
+			text-align: center !important;
+			margin: 0 !important;
+		}
+
+		/* Sembunyikan elemen graphic redundant yang mengganggu flex layout */
+		.card-graphic1, .card-graphic2, .graphic {
+			display: none !important;
+		}
+
+		.rect, .card-rect1, .card-rect2, .card-rect3, .card-rect4 {
+			position: absolute !important;
+			bottom: 10px !important;
+			right: 10px !important;
+			left: auto !important;
+			top: auto !important;
+			width: 22px !important;
+			height: 22px !important;
+			border-radius: 50% !important;
+			background: linear-gradient(180deg, #820805 0%, #ff5f5b 100%) !important;
+			color: #ffffff !important;
+			display: flex !important;
+			align-items: center !important;
+			justify-content: center !important;
+			font-size: 13px !important;
+			font-weight: bold !important;
+			border: none !important;
+			cursor: pointer !important;
+			box-shadow: 0 2px 6px rgba(130,8,5,0.3) !important;
+			z-index: 10 !important;
+		}
+
+		.rect::after, .card-rect1::after, .card-rect2::after, .card-rect3::after, .card-rect4::after {
+			content: '+' !important;
+			color: #ffffff !important;
+			font-size: 13px !important;
+			font-weight: bold !important;
+			line-height: 1 !important;
+		}
+		/* Kartu yang tidak lolos filter disembunyikan (override display:flex !important) */
+		.filter-hidden {
+			display: none !important;
+		}
+	</style>
+
+</head>
+
+<body>
+	<!-- Include Component Navbar -->
+	<div id="navbar-container"></div>
+	<script src="../components/js/navbar-loader.js"></script>
+	
+	<div class="pencarian">
+		<input type="text" id="search-input" placeholder="Cari Produk..." autocomplete="off" aria-label="Cari Produk">
+		<button type="button" id="search-button" aria-label="Cari">
+			<img src="../assets/pencarian-vuesax-outline.svg" class="pencarian-vuesax-outline-search" alt="Search icon">
+		</button>
+	</div>
+	
+	<div class="daftar-produk headline">Daftar Produk</div>
+	
+	<div class="header2">
+		<object data="../assets/produk/header-huge.svg" class="header-huge" type="image/svg+xml"></object>
+		<div class="header-filter body-1-semi">Filter</div>
+	</div>
+	
+	<div class="row1">
+		<div class="col-left">
+			<div class="elements-filter-section-title elements-filter1">Kategori</div>
+			
+			<div class="row2">
+				<div class="links">
+					<p class="links-text-btn1 caption-1-semi">Semua Kategori</p>
+					<p class="links-text-btn2 caption-1-semi">Personal Gifts</p>
+					<p class="links-text-btn3 caption-1-semi">Wedding Flower</p>
+					<p class="links-text-btn4 caption-1-semi">Graduation</p>
+					<p class="links-text-btn5 caption-1-semi">Birthday Party</p>
+					<p class="links-text-btn6 caption-1-semi">Parents</p>
+					<p class="links-text-btn7 caption-1-semi">Children</p>
+				</div>
+			</div>
+
+			<div class="price-filter-group" style="display: flex; flex-direction: column; gap: 8px; margin-top: 16px; width: 100%;">
+				<div class="elements-filter-section-title elements-filter2" style="margin-bottom: 6px;">Harga</div>
+				
+				<div class="checkbox-a checkbox1">
+					<p class="checkbox-text1">All Price</p>
+					<div class="checkbox-ratio-btn1"></div>
+				</div>
+				
+				<div class="checkbox-b checkbox2">
+					<p class="checkbox-text2 caption-1-semi">Rp50.000 - Rp99.999</p>
+					<div class="checkbox-ratio-btn2"></div>
+				</div>
+				
+				<div class="checkbox-a checkbox3">
+					<p class="checkbox-text1">Rp100.000 - Rp199.999</p>
+					<div class="checkbox-ratio-btn1"></div>
+				</div>
+				
+				<div class="checkbox-a checkbox4">
+					<p class="checkbox-text1">Rp200.000 - Rp299.999</p>
+					<div class="checkbox-ratio-btn1"></div>
+				</div>
+				
+				<div class="checkbox-a checkbox5">
+					<p class="checkbox-text1">Rp300.000 - 499.999</p>
+					<div class="checkbox-ratio-btn1"></div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row3">
+			<div class="card1 card-white" data-category="Personal Gifts, Parents" data-price="135000">
+				<object data="../assets/card/card-iconly.svg" class="icons-check-line card-iconly1" type="image/svg+xml"></object>
+				<img src="../assets/card/card-img.png" class="img" />
+				
+				<div class="column-a col1">
+					<p class="column-text1">Lush and Plush </p>
+					<p class="text">135.000 </p>
+				</div>
+				
+				<div class="rect card-rect1"></div>
+				<object data="../assets/card-graphic.svg" class="card-graphic1" type="image/svg+xml"></object>
+			</div>
+			
+			<div class="card2 card-white" data-category="Wedding Flower, Birthday Party" data-price="60000">
+				<object data="../assets/card/card-iconly.svg" class="icons-check-line card-iconly2" type="image/svg+xml"></object>
+				<img src="../assets/card/card-img2.png" class="img" />
+				
+				<div class="column-a col2">
+					<p class="column-text1">Charmé Bouquet</p>
+					<p class="text">60.000</p>
+				</div>
+				
+				<div class="rect card-rect2"></div>
+				<object data="../assets/card-graphic.svg" class="card-graphic2" type="image/svg+xml"></object>
+			</div>
+			
+			<div class="card3 card-white" data-category="Graduation, Parents" data-price="250000">
+				<div class="rect card-rect3"></div>
+				<object data="../assets/card/card-iconly.svg" class="icons-check-line card-iconly3" type="image/svg+xml"></object>
+				<img src="../assets/card/card-img3.png" class="img" />
+				
+				<div class="column-a col3">
+					<p class="column-text1">Sweet Aurora Bloom</p>
+					<p class="text">250.000</p>
+				</div>
+				
+				<object data="../assets/card-graphic.svg" class="graphic" type="image/svg+xml"></object>
+			</div>
+			
+			<div class="card4 card-white" data-category="Personal Gifts, Birthday Party, Children" data-price="135000">
+				<div class="rect card-rect4"></div>
+				<object data="../assets/card/card-iconly.svg" class="icons-check-line card-iconly4" type="image/svg+xml"></object>
+				<img src="../assets/card/card-img4.png" class="img" />
+				
+				<div class="column-a col4">
+					<p class="column-text1">
+						Lush and Plush<span class="sub-text"> (medium)</span>
+					</p>
+					<p class="text">135.000 </p>
+				</div>
+				
+				<object data="../assets/card-graphic.svg" class="graphic" type="image/svg+xml"></object>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Include Footer Component -->
+	<div id="footer-container"></div>
+	<script src="../components/js/footer-loader.js"></script>
+	<script src="../js/script.js"></script>
+</body>
+</html>
