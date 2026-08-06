@@ -1,290 +1,225 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Playfair Display:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Plus Jakarta Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beranda Penjual - FLEURAHITA</title>
+    
+    <!-- CSS Links -->
     <link rel="stylesheet" href="../css/reset.css" />
     <link rel="stylesheet" href="../css/global.css" />
-    <link rel="stylesheet" href="../css/beranda-fix.css" />
-
+    <link rel="stylesheet" href="../css/navbar.css" />
+    <link rel="stylesheet" href="../css/sidebar.css" />
+    <link rel="stylesheet" href="../css/beranda-fix.css">
+    
+    <style>
+        /* Prevent FOUC - hide until loaded */
+        #sidebar-container:empty {
+            opacity: 0;
+        }
+        #sidebar-container {
+            transition: opacity 0.15s ease-in;
+        }
+        #navbar-container:empty {
+            opacity: 0;
+        }
+        #navbar-container {
+            transition: opacity 0.15s ease-in;
+        }
+    </style>
 </head>
 
-<body>
-    <div class="sidebar-menu card-light2">
-        <div class="sidebar-menu-menu">
-            <button class="btn-top btn1 hover-bright">
-                <div class="icon-ly-light-outline-home icon-ly-light7">
-                    <img src="../assets/beranda-fix/icon-ly-light-outline-home/icon-ly-light-outline-home-home.png" class="icon-ly-light-outline-home-home" />
-                </div>
-                
-                <p class="text-a">Beranda</p>
-            </button>
-            
-            <div class="row-d row5">
-                <object data="../assets/row/row-streamline.svg" class="row-iconly-light-outline-arrow-a row-vuesax-outline1" type="image/svg+xml"></object>
-                <p class="label">Produk Saya</p>
-            </div>
-            
-            <button class="btn-light-b btn-light5 hover-dark">
-                <div class="icon-ly-light-outline-document icon-ly-light2">
-                    <img src="../assets/icon-ly-light-outline-document/icon-ly-light-outline-document-img.png" class="icon-ly-light-outline-document-img" />
-                    <object data="../assets/icon-ly-light-outline-document/icon-ly-light-outline-document-fill.svg" class="icon-ly-light-outline-document-fill icon-ly-light-outline-document-fill1" type="image/svg+xml"></object>
-                    <object data="../assets/icon-ly-light-outline-document/icon-ly-light-outline-document-fill2.svg" class="icon-ly-light-outline-document-fill icon-ly-light-outline-document-fill2" type="image/svg+xml"></object>
-                    <object data="../assets/icon-ly-light-outline-document/icon-ly-light-outline-document-fill2.svg" class="icon-ly-light-outline-document-fill icon-ly-light-outline-document-fill3" type="image/svg+xml"></object>
-                </div>
-                
-                <p class="label">Pesanan Saya</p>
-            </button>
-            
-            <div class="row-c row6">
-                <object data="../assets/row/row-mdi-light.svg" class="row-ant-design-form-outlined row-mdi-light" type="image/svg+xml"></object>
-                <p class="text-b">Pengiriman</p>
-            </div>
-            
-            <button class="btn-light-c btn-light6 hover-dark">
-                <div class="icon-ly-light-outline-chat icon-ly-light3">
-                    <div class="icon-ly-light-outline-chat-chat">
-                        <object data="../assets/icon-ly-light-outline-chat-chat/icon-ly-light-outline-chat-fill.svg" class="icon-ly-light-outline-chat-fill" type="image/svg+xml"></object>
-                        <object data="../assets/icon-ly-light-outline-chat-chat/icon-ly-light-outline-chat-fill.svg" class="icon-ly-light-outline-chat-fill" type="image/svg+xml"></object>
-                        <object data="../assets/icon-ly-light-outline-chat-chat/icon-ly-light-outline-chat-fill.svg" class="icon-ly-light-outline-chat-fill" type="image/svg+xml"></object>
+<body style="display: flex;">
+    <!-- Sidebar Component -->
+    <div id="sidebar-container"></div>
+
+    <!-- Area Kanan (Navbar + Content) -->
+    <div style="flex-grow: 1; display: flex; flex-direction: column; width: 100%;">
+        <!-- Navbar Component -->
+        <div id="navbar-container"></div>
+        <div class="line-c line1" style="width: 100%; height: 1px; background-color: #eee; display: block;"></div>
+
+        <!-- Konten Utama -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="page-header">
+                <h1>Hi, Aila!</h1>
+            </header>
+
+            <!-- Stats Cards -->
+            <section class="stats-section">
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: #FEF3F2;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M8 2V5" stroke="#820805" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M16 2V5" stroke="#820805" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M3.5 9.09H20.5" stroke="#820805" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M21 8.5V17C21 20 19.5 22 16 22H8C4.5 22 3 20 3 17V8.5C3 5.5 4.5 3.5 8 3.5H16C19.5 3.5 21 5.5 21 8.5Z" stroke="#820805" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M15.6947 13.7H15.7037" stroke="#820805" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M15.6947 16.7H15.7037" stroke="#820805" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M11.9955 13.7H12.0045" stroke="#820805" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M11.9955 16.7H12.0045" stroke="#820805" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M8.29431 13.7H8.30329" stroke="#820805" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M8.29431 16.7H8.30329" stroke="#820805" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
                     </div>
-                </div>
-                
-                <p class="label">Chat & Komplain</p>
-            </button>
-        </div>
-        
-        <div class="line-a"></div>
-        
-        <div class="column-a col-bottom">
-            <div class="row-c row-top1">
-                <object data="../assets/row/row-ant-design.svg" class="row-ant-design-form-outlined row-mdi-light" type="image/svg+xml"></object>
-                <p class="text-b">Profil Toko</p>
-            </div>
-            
-            <div class="row-d row1">
-                <object data="../assets/row/row-vuesax-outline.svg" class="row-iconly-light-outline-arrow-a row-vuesax-outline1" type="image/svg+xml"></object>
-                <p class="label">Akun Saya</p>
-            </div>
-            
-            <button class="btn-light-d btn-light1 hover-dark">
-                <div class="icon-ly-light-outline-wallet icon-ly-light4">
-                    <div class="icon-ly-light-outline-wallet-group">
-                        <object data="../assets/icon-ly-light-outline-wallet-group/icon-ly-light-outline-wallet-fill.svg" class="icon-ly-light-outline-wallet-fill1" type="image/svg+xml"></object>
-                        <object data="../assets/icon-ly-light-outline-wallet-group/icon-ly-light-outline-wallet-fill2.svg" class="icon-ly-light-outline-wallet-fill2" type="image/svg+xml"></object>
+                    <div class="stat-info">
+                        <p class="stat-label">Pesanan Terbaru</p>
+                        <h3 class="stat-value">5 Pesanan</h3>
                     </div>
+                    <span class="stat-badge pending">Belum diproses</span>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: #FEF3F2;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z" stroke="#820805" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M7.75 12L10.58 14.83L16.25 9.17" stroke="#820805" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="stat-info">
+                        <p class="stat-label">Sedang diproses</p>
+                        <h3 class="stat-value">3 Pesanan</h3>
+                    </div>
+                    <span class="stat-badge processing">Dalam Pengerjaan</span>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: #FEF3F2;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z" stroke="#820805" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M7.75 12L10.58 14.83L16.25 9.17" stroke="#820805" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="stat-info">
+                        <p class="stat-label">Selesai</p>
+                        <h3 class="stat-value">12 Pesanan</h3>
+                    </div>
+                    <span class="stat-badge completed">Pesanan Selesai</span>
+                </div>
+            </section>
+
+            <!-- Orders and Chat Section -->
+            <section class="content-section">
+                <!-- Orders Table -->
+                <div class="orders-card">
+                    <div class="card-header">
+                        <h2>Pesanan Terbaru</h2>
+                        <div class="search-box">
+                            <input type="text" placeholder="Cari Pesanan" id="searchInput">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z" stroke="#6C7275" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M22 22L20 20" stroke="#6C7275" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <table class="orders-table">
+                        <thead>
+                            <tr>
+                                <th>Nama Pembeli</th>
+                                <th>Produk</th>
+                                <th>Total</th>
+                                <th>Tanggal</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ordersTableBody">
+                            <tr>
+                                <td>
+                                    <div class="buyer-cell">
+                                        <img src="../assets/beranda-fix/row-row/row-3d-avatars.png" alt="Avatar" class="avatar">
+                                        <span>Reisya Seinanda</span>
+                                    </div>
+                                </td>
+                                <td>Sweet Aurora Bloom</td>
+                                <td>260.000</td>
+                                <td><span class="status-badge pending">Belum diproses</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="buyer-cell">
+                                        <img src="../assets/column/column-3d-avatars.png" alt="Avatar" class="avatar">
+                                        <span>Reza Fahrizki</span>
+                                    </div>
+                                </td>
+                                <td>Charme Boquet</td>
+                                <td>60.000</td>
+                                <td><span class="status-badge completed">Selesai</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="buyer-cell">
+                                        <img src="../assets/beranda-fix/card-transaction-3d-avatars.png" alt="Avatar" class="avatar">
+                                        <span>Hendri Pradita</span>
+                                    </div>
+                                </td>
+                                <td>Lush & Plush</td>
+                                <td>190.000</td>
+                                <td><span class="status-badge completed">Selesai</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="buyer-cell">
+                                        <img src="../assets/column/column-3d-avatars2.png" alt="Avatar" class="avatar">
+                                        <span>Puan Maharani</span>
+                                    </div>
+                                </td>
+                                <td>Charme Boquet</td>
+                                <td>60.000</td>
+                                <td><span class="status-badge processing">Diproses</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Chat & Notifications -->
+                <div class="chat-card">
+                    <h2 class="card-title">Chat & Notifikasi</h2>
                     
-                    <img src="../assets/icon-ly-light-outline-wallet/icon-ly-light-outline-wallet-img.png" class="icon-ly-light-outline-wallet-img" />
-                    <object data="../assets/icon-ly-light-outline-wallet/icon-ly-light-outline-wallet-fill.svg" class="icon-ly-light-outline-wallet-fill3" type="image/svg+xml"></object>
-                </div>
-                
-                <p class="label">Keuangan</p>
-            </button>
-            
-            <div class="row-d row-bottom1">
-                <object data="../assets/row/row-iconly-light.svg" class="row-iconly-light-outline-arrow-a row-vuesax-outline1" type="image/svg+xml"></object>
-                <p class="label">Logout</p>
-            </div>
-        </div>
-    </div>
-    
-    <div class="col2">
-        <div class="row-top3">
-            <div class="row-left">
-                <button class="btn-logo text1 hover-dark">logo</button>
-                <img src="../assets/row-column/row-img2.png" class="img1" />
-            </div>
-            
-            <div class="row-e row7">
-                <p class="row-text-fleurahita1 text2">FLEURAHITA</p>
-                
-                <div class="row-row-right1 card-light3">
-                    <p class="row-text-ingin-mencari1">Ingin mencari sesuatu?</p>
-                    <object data="../assets/row-row/row-vuesax-outline.svg" class="row-vuesax-outline-search-a row-vuesax-outline2" type="image/svg+xml"></object>
-                </div>
-            </div>
-        </div>
-        
-        <div class="line-b"></div>
-        <h2 class="subtitle-hi-aila-exclamation subtitle-main-color">Hi, Aila!</h2>
-        
-        <div class="group4">
-            <div class="informations">
-                <div class="informations-group-left">
-                    <div class="card1">
-                        <div class="circle-light-a card-circle"></div>
-                        
-                        <div class="row-r row-bottom3">
-                            <div class="row-col">
-                                <p class="row-text15">Pesanan Terbaru</p>
-                                <h2 class="row-subtitle">5 Pesanan</h2>
+                    <div class="chat-list" id="chatContainer">
+                        <div class="chat-item">
+                            <img src="../assets/column/column-3d-avatars.png" alt="Avatar" class="chat-avatar">
+                            <div class="chat-content">
+                                <div class="chat-header">
+                                    <span class="chat-name">Muhammad Fadhil</span>
+                                    <span class="chat-time">15d</span>
+                                </div>
+                                <p class="chat-message">apakah produk ini masih ada?</p>
                             </div>
-                            
-                            <button class="btn-c row-btn hover-dark">Belum diproses</button>
                         </div>
-                    </div>
-                </div>
-                
-                <div class="card2 card-white3">
-                    <div class="circle-light-c circle-light-top">
-                        <object data="../assets/beranda-fix/circle-light/circle-light-iconly.svg" class="iconly-light-outline-tick circle-light-iconly" type="image/svg+xml"></object>
-                    </div>
-                    
-                    <div class="row-r row-bottom4">
-                        <div class="row-col">
-                            <p class="row-text15">Sedang diproses</p>
-                            <h2 class="row-subtitle">3 Pesanan</h2>
-                        </div>
-                        
-                        <button class="btn-c row-btn hover-dark">Dalam Pengerjaan</button>
-                    </div>
-                </div>
-                
-                <div class="card-right1 card-white3">
-                    <div class="circle-light-a card-right-circle"></div>
-                    
-                    <div class="row-r row-bottom5">
-                        <div class="row-col">
-                            <p class="row-text15">Selesai</p>
-                            <h2 class="row-subtitle">12 Pesanan</h2>
-                        </div>
-                        
-                        <button class="btn-c row-btn hover-dark">Pesanan Selesai</button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="iconly-light2">
-                <img src="../assets/beranda-fix/iconly-light-img.png" class="iconly-light-img" />
-                <object data="../assets/beranda-fix/iconly-light-fill.svg" class="iconly-light-fill" type="image/svg+xml"></object>
-            </div>
-            
-            <object data="../assets/beranda-fix/iconly-light.svg" class="iconly-light-outline-tick iconly-light3" type="image/svg+xml"></object>
-        </div>
-        
-        <div class="row8">
-            <div class="card-transaction">
-                <div class="card-transaction-row-top1">
-                    <p class="card-transaction-text-pesanan-terbaru text4">Pesanan Terbaru</p>
-                    
-                    <div class="card-transaction-row-right">
-                        <p class="card-transaction-text-cari-pesanan">Cari Pesanan  </p>
-                        <object data="../assets/row/row-vuesax-outline-019.svg" class="card-transaction-vuesax-outline-search card-transaction-vuesax-outline" type="image/svg+xml"></object>
-                    </div>
-                </div>
-                
-                <div class="card-transaction-col">
-                    <div class="card-transaction-row-top2">
-                        <div class="row-g row9">
-                            <div class="row-line-left1"></div>
-                            <p class="text-c">Nama Pembeli</p>
-                        </div>
-                        
-                        <div class="row-g row10">
-                            <div class="row-line-left1"></div>
-                            <p class="text-c">Produk</p>
-                        </div>
-                        
-                        <div class="row-g row11">
-                            <div class="row-line-left1"></div>
-                            <p class="text-c">Total</p>
-                        </div>
-                        
-                        <div class="row-g row12">
-                            <div class="row-line-left1"></div>
-                            <p class="text-c">Status</p>
-                        </div>
-                    </div>
-                    
-                    <div class="row-s row13">
-                        <div class="row-row-left">
-                            <img src="../assets/beranda-fix/row-row/row-3d-avatars.png" class="row-3d-avatars" />
-                            <p class="text-c row-text-reisya-seinanda3">Reisya Seinanda</p>
-                        </div>
-                        
-                        <p class="text-j row-text16">Sweet Aurora Bloom</p>
-                        <p class="text-j row-text17">250.000</p>
-                        <button class="btn-c row-btn-right hover-dark">Belum diproses</button>
-                    </div>
-                    
-                    <div class="row-s row14">
-                        <div class="row-row-left">
-                            <img src="../assets/column/column-3d-avatars.png" class="row-3d-avatars" />
-                            <p class="text-c row-text-reisya-seinanda3">Reza Fahrizki</p>
-                        </div>
-                        
-                        <p class="text-j row-text16">Charme Boquet</p>
-                        <p class="text-j row-text17">60.000</p>
-                        <button class="btn-c row-btn-right hover-dark">Selesai</button>
-                    </div>
-                    
-                    <div class="card-transaction-row">
-                        <div class="card-transaction-row-left">
-                            <div class="card-transaction-group-left">
-                                <div class="card-transaction-circle circle"></div>
-                                <img src="../assets/beranda-fix/card-transaction-3d-avatars.png" class="card-transaction-3d-avatars" />
+
+                        <div class="chat-item">
+                            <img src="../assets/column/column-3d-avatars2.png" alt="Avatar" class="chat-avatar">
+                            <div class="chat-content">
+                                <div class="chat-header">
+                                    <span class="chat-name">Megawati</span>
+                                    <span class="chat-time">10d</span>
+                                </div>
+                                <p class="chat-message">Kak, ini bisa request ganti warna?</p>
                             </div>
-                            
-                            <p class="text-c card-transaction-text-hendri-pradita">Hendri Pradita</p>
                         </div>
-                        
-                        <p class="text-j card-transaction-text-lush-plush">Lush & Plush</p>
-                        <p class="text-j card-transaction-text">190.000</p>
-                        <button class="btn-c card-transaction-btn-right hover-dark">Selesai</button>
-                    </div>
-                    
-                    <div class="row-s row15">
-                        <div class="row-row-left">
-                            <img src="../assets/column/column-3d-avatars2.png" class="row-3d-avatars" />
-                            <p class="text-c row-text-reisya-seinanda3">Puan Maharani</p>
+
+                        <div class="chat-item">
+                            <img src="../assets/card-3d-avatars3.png" alt="Avatar" class="chat-avatar">
+                            <div class="chat-content">
+                                <div class="chat-header">
+                                    <span class="chat-name">Muhammad Iqbal</span>
+                                    <span class="chat-time">10d</span>
+                                </div>
+                                <p class="chat-message">Kak, ini bisa request ganti warna?</p>
+                            </div>
                         </div>
-                        
-                        <p class="text-j row-text16">Charme Boquet</p>
-                        <p class="text-j row-text17">60.000</p>
-                        <button class="btn-c row-btn-right hover-dark">Diproses</button>
                     </div>
                 </div>
-            </div>
-            
-            <div class="card-right2">
-                <p class="card-right-text-top text4">Chat & Notifikasi</p>
-                
-                <div class="card-right-col1">
-                    <img src="../assets/column/column-3d-avatars.png" class="card-right-3d-avatars1 circle" />
-                    
-                    <div class="row-o row-top4">
-                        <p class="row-text11">Muhammad Fadhil</p>
-                        <p class="text-g">15.00 </p>
-                    </div>
-                    
-                    <p class="text-apakah-produk card-right-text-bottom1">apakah produk ini masih ada?</p>
-                </div>
-                
-                <div class="card-right-col2 group2">
-                    <img src="../assets/column/column-3d-avatars2.png" class="card-right-3d-avatars2 circle" />
-                    
-                    <div class="row-o row-top5">
-                        <p class="row-text11">Megawati</p>
-                        <p class="text-g row-text12">12.30</p>
-                    </div>
-                    
-                    <p class="text-apakah-produk card-right-text-bottom2">Kak, ini bisa request ganti warna?</p>
-                </div>
-                
-                <div class="card-right-col-bottom group2">
-                    <img src="../assets/card-3d-avatars3.png" class="card-right-3d-avatars3 circle" />
-                    
-                    <div class="row-o row-top6">
-                        <p class="row-text11">Muhammad Iqbal</p>
-                        <p class="text-g row-text12">12.30 </p>
-                    </div>
-                    
-                    <p class="text-apakah-produk card-right-text-bottom3">Kak, ini bisa request ganti warna?</p>
-                </div>
-            </div>
-        </div>
+            </section>
+        </main>
     </div>
+
+    <!-- Script Component Loader -->
+    <script src="../js/components.js"></script>
+    <script src="../js/beranda-fix.js"></script>
 </body>
 
 </html>

@@ -109,6 +109,76 @@ async function loginUser(email, password) {
     }
 }
 
+// Load cart user dari database saat login
+async function loadUserCartFromDatabase(userId) {
+    try {
+        // Fetch cart dari backend
+        const response = await fetch(`${API_BASE_URL}/cart/${userId}`);
+        const result = await response.json();
+        
+        const cartKey = `fleurahita_cart_${userId}`;
+        
+        if (response.ok && result.success && result.data && result.data.length > 0) {
+            // Ada cart di database, load dari database
+            const cartItems = result.data.map(item => ({
+                id: item.id_Produk,
+                name: item.Nama_Produk,
+                price: parseFloat(item.Harga),
+                quantity: item.Jumlah,
+                image: item.Foto_Produk ? `../assets/products/${item.Foto_Produk}` : '../assets/card/card-img.png'
+            }));
+            
+            // Save ke localStorage dengan key per user
+            localStorage.setItem(cartKey, JSON.stringify(cartItems));
+            
+            // Juga save ke key lama untuk backward compatibility
+            localStorage.setItem('fleurahita_cart', JSON.stringify(cartItems));
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            
+            console.log(`Cart loaded for user ${userId}:`, cartItems.length, 'items');
+        } else {
+            // Cart kosong di database, cek localStorage
+            const existingCart = localStorage.getItem(cartKey);
+            
+            if (existingCart && existingCart !== '[]') {
+                // Ada cart di localStorage, keep it
+                console.log(`Keeping existing localStorage cart for user ${userId}`);
+                try {
+                    const parsed = JSON.parse(existingCart);
+                    // Update key lama juga
+                    localStorage.setItem('fleurahita_cart', existingCart);
+                    localStorage.setItem('cartItems', existingCart);
+                } catch (e) {
+                    // Invalid JSON, initialize empty
+                    localStorage.setItem(cartKey, JSON.stringify([]));
+                    localStorage.setItem('fleurahita_cart', JSON.stringify([]));
+                    localStorage.setItem('cartItems', JSON.stringify([]));
+                }
+            } else {
+                // Tidak ada cart di localStorage, buat baru kosong
+                localStorage.setItem(cartKey, JSON.stringify([]));
+                localStorage.setItem('fleurahita_cart', JSON.stringify([]));
+                localStorage.setItem('cartItems', JSON.stringify([]));
+                console.log(`Empty cart initialized for user ${userId}`);
+            }
+        }
+    } catch (error) {
+        console.error('Error loading cart from database:', error);
+        // Pada error, keep existing localStorage cart if any
+        const cartKey = `fleurahita_cart_${userId}`;
+        const existingCart = localStorage.getItem(cartKey);
+        
+        if (!existingCart || existingCart === '[]') {
+            // Initialize empty cart only if tidak ada cart sebelumnya
+            localStorage.setItem(cartKey, JSON.stringify([]));
+            localStorage.setItem('fleurahita_cart', JSON.stringify([]));
+            localStorage.setItem('cartItems', JSON.stringify([]));
+        } else {
+            console.log('Keeping existing cart due to API error');
+        }
+    }
+}
+
 // Handle form submission
 loginForm.addEventListener('submit', async function(e) {
     e.preventDefault();
@@ -143,6 +213,9 @@ loginForm.addEventListener('submit', async function(e) {
             
             const storage = rememberMe ? localStorage : sessionStorage;
             storage.setItem('user', JSON.stringify(result.data));
+
+            // Load cart user dari database dan sync ke localStorage
+            await loadUserCartFromDatabase(result.data.userId || result.data.id_user);
 
             // Redirect based on admin email (hardcoded)
             setTimeout(() => {
