@@ -5,7 +5,6 @@ body {
 }
 
 
-
 /* header-f */
 
 .header-f {
@@ -496,7 +495,6 @@ body {
 }
 
 .testimoni1 {
-	margin: 65px auto 0 auto;
 	width: 90%;
 	max-width: 814px;
 	align-self: center;
@@ -520,7 +518,7 @@ body {
 	align-self: center;
 	color: #000;
 	padding: 35px 0;
-	overflow: hidden;
+	margin-bottom: 80px;
 }
 
 

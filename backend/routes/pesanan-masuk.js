@@ -2,6 +2,109 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../config/db');
 
+// GET dashboard stats
+router.get('/dashboard/stats', async (req, res) => {
+    try {
+        // Get counts by status
+        const statsQuery = `
+            SELECT 
+                COUNT(CASE WHEN Status_Pesanan = 'Menunggu Pembayaran' THEN 1 END) AS pending,
+                COUNT(CASE WHEN Status_Pesanan = 'Diproses' THEN 1 END) AS processing,
+                COUNT(CASE WHEN Status_Pesanan = 'Selesai' THEN 1 END) AS completed,
+                COUNT(*) AS total
+            FROM pesanan
+        `;
+        
+        const [stats] = await pool.query(statsQuery);
+        
+        res.json({
+            success: true,
+            data: stats[0]
+        });
+    } catch (err) {
+        console.error("Database error (dashboard stats):", err);
+        res.status(500).json({ 
+            success: false,
+            error: err.message 
+        });
+    }
+});
+
+// GET recent orders for dashboard
+router.get('/dashboard/recent', async (req, res) => {
+    try {
+        const limit = req.query.limit || 10;
+        
+        const query = `
+            SELECT 
+                p.id_Pesanan AS id,
+                u.Nama AS buyer_name,
+                u.Foto_Profil AS avatar,
+                GROUP_CONCAT(DISTINCT pr.Nama_Produk SEPARATOR ', ') AS product_names,
+                p.Total_Bayar AS total,
+                p.Status_Pesanan AS status,
+                p.Tanggal_Pesan AS order_date
+            FROM pesanan p
+            JOIN pengguna u ON p.id_User = u.id_User
+            INNER JOIN detail_pesanan dp ON p.id_Pesanan = dp.id_Pesanan
+            INNER JOIN produk pr ON dp.id_Produk = pr.id_produk
+            GROUP BY p.id_Pesanan
+            HAVING product_names IS NOT NULL
+            ORDER BY p.Tanggal_Pesan DESC
+            LIMIT ?
+        `;
+        
+        const [rows] = await pool.query(query, [parseInt(limit)]);
+        
+        res.json({
+            success: true,
+            data: rows
+        });
+    } catch (err) {
+        console.error("Database error (recent orders):", err);
+        res.json({ 
+            success: false,
+            error: err.message 
+        });
+    }
+});
+
+// GET recent chats for dashboard
+router.get('/dashboard/chats', async (req, res) => {
+    try {
+        const limit = req.query.limit || 5;
+        
+        const query = `
+            SELECT 
+                uc.id_Ulasan AS id,
+                u.Nama AS customer_name,
+                u.Foto_Profil AS avatar,
+                uc.Riwayat_Chat AS message,
+                uc.Tanggal_Ulasan AS chat_date,
+                pr.Nama_Produk AS product_name
+            FROM ulasan_chat uc
+            JOIN pengguna u ON uc.id_User = u.id_User
+            LEFT JOIN produk pr ON uc.id_Produk = pr.id_Produk
+            WHERE uc.Riwayat_Chat IS NOT NULL AND uc.Riwayat_Chat != ''
+            ORDER BY uc.Tanggal_Ulasan DESC
+            LIMIT ?
+        `;
+        
+        const [rows] = await pool.query(query, [parseInt(limit)]);
+        
+        res.json({
+            success: true,
+            data: rows
+        });
+    } catch (err) {
+        console.error("Database error (recent chats):", err);
+        res.status(500).json({ 
+            success: false,
+            error: err.message 
+        });
+    }
+});
+
 router.get('/', async (req, res) => {
     try {
         await pool.query("SET SESSION group_concat_max_len = 10000;");

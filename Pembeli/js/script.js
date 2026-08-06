@@ -41,9 +41,25 @@ function updateCartTotal() {
     });
 }
 
-// Load cart from localStorage
+// Load cart from localStorage (per user)
 function loadCartFromStorage() {
-    const stored = localStorage.getItem('fleurahita_cart');
+    // Get user ID - sessionStorage FIRST (priority)
+    const userDataStr = sessionStorage.getItem('user') || localStorage.getItem('userData');
+    let cartKey = 'fleurahita_cart'; // default key
+    
+    if (userDataStr) {
+        try {
+            const user = JSON.parse(userDataStr);
+            const userId = user.id_user || user.userId;
+            if (userId) {
+                cartKey = `fleurahita_cart_${userId}`;
+            }
+        } catch (e) {
+            // Use default key if parsing fails
+        }
+    }
+    
+    const stored = localStorage.getItem(cartKey);
     if (stored) {
         try {
             cartItems = JSON.parse(stored);
@@ -54,8 +70,8 @@ function loadCartFromStorage() {
                     item.image = validImg;
                     updated = true;
                 }
-                if (item.name && (item.name.includes('CharmÃƒÂ©') || item.name.includes('CharmÃƒÆ’Ã‚Â©'))) {
-                    item.name = item.name.replace(/CharmÃƒÂ©/g, 'CharmÃ©').replace(/CharmÃƒÆ’Ã‚Â©/g, 'CharmÃ©');
+                if (item.name && (item.name.includes('CharmÃƒÂ©') || item.name.includes('CharmÃƒÆ\'Ã‚Â©'))) {
+                    item.name = item.name.replace(/CharmÃƒÂ©/g, 'CharmÃ©').replace(/CharmÃƒÆ\'Ã‚Â©/g, 'CharmÃ©');
                     updated = true;
                 }
                 if (!item.quantity || item.quantity < 1) {
@@ -73,10 +89,31 @@ function loadCartFromStorage() {
     }
 }
 
-// Save cart to localStorage
+// Save cart to localStorage (per user)
 function saveCartToStorage() {
+    // Get user ID - sessionStorage FIRST (priority)
+    const userDataStr = sessionStorage.getItem('user') || localStorage.getItem('userData');
+    let cartKey = 'fleurahita_cart'; // default key
+    
+    if (userDataStr) {
+        try {
+            const user = JSON.parse(userDataStr);
+            const userId = user.id_user || user.userId;
+            if (userId) {
+                cartKey = `fleurahita_cart_${userId}`;
+            }
+        } catch (e) {
+            // Use default key if parsing fails
+        }
+    }
+    
+    // Save dengan key per user
+    localStorage.setItem(cartKey, JSON.stringify(cartItems));
+    
+    // Juga save ke key lama untuk backward compatibility
     localStorage.setItem('fleurahita_cart', JSON.stringify(cartItems));
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    
     window.dispatchEvent(new Event('cartUpdated'));
 }
 
@@ -552,12 +589,7 @@ function setupProductPageEvents() {
             }
             
             saveCartToStorage();
-            showNotification(`${name} ditambahkan ke keranjang!`);
             updateCartTotal();
-            
-            setTimeout(() => {
-                window.location.href = 'keranjang.html';
-            }, 300);
         };
 
         card.addEventListener('click', handleCardClick);
@@ -846,7 +878,8 @@ function setupBerandaEvents() {
             }
             
             saveCartToStorage();
-            window.location.href = "keranjang.html";
+            showNotification(`${name} ditambahkan ke keranjang!`);
+            updateCartTotal();
         });
     });
 }

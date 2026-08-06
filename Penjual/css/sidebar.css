@@ -7,6 +7,7 @@
 	height: 100vh;
 	box-sizing: border-box;
 	display: flex;
+	position: absolute;
 	flex-direction: column;
 	background-color: #fbf7f7;
 	padding: 23px 20px 32px 12px;

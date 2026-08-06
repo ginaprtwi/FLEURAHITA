@@ -102,8 +102,8 @@ function closeSidebarDrawer() {
 document.addEventListener('DOMContentLoaded', async () => {
     try {
         const [sidebarLoaded, navbarLoaded] = await Promise.all([
-            loadComponent('sidebar-container', '/components/sidebar.html'),
-            loadComponent('navbar-container', '/components/navbar.html')
+            loadComponent('sidebar-container', '../components/sidebar.html'),
+            loadComponent('navbar-container', '../components/navbar.html')
         ]);
 
         if (sidebarLoaded) {

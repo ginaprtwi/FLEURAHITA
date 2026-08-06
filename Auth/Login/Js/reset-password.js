@@ -1,6 +1,6 @@
 // Reset Password Logic - FLEURAHITA
 
-const API_BASE_URL = window.location.origin.startsWith('http') ? `${window.location.origin}/api` : 'http://localhost:3000/api';
+const API_BASE_URL = 'http://localhost:3001/api';
 
 const resetPasswordForm = document.getElementById('resetPasswordForm');
 const submitBtn = resetPasswordForm.querySelector('.submit-btn');

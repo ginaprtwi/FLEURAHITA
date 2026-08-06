@@ -8,6 +8,9 @@ const pengirimanRoutes = require('./routes/pengiriman');
 const pesananMasukRoutes = require('./routes/pesanan-masuk');
 const keuanganRoutes = require('./routes/keuangan');
 const authRoutes = require('./routes/authRoutes');
+const adminRoutes = require('./routes/adminRoutes');
+const productRoutes = require('./routes/productRoutes');
+const cartRoutes = require('./routes/cartRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -18,10 +21,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // ==================== STATIC FILES ====================
-// Serve static assets for the entire project
-app.use(express.static(path.join(__dirname, '..')));
+app.use(express.static(path.join(__dirname, '../Penjual/Pages')));
+app.use(express.static(path.join(__dirname, '../Auth')));
+app.use(express.static(path.join(__dirname, '../Pembeli/Pages')));
 
-// Shortcut routes for Penjual pages & assets
+// Serve uploaded files
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+app.use('/css', express.static(path.join(__dirname, '../Pembeli/css')));
+app.use('/js', express.static(path.join(__dirname, '../Pembeli/js')));
+app.use('/assets', express.static(path.join(__dirname, '../Pembeli/assets')));
+app.use('/components', express.static(path.join(__dirname, '../Pembeli/components')));
+
 app.use('/css', express.static(path.join(__dirname, '../Penjual/css')));
 app.use('/js', express.static(path.join(__dirname, '../Penjual/js')));
 app.use('/assets', express.static(path.join(__dirname, '../Penjual/assets')));
@@ -54,9 +65,12 @@ db.connect((err) => {
 
 // ==================== API ROUTES ====================
 app.use('/api/auth', authRoutes(db));
+app.use('/api/admin', adminRoutes(db));
 app.use('/api/pengiriman', pengirimanRoutes);
 app.use('/api/pesanan-masuk', pesananMasukRoutes);
 app.use('/api/keuangan', keuanganRoutes);
+app.use('/api/products', productRoutes);
+app.use('/api/cart', cartRoutes);
 
 // Test endpoint
 app.get('/api/test', (req, res) => {

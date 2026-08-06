@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="../css/reset.css" />
 <link rel="stylesheet" href="../css/global.css" />
 <link rel="stylesheet" href="../css/sidebar.css" />
+<script src="../js/sidebar-logout.js"></script>
 
 <div class="sidebar-menu card-light2">
     <div class="menu menu1">
@@ -78,11 +79,13 @@
             <p class="label">Profil Toko</p>
         </div>
 
-        <div class="row-b row5">
-            <object data="../assets/row/row-vuesax-outline.svg" class="row-vuesax-outline-user-octagon row-streamline"
-                type="image/svg+xml"></object>
-            <p class="text-a">Akun Saya</p>
-        </div>
+        <button class="btn-light4 hover-dark" onclick="location.href='akun-saya.html'">
+            <div class="icon-ly-light-outline-chat icon-ly-light6">
+                <object data="../assets/row/row-vuesax-outline.svg" class="row-vuesax-outline-user-octagon row-streamline"
+                    type="image/svg+xml"></object>
+            </div>
+            <p class="label">Akun Saya</p>
+        </button>
 
         <button class="btn-light-d btn-light5 hover-dark" onclick="location.href='keuangan.html'">
             <div class="icon-ly-light-outline-wallet icon-ly-light4">
@@ -102,7 +105,7 @@
             <p class="label">Keuangan</p>
         </button>
 
-        <div class="row-d row-bottom3">
+        <div class="row-d row-bottom3" onclick="handlePenjualLogout()" style="cursor: pointer;">
             <object data="../assets/row/row-iconly-light.svg"
                 class="row-iconly-light-outline-arrow-a row-vuesax-outline1" type="image/svg+xml"></object>
             <p class="label">Logout</p>
