@@ -60,17 +60,17 @@
             
             <div class="process-c process1" id="order-stepper">
                 <div class="process-process7">
-                    <button class="btn-a process-btn4 hover-bright" data-step-page="pilih_pengiriman.html">1</button>
+                    <button class="btn-a process-btn7 hover-bright" data-step-page="pilih_pengiriman.html">1</button>
                     <p class="text-d">Keranjang belanja</p>
                 </div>
                 
                 <div class="process-process8">
-                    <button class="btn-a process-btn5 hover-bright" data-step-page="detail_pesanan.html">2</button>
+                    <button class="btn-a process-btn8 hover-bright" data-step-page="detail_pesanan.html">2</button>
                     <p class="text-e">Detail pesanan</p>
                 </div>
                 
                 <div class="process-process9">
-                    <button class="process-btn6 body-2-semi btn1 hover-bright" data-step-page="pesanan-saya4.html">3</button>
+                    <button class="process-btn9 body-2-semi btn1 hover-bright" data-step-page="pesanan-saya4.html">3</button>
                     <p class="text-d process-text-order-complete2">Pesanan selesai</p>
                 </div>
             </div>
@@ -85,10 +85,10 @@
             </div>
             
             <div class="card-item">
-                <img src="../assets/pesanan-saya/card-img.png" class="card-img6" />
-                <button class="card-btn-number hover-bright">1</button>
+                <img src="../assets/pesanan-saya/card-img.png" class="card-img6" id="produkUtamaImg" />
+                <button class="card-btn-number hover-bright" id="jumlahItemBadge">1</button>
             </div>
-            
+
             <div class="card-order-detail">
                 <div class="card-title2">
                     <p class="card-text2 caption-1-semi">Kode Orderan : </p>
@@ -96,25 +96,19 @@
                     <p class="card-text4 caption-1-semi">Total:</p>
                     <p class="card-text5 caption-1-semi">Metode Pembayaran :</p>
                 </div>
-                
+
                 <div class="card-info">
-                    <p class="card-text-a">#0123_45678</p>
-                    <p class="card-text-a">11 Februari 2026</p>
-                    <p class="card-text-a">Rp135.000</p>
-                    <p class="card-text-a">Credit Card</p>
+                    <p class="card-text-a" id="kodeOrderText">-</p>
+                    <p class="card-text-a" id="tanggalText">-</p>
+                    <p class="card-text-a" id="totalOrderText">-</p>
+                    <p class="card-text-a" id="metodeText">-</p>
                 </div>
             </div>
-            
-            <div class="card-row3">
-                <div class="input-group">
-                    <input class="input-group-masukan-ulasan" value="Masukan ulasan anda disini.." />
-                </div>
-                
-                <object data="../assets/pesanan-saya/card-graphic.svg" class="card-graphic5" type="image/svg+xml"></object>
-            </div>
-            
-            <button class="card-btn hover-bright">Histori Pembelian</button>
-            <button class="card-btn hover-bright">Kembali Ke Beranda</button>
+
+            <!-- ... -->
+
+            <button class="card-btn hover-bright" id="btnHistori">Histori Pembelian</button>
+            <button class="card-btn hover-bright" id="btnBeranda">Kembali Ke Beranda</button>
         </div>
     </div>
     
@@ -205,8 +199,8 @@
     </footer>
 </div>
 
+    <script src="pesanan_selesai.js"></script>
     <script src="stepper.js"></script>
-    <!-- Masukkan script ini tepat sebelum </body> -->
     <script src="navbar.js"></script>
     <script src="sidebarprofil.js"></script>
 </body>

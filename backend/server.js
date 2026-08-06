@@ -34,10 +34,13 @@ db.connect((err) => {
 // Import routes
 const authRoutes = require('./routes/authRoutes')(db);
 const cartRoutes = require('./routes/cartRoutes')(db);
+const wilayahRoutes = require('./routes/wilayahRoutes')(db);
+
 
 // Use routes
 app.use('/api/auth', authRoutes);
 app.use('/api/keranjang', cartRoutes);
+app.use('/api/wilayah', wilayahRoutes);
 
 // Test endpoint
 app.get('/api/test', (req, res) => {

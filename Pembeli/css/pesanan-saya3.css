@@ -612,6 +612,43 @@ p.step-upcoming {
 	color: var(--grey) !important;
 	background-color: transparent !important;
 }
+
+.payment-option {
+    cursor: pointer;
+}
+
+/* radio Gopay (pakai style card-form-radio-btn) - default unselected */
+.card-form-elements:not(.payment-selected) .circle-radio-button-check2 {
+    display: none;
+}
+.card-form-elements.payment-selected {
+    border-color: var(--main-color);
+}
+
+/* radio BCA/Tunai (pakai style elements) */
+.elements.payment-selected .elements-circle-radio-button {
+    border-color: var(--main-color);
+    background-color: var(--main-color);
+    box-shadow: inset 0 0 0 3px #fff;
+}
+
+.elements-checkout-order-order {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.elements-checkout-order-order p {
+    margin: 0;
+}
+
+.elements-checkout-order-text-free {
+    text-align: right;
+    flex-shrink: 0;
+}
+
+
 /* container queries (flex rows) */
 
 @container elements-checkout-order-products (width < 364px) {

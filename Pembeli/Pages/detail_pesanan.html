@@ -44,44 +44,41 @@
 
                     <div class="input-group-street input-group-street1">
                         <p class="text-g">Nama  penerima</p>
-                        <input class="input input-group-street-input" value="Nama Penerima " />
+                        <input class="input input-group-street-input" id="namaPenerimaInput" value="" />
                     </div>
 
                     <div class="input-group-street input-group-street2">
                         <p class="text-g">Alamat</p>
-                        <input class="input input-group-street-input" value="Alamat " />
+                        <input class="input input-group-street-input" id="alamatInput" value="" />
                     </div>
 
                     <div class="card-form-country">
                         <p class="text-g">Kecamatan</p>
-
-                        <div class="card-form-input">
-                            <p class="card-form-text-your text-16px-regular">Kecamatan</p>
-                            <object data="../assets/pesanan-saya/card-form-icon.svg" class="card-form-icon-chevron-down card-form-icon" type="image/svg+xml"></object>
-                        </div>
+                        <select class="input" id="kecamatanSelect">
+                            <option value="">Kecamatan</option>
+                        </select>
                     </div>
 
                     <div class="input-group-street input-group-street3">
                         <p class="text-g">Kelurahan</p>
-                        <input class="input input-group-street-input" value="Kelurahan" />
+                        <select class="input" id="kelurahanSelect">
+                            <option value="">Kelurahan</option>
+                        </select>
                     </div>
 
                     <div class="state state1">
                         <div class="input-group-name-b input-group-name1">
-                            <p class="input-group-name-text2">KOta/Kabupaten</p>
-                            <input class="input input-group-name-input2" value="Kota/Kabupaten" />
+                            <p class="input-group-name-text2">Kota/Kabupaten</p>
+                            <input class="input input-group-name-input2" id="kotaKabInput" value="" readonly />
                         </div>
 
                         <div class="input-group-name-b input-group-name2">
                             <p class="input-group-name-text2">Kode Pos</p>
-                            <input class="input input-group-name-input2" value="Zip Code" />
+                            <input class="input input-group-name-input2" id="kodePosInput" value="" maxlength="5" />
                         </div>
                     </div>
 
-                    <div class="card-form-different">
-                        <div class="ratio-button card-form-ratio-btn"></div>
-                        <p class="card-form-text-use-a-different body-a">Use a different billing address (optional)</p>
-                    </div>
+                    
                 </div>
 
                 <div class="card-form2 card2">
@@ -89,15 +86,13 @@
 
                     <div class="card-form-card">
                         <div class="card-form-col">
-                            <div class="card-form-elements">
+                            <div class="card-form-elements payment-option" data-method="gopay">
                                 <div class="card-form-radio-btn">
                                     <div class="circle-radio-button-b circle-radio-btn2">
                                         <div class="circle-a circle-radio-button-check2"></div>
                                     </div>
-
                                     <p class="card-form-text-pay-by text-16px-regular">Gopay</p>
                                 </div>
-
                                 <div class="card-form-finance-and">
                                     <div class="circle-a card-form-circle-black1"></div>
                                     <div class="circle-a card-form-circle"></div>
@@ -105,83 +100,48 @@
                                 </div>
                             </div>
 
-                            <div class="elements elements1">
+                            <div class="elements payment-option" data-method="bca">
                                 <div class="elements-circle-radio-button elements-circle"></div>
                                 <p class="elements-text">BCA</p>
                             </div>
 
-                            <div class="elements elements2">
+                            <div class="elements payment-option" data-method="tunai">
                                 <div class="elements-circle-radio-button elements-circle"></div>
                                 <p class="elements-text">Tunai</p>
-                            </div>
-                        </div>
-
-                        <div class="state state2">
-                            <div class="input-group-name-b input-group-name1">
-                                <p class="input-group-name-text2">Expiration date</p>
-                                <input class="input input-group-name-input2" value="MM/YY" />
-                            </div>
-
-                            <div class="input-group-name-b input-group-name2">
-                                <p class="input-group-name-text2">CVC</p>
-                                <input class="input input-group-name-input2" value="CVC code" />
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="btn7 button-s2 card3">Bayar</div>
+                <div class="btn7 button-s2 card3 hover-bright">Bayar</div>
             </div>
 
             <div class="elements-checkout-order elements-checkout-order1">
                 <h2 class="elements-checkout-order-subtitle headline4">Order summary</h2>
 
-                <div class="elements-checkout-order-products">
-                    <div class="elements-checkout-order-cart-product">
-                        <img src="../assets/pesanan-saya/elements-checkout-order/elements-checkout-order-img.png" class="elements-checkout-order-img" />
-
-                        <div class="elements-checkout-order-info">
-                            <div class="elements-checkout-order-product">
-                                <p class="elements-checkout-order-text-top body-xl">Lush and Plush</p>
-                                <p class="text-c">Warna : Ungu</p>
-
-                                <button class="btn-quantity btn2 hover-zoom">
-                                    <div class="icon-minus-b icon-minus1">
-                                        <div class="group"></div>
-                                    </div>
-
-                                    <p class="btn-quantity-label text-12px-semibold">1</p>
-                                    <object data="../assets/btn-quantity-icon-add.svg" class="btn-quantity-icon-add-b btn-quantity-icon-add1" type="image/svg+xml"></object>
-                                </button>
-                            </div>
-
-                            <div class="elements-checkout-order-price">
-                                <p class="elements-checkout-order-text1 caption-1-semi">Rp135.000</p>
-                                <object data="../assets/pesanan-saya/elements-checkout-order/elements-checkout-order-icons-close.svg" class="elements-checkout-order-icons-close-line elements-checkout-order-icons-close" type="image/svg+xml"></object>
-                            </div>
-                        </div>
-                    </div>
+                <div class="elements-checkout-order-products" id="order-summary-products">
+                    <!-- diisi JS: satu blok produk per item keranjang -->
 
                     <div class="order-summary-coupon">
-                        <div class="order-summary-coupon-form-input text-16px-regular card-white3">Input</div>
-                        <button class="order-summary-coupon-btn button-s1 btn5 hover-bright">Apply</button>
+                        <input type="text" class="order-summary-coupon-form-input text-16px-regular card-white3" id="voucherInput" placeholder="Kode voucher" />
+                        <button class="order-summary-coupon-btn button-s1 btn5 hover-bright" id="voucherApplyBtn">Apply</button>
                     </div>
                 </div>
 
                 <div class="elements-checkout-order-fields">
                     <div class="elements-order-summary-info elements-order1">
                         <p class="elements-order-summary-info-text1">Ongkos Kirim</p>
-                        <p class="elements-order-summary-info-text2">Gratis</p>
+                        <p class="elements-order-summary-info-text2" id="ongkosKirimText">Gratis</p>
                     </div>
 
                     <div class="elements-order-summary-info elements-order2">
                         <p class="elements-order-summary-info-text1">Subtotal</p>
-                        <p class="elements-order-summary-info-text2">$99.00</p>
+                        <p class="elements-order-summary-info-text2" id="subtotalText">Rp0</p>
                     </div>
 
                     <div class="elements-checkout-order-order">
                         <p class="elements-checkout-order-text2 headline2">Total</p>
-                        <p class="elements-checkout-order-text-free headline2">$234.00</p>
+                        <p class="elements-checkout-order-text-free headline2" id="totalText">Rp0</p>
                     </div>
                 </div>
             </div>
@@ -191,7 +151,12 @@
 
     <script src="../components/js/navbar-loader.js"></script>
     <script src="../components/js/footer-loader.js"></script>
+    <script src="pembayaran.js"></script>
+    <script src="order_summary.js"></script>
+    <script src="voucher.js"></script>
+    <script src="pembayaran.js"></script>
     <script src="stepper.js"></script>
+    <script src="alamat_pesanan.js"></script>
 </body>
 
 </html>
