@@ -83,7 +83,7 @@ const BATAS_GRATIS_ONGKIR = 200000;
 const FLAT_ONGKIR = 15000;
 
 function hitungOngkir(metode, subtotal) {
-    if (metode === 'pickup') return 0;
+    if (metode === 'pickup') return 0; // Pick Up selalu gratis
     return subtotal >= BATAS_GRATIS_ONGKIR ? 0 : FLAT_ONGKIR;
 }
 

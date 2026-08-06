@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let wilayahData = [];
     let currentIdAlamat = null;
-    const userId = localStorage.getItem('id_User');
+    const userId = 1; // SEMENTARA: hardcode
 
     async function isiWilayahDariKodepos(kodepos, kecamatanTerpilih = null, kelurahanTerpilih = null) {
         kecamatanSelect.innerHTML = '<option value="">Kecamatan</option>';
@@ -69,8 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
     kecamatanSelect.addEventListener('change', () => isiKelurahan(kecamatanSelect.value));
 
     async function loadAlamat() {
-        if (!userId) return;
-
         try {
             const res = await fetch(`http://localhost:3000/api/alamat/${userId}`);
             const result = await res.json();
@@ -93,15 +91,14 @@ document.addEventListener('DOMContentLoaded', () => {
     loadAlamat();
 
     document.querySelector('.btn7').addEventListener('click', async () => {
-        // kalau nama penerima kosong, ambil dari nama profil user
+        const accountRaw = localStorage.getItem('fleurahita_account') || sessionStorage.getItem('fleurahita_account');
+        const account = accountRaw ? JSON.parse(accountRaw) : {};
+        const namaProfil = account.namaLengkap || '';
+
         if (!namaPenerimaInput.value.trim()) {
-            const namaProfil = localStorage.getItem('nama_user'); // sesuaikan key-nya dgn yg kamu pakai saat login
-            if (namaProfil) {
-                namaPenerimaInput.value = namaProfil;
-            }
+            namaPenerimaInput.value = namaProfil;
         }
 
-        // validasi semua field wajib
         const requiredFields = [
             { value: namaPenerimaInput.value.trim(), label: 'Nama Penerima' },
             { value: alamatInput.value.trim(), label: 'Alamat' },
@@ -114,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const kosong = requiredFields.find(f => f.value === '');
         if (kosong) {
             alert(`${kosong.label} belum diisi`);
-            return; // stop, jangan lanjut fetch
+            return;
         }
 
         const payload = {
@@ -129,21 +126,27 @@ document.addEventListener('DOMContentLoaded', () => {
             Kode_Pos: kodePosInput.value.trim()
         };
 
+        let saveResult;
         try {
             const res = await fetch('http://localhost:3000/api/alamat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
             });
-            const result = await res.json();
-
-            if (result.success) {
-                window.location.href = 'pesanan-saya4.html';
-            } else {
-                alert(result.message);
-            }
+            saveResult = await res.json();
         } catch (err) {
             console.error('Gagal simpan alamat:', err);
+            alert('Gagal menyimpan alamat, coba lagi.');
+            return;
         }
+
+        if (!saveResult.success) {
+            alert(saveResult.message);
+            return;
+        }
+
+        document.dispatchEvent(new CustomEvent('alamatTersimpan', {
+            detail: { namaProfil }
+        }));
     });
 });

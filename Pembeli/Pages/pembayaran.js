@@ -41,7 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const waLink = `https://wa.me/${NOMOR_PENJUAL}?text=${encodeURIComponent(pesan)}`;
         window.open(waLink, '_blank');
-
-        window.location.href = 'pesanan-saya4.html';
+         window.location.href = 'pesanan-saya4.html'; // <-- ini bagiannya
     });
     });

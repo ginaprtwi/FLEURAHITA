@@ -1,45 +1,34 @@
 // voucher.js
-// Kode voucher hardcode (belum ada tabel voucher di database).
-// Taruh SETELAH order_summary.js, SEBELUM checkout.js
-
-const DAFTAR_VOUCHER = {
-    'FLEUR10': 0.10,
-    'FLEUR20': 0.20
-};
-
-window.diskonAktif = 0; // dibaca oleh updateTotals() di order_summary.js
-
 document.addEventListener('DOMContentLoaded', () => {
-    const voucherInput = document.getElementById('voucherInput');
-    const applyBtn = document.getElementById('voucherApplyBtn');
+    const voucherInput = document.querySelector('.order-summary-coupon-form-input');
+    const applyBtn = document.querySelector('.order-summary-coupon-btn');
 
-    if (!voucherInput || !applyBtn) return;
+    // ubah div jadi input beneran biar bisa diketik
+    voucherInput.outerHTML = `<input type="text" class="order-summary-coupon-form-input text-16px-regular card-white3" id="voucherInput" placeholder="Kode voucher" />`;
 
-    function terapkanVoucher() {
-        const kode = voucherInput.value.trim().toUpperCase();
+    const DAFTAR_VOUCHER = {
+        'FLEUR10': 0.10,  // diskon 10%
+        'FLEUR20': 0.20   // diskon 20%
+    };
 
-        if (!kode) {
-            alert('Masukkan kode voucher terlebih dahulu');
-            return;
-        }
+    let diskonAktif = 0;
+
+    document.getElementById('voucherInput').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') applyBtn.click();
+    });
+
+    applyBtn.addEventListener('click', () => {
+        const kode = document.getElementById('voucherInput').value.trim().toUpperCase();
 
         if (!DAFTAR_VOUCHER[kode]) {
             alert('Kode voucher tidak valid');
-            window.diskonAktif = 0;
+            diskonAktif = 0;
         } else {
-            window.diskonAktif = DAFTAR_VOUCHER[kode];
-            alert(`Voucher berhasil dipakai! Diskon ${DAFTAR_VOUCHER[kode] * 100}%`);
+            diskonAktif = DAFTAR_VOUCHER[kode];
+            alert(`Voucher berhasil dipakai! Diskon ${diskonAktif * 100}%`);
         }
 
+        window.diskonAktif = diskonAktif; // dibaca sama updateTotals()
         updateTotals(cartItemsGlobal);
-    }
-
-    applyBtn.addEventListener('click', terapkanVoucher);
-
-    voucherInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-            e.preventDefault();
-            terapkanVoucher();
-        }
     });
 });
